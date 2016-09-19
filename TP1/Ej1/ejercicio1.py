@@ -4,9 +4,16 @@ import numpy as np
 
 
 def getDataSet(filename):
+
     y = np.genfromtxt(filename, delimiter=',', usecols=0, dtype=str)
     x = np.genfromtxt(filename, delimiter=',')[:,1:]
-    return y, x
+
+    datos = np.zeros((x.shape[0], x.shape[1]+1), dtype=object)
+
+    datos[:,0] = y
+    datos[:,1:] = x
+
+    return datos
 
 def preprocesamiento(datos):
     for i in xrange(0,len(datos[0])):
@@ -20,8 +27,9 @@ class perceptron:
         self.learning_rate = 0.1
         self.beta1 = 0.1 #--beta en la funcion de activacion 1
         self.beta2 = 0.1 #--beta en la funcion de activacion 2
-        self.tolerancia_error = 0.0002
-        self.cantidad_repeticiones = 2000
+        self.tolerancia_error = 1
+        self.cantidad_repeticiones = 20
+        self.cantidad_mezclas = 5
 
         self.input_file = "tp1_ej1_training.csv" #--archivo csv de entrada
         self.output_file = "ej1.sal" #--archivo csv de salida
@@ -31,8 +39,8 @@ class perceptron:
         self.tamano_salida = 1 #--dimension de la salida
         #--------------------------------------------
 
-        self.w1 = np.random.rand(self.tamano_entrada+1, self.tamano_capa)
-        self.w2 = np.random.rand(self.tamano_capa, self.tamano_salida)
+        self.w1 = np.random.randn(self.tamano_entrada+1, self.tamano_capa)
+        self.w2 = np.random.randn(self.tamano_capa, self.tamano_salida)
 
     def importarW(self, filename):
         csv_entrada = csv.reader(open(filename, "rb"), delimiter=',')
@@ -95,16 +103,30 @@ class perceptron:
         elif clave == 'tout':
             self.tamano_salida = float(valor)
         elif clave == 'tcapa':
+            tamano_viejo = self.tamano_capa
             self.tamano_capa = float(valor)
+            if tamano_viejo < self.tamano_capa:
+                self.w1 = np.append(self.w1, np.random.randn(self.tamano_entrada+1, self.tamano_capa - tamano_viejo), axis=1)
+                self.w2 = np.append(self.w2, np.random.randn(self.tamano_capa - tamano_viejo, self.tamano_salida), axis=0)
+            else:
+                self.w1 = self.w1[:,0:self.tamano_capa]
+                self.w2 = self.w2[0:self.tamano_capa,:]
         elif clave == 'input':
             self.input_file = valor
         elif clave == 'output':
             self.output_file = valor
+        elif clave == 'cmez':
+            self.cantidad_mezclas = int(valor)
 
     def entrenar(self):
+        os.system("clear");
+        print "INICIANDO ENTRENAMIENTO"
+        
         #--busca datos del archivo de entrada
-        input_y, input_x = getDataSet(perc.input_file)
-        preprocesamiento(input_x)
+        data_input = getDataSet(perc.input_file)
+        data_y = data_input[:,0]
+        preprocesamiento(data_input[:,1:])
+        data_input[:,0] = data_y
 
         #--se fija si tiene que haber salida
         csv_salida = 0
@@ -117,117 +139,147 @@ class perceptron:
 
         #--TODO -> Revisar que las dimensiones de los datos del archivo sean las correctas
 
-        cant_repeticiones = 0
-        error_cuadratico_medio = 20
-        #--ciclo de entrenamiento por etapas
-        while cant_repeticiones < self.cantidad_repeticiones and error_cuadratico_medio > self.tolerancia_error:
-        
-            error_cuadratico_medio = 0
-            error_acumulado = 0
-            error_promedio = 0
-            error_minimo = 2000000
-            error_maximo = 0
-            cantidad_entradas = 200
-            for i in xrange(0, cantidad_entradas):
-                #--setea la salida esperada
-                if (input_y[i] == 'M'):
-                    salida_esperada = 0
-                else:
-                    salida_esperada = 1
+        resultados_muestra = np.zeros(self.cantidad_mezclas)
+        resultados_verificacion = np.zeros(self.cantidad_mezclas)
 
-                #--setea los distintos arrays y matrices necesarios en cero
-                p = np.zeros((self.tamano_entrada+1, 1))    #--input
-                n1 = np.zeros((self.tamano_capa, 1))   #--resultado de p*w1
-                a1 = np.zeros((self.tamano_capa, 1))   #--resultado de aplicarle la funcion de activacion 1 a n1
-                n2 = np.zeros((self.tamano_salida, 1)) #--resultado de n1*w2
-                a2 = np.zeros((self.tamano_salida, 1)) #--resultado de aplicarle la funcion de activacion 1 a n2
+        for k in xrange(0, self.cantidad_mezclas):
 
-                #--setea el input 'p' segun la fila actual del archivo de entrada
-                p[0:self.tamano_entrada] = np.array([input_x[i]]).T
-                #--agrega baeas
-                p[self.tamano_entrada][0] = -1
+            np.random.shuffle(data_input)
 
-                #--activacion
-                n1[:] = self.w1.T.dot(p)
-                a1[:] = self.funcion_activacion_1( n1 )
-                n2[:] = self.w2.T.dot(a1)
-                a2[:] = self.funcion_activacion_2( n2 )
+            input_x = data_input[:,1:]
+            input_y = data_input[:,0]
 
-                #--correccion
-                d2 = salida_esperada - a2
-                error = abs(d2)
-                d1 = self.w2.dot(d2)
-
-                #--adaptacion
-                self.w2[:] = self.w2 + self.learning_rate * np.dot(a1, np.multiply( self.funcion_activacion_derivada_2( n2.T ), d2.T ) )
-                self.w1[:] = self.w1 + self.learning_rate * np.dot(p, np.multiply( self.funcion_activacion_derivada_1( n1.T ), d1.T ) )
-
-                #--acumula el error
-                sum_error = 0
-                for i in xrange(0, self.tamano_salida):
-                    sum_error = sum_error + (error[i][0] ** 2)
-                error_cuadratico_medio = error_cuadratico_medio + sum_error
-
-                error_cuad = math.sqrt(sum_error)
-                error_acumulado = error_acumulado + error_cuad
-                
-                #--se fija si el error es maximo
-                if error_cuad > error_maximo:
-                    error_maximo = error_cuad
-                #--se fija si el error es minimo
-                if error_cuad < error_minimo:
-                    error_minimo = error_cuad
-
-            #--calcula el error promedio
-            error_promedio = error_acumulado / cantidad_entradas
-
-            error_cuadratico_medio = math.sqrt(error_cuadratico_medio)
-
-            #--cada 10 etapas muestra el error acumulado
-            if cant_repeticiones % 10 == 0:
-                print error_cuadratico_medio
-
-            #--imprime en el archivo de salida
-            if csv_salida:
-                csv_salida.writerow([cant_repeticiones, error_cuadratico_medio, error_promedio, error_minimo, error_maximo])
+            cant_repeticiones = 0
+            error_cuadratico_medio = 20
+            cantidad_entradas = int(len(input_x)*0.8)
+            #--ciclo de entrenamiento por etapas
+            while cant_repeticiones < self.cantidad_repeticiones and error_cuadratico_medio > self.tolerancia_error:
             
-            cant_repeticiones = cant_repeticiones + 1
+                error_cuadratico_medio = 0
+                error_acumulado = 0
+                error_promedio = 0
+                error_minimo = 2000000
+                error_maximo = 0
+                for i in xrange(0, cantidad_entradas):
+                    #--setea la salida esperada
+                    if (input_y[i] == 'M'):
+                        salida_esperada = 0
+                    else:
+                        salida_esperada = 1
+
+                    #--setea los distintos arrays y matrices necesarios en cero
+                    p = np.zeros((self.tamano_entrada+1, 1))    #--input
+                    n1 = np.zeros((self.tamano_capa, 1))   #--resultado de p*w1
+                    a1 = np.zeros((self.tamano_capa, 1))   #--resultado de aplicarle la funcion de activacion 1 a n1
+                    n2 = np.zeros((self.tamano_salida, 1)) #--resultado de n1*w2
+                    a2 = np.zeros((self.tamano_salida, 1)) #--resultado de aplicarle la funcion de activacion 1 a n2
+
+                    #--setea el input 'p' segun la fila actual del archivo de entrada
+                    p[0:self.tamano_entrada] = np.array([input_x[i]]).T
+                    #--agrega baeas
+                    p[self.tamano_entrada][0] = -1
+
+                    #--activacion
+                    n1[:] = self.w1.T.dot(p)
+                    a1[:] = self.funcion_activacion_1( n1 )
+                    n2[:] = self.w2.T.dot(a1)
+                    a2[:] = self.funcion_activacion_2( n2 )
+
+                    #--correccion
+                    d2 = salida_esperada - a2
+                    error = abs(d2)
+                    d1 = self.w2.dot(d2)
+
+                    #--adaptacion
+                    self.w2[:] = self.w2 + self.learning_rate * np.dot(a1, np.multiply( self.funcion_activacion_derivada_2( n2.T ), d2.T ) )
+                    self.w1[:] = self.w1 + self.learning_rate * np.dot(p, np.multiply( self.funcion_activacion_derivada_1( n1.T ), d1.T ) )
+
+                    #--acumula el error
+                    sum_error = 0
+                    for i in xrange(0, self.tamano_salida):
+                        sum_error = sum_error + (error[i][0] ** 2)
+                    error_cuad = math.sqrt(sum_error)
+
+                    error_acumulado = error_acumulado + error_cuad
+                    
+                    #--se fija si el error es maximo
+                    if error_cuad > error_maximo:
+                        error_maximo = error_cuad
+                    #--se fija si el error es minimo
+                    if error_cuad < error_minimo:
+                        error_minimo = error_cuad
+
+                #--calcula el error promedio
+                error_promedio = error_acumulado / cantidad_entradas
+
+                error_cuadratico_medio = math.sqrt(error_acumulado)
+
+                #--imprime en el archivo de salida
+                if csv_salida:
+                    csv_salida.writerow([cant_repeticiones, error_cuadratico_medio, error_promedio, error_minimo, error_maximo])
+                
+                resultados_muestra[k] = error_cuadratico_medio
+                resultados_verificacion[k] = self.testing()
+                os.system('clear');
+                print 'ENTRENAMIENTO:\n'
+                for j in xrange(0,k+1):
+                    print "Etapa "+str(j)+":"
+                    print "      ECM: "+str(resultados_muestra[j])
+                    if j!=k:
+                        print "      Testing: "+str(resultados_verificacion[j])+"/"+str(len(input_x))
+                    print ""
+
+                cant_repeticiones = cant_repeticiones + 1
+            
+            csv_salida.writerow([])
 
         return "Fin entrenamiento"
 
 
-    def mostrar_activacion(self):
-        for i in xrange(0, 50):
+    def testing(self):
+        #--busca datos del archivo de entrada
+        data_input = getDataSet(perc.input_file)
+        input_y = data_input[:,0]
+        preprocesamiento(data_input[:,1:])
+        input_x = data_input[:,1:]
+
+        cantidad_ok = 0
+        for i in xrange(0, len(input_x)):
             #--setea la salida esperada
-            if (data_input[i][0] == 'M'):
+            if (input_y[i] == 'M'):
                 salida_esperada = 0
             else:
                 salida_esperada = 1
 
             #--setea los distintos arrays y matrices necesarios en cero
-            p = np.zeros(self.tamano_entrada+1) #--input
-            n1 = np.zeros((1, self.tamano_capa))   #--resultado de p*w1
-            a1 = np.zeros((1, self.tamano_capa))   #--resultado de aplicarle la funcion de activacion 1 a n1
-            n2 = np.zeros((1, self.tamano_salida)) #--resultado de n1*w2
-            a2 = np.zeros((1, self.tamano_salida)) #--resultado de aplicarle la funcion de activacion 1 a n2
+            p = np.zeros((self.tamano_entrada+1, 1))    #--input
+            n1 = np.zeros((self.tamano_capa, 1))   #--resultado de p*w1
+            a1 = np.zeros((self.tamano_capa, 1))   #--resultado de aplicarle la funcion de activacion 1 a n1
+            n2 = np.zeros((self.tamano_salida, 1)) #--resultado de n1*w2
+            a2 = np.zeros((self.tamano_salida, 1)) #--resultado de aplicarle la funcion de activacion 1 a n2
 
             #--setea el input 'p' segun la fila actual del archivo de entrada
-            p[0:self.tamano_entrada-1] = data_input[i][1:self.tamano_entrada]
+            p[0:self.tamano_entrada] = np.array([input_x[i]]).T
             #--agrega baeas
-            p[self.tamano_entrada] = -1
+            p[self.tamano_entrada][0] = -1
 
             #--activacion
-            n1 = self.w1.T.dot(p)
-            #a1 = self.funcion_activacion_1( n1 )
-            a1 = np.tanh(n1)
-            n2 = self.w2.T.dot(a1)
-            #a2 = self.funcion_activacion_2( n2 )
-            a2 = np.tanh(n2)
+            n1[:] = self.w1.T.dot(p)
+            a1[:] = self.funcion_activacion_1( n1 )
+            n2[:] = self.w2.T.dot(a1)
+            a2[:] = self.funcion_activacion_2( n2 )
 
-            print "-------------------"
-            print a2
-            print salida_esperada
-            return
+            #--determinar salida
+            if a2[0][0] > 0.5:
+                if salida_esperada == 1:
+                    cantidad_ok = cantidad_ok + 1
+            elif salida_esperada == 0:
+                cantidad_ok = cantidad_ok + 1
+
+        print "RESULTADO DEL TESTING"
+        print str(cantidad_ok)+"/"+str(len(input_x))+" correctos"
+        return cantidad_ok
+
 
 def mostrar_menu(perc, msg):
     os.system('clear');
@@ -236,6 +288,7 @@ def mostrar_menu(perc, msg):
     print "  - learning rate              (lr)         " + str(perc.learning_rate)
     print "  - tolerancia de error        (tol)        " + str(perc.tolerancia_error)
     print "  - cantidad repeticiones      (crep)       " + str(perc.cantidad_repeticiones)
+    print "  - cantidad mezclas           (cmez)       " + str(perc.cantidad_mezclas)
     print "  - tamano entrada             (tin)        " + str(perc.tamano_entrada)
     print "  - tamano salida              (tout)       " + str(perc.tamano_salida)
     print "  - tamano capa oculta         (tcapa)      " + str(perc.tamano_capa)
@@ -274,15 +327,6 @@ def mostrar_ayuda():
     print "         Uso: train"
     print ""
 
-#if __name__ == '__main__':
-#    if len(sys.argv) == 2:
-        #filename = sys.argv[1].strip()
-        #filename = "tp1_ej1_training.csv"
-        #print filename
-        #datos = []
-        #datos = getDataSet(filename)
-        #x, y, cant_entradas = parsearDatos(datos)
-
 perc = perceptron()
 
 salir = 0
@@ -307,3 +351,6 @@ while (not salir):
         msg = perc.exportarW(comando[1])
     elif (comando[0] == 'import'):
         msg = perc.importarW(comando[1])
+    elif (comando[0] == 'test'):
+        perc.testing()
+        raw_input("Pulse enter para volver al menu...")
