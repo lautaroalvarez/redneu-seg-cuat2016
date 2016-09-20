@@ -1,6 +1,6 @@
 import csv, sys, math, os
 import numpy as np
-
+import generadorInforme
 
 
 def getDataSet(filename):
@@ -280,6 +280,12 @@ class perceptron:
         print str(cantidad_ok)+"/"+str(len(input_x))+" correctos"
         return cantidad_ok
 
+#Agregado para ejecucion completa
+    def reporte(self):
+        self.entrenar()
+        self.testing()
+        generadorInforme.informe(cantidad_entradas,self.learning_rate,self.tolerancia_error, self.cantidad_repeticiones, self.cantidad_mezclas, self.input_file, self.output_file, self.tamano_capa, self.tamano_entrada, self.tamano_salida, self.beta1, self.beta2)
+
 
 def mostrar_menu(perc, msg):
     os.system('clear');
@@ -332,6 +338,10 @@ perc = perceptron()
 salir = 0
 msg = ""
 
+#Agregado para informe
+cantidad_entradas =0
+
+
 while (not salir):
     mostrar_menu(perc, msg)
     msg = ""
@@ -353,4 +363,7 @@ while (not salir):
         msg = perc.importarW(comando[1])
     elif (comando[0] == 'test'):
         perc.testing()
+        raw_input("Pulse enter para volver al menu...")
+    elif (comando[0] == 'reporte'):
+        perc.reporte()
         raw_input("Pulse enter para volver al menu...")
