@@ -3,6 +3,7 @@
 def informe(cantidad_entradas,learning_rate,tolerancia_error, cantidad_repeticiones, cantidad_mezclas, input_file, output_file, tamano_capa, tamano_entrada, tamano_salida, beta1, beta2):
 
 	print "Generando Informe..."
+
 	f = open('informe.html','w')
 	informe = """
 <html>
@@ -35,97 +36,96 @@ def informe(cantidad_entradas,learning_rate,tolerancia_error, cantidad_repeticio
 			<tr>
 				<td width="10%" Class="tex-negro-Arial-11">Archivo Entrada: </td>
 				<td width="10%" Class="tex-azul-Arial-bold-11" >
-					"""+input_file+"""
+					{input_file}
 				</td>
 			</tr>
 			<tr>
 				<td width="10%" Class="tex-negro-Arial-11">Archivo Salida: </td>
 				<td width="10%" Class="tex-azul-Arial-bold-11" >
-					"""+output_file+"""
+					{output_file}
 				</td>
 			</tr>
 
 			<tr>
 				<td width="10%" Class="tex-negro-Arial-11">Cantidad de datos tomados: </td>
 				<td width="10%" Class="tex-azul-Arial-bold-11" >
-					"""+cantidad_entradas+"""
+					{cantidad_entradas}
 				</td>
 			</tr>
 			<tr>
 				<td width="10%" Class="tex-negro-Arial-11">Learning Rate: </td>
 				<td width="10%" Class="tex-azul-Arial-bold-11" >
-					"""+learning_rate+"""
+					{learning_rate}
 				</td>
 			</tr>
 			<tr>		
 				<td width="10%" Class="tex-negro-Arial-11">Tolerancia de Error:</td>
 				<td width="10%" Class="tex-azul-Arial-bold-11" >
-					"""+tolerancia_error+"""
+					{tolerancia_error}
 				</td>
 			</tr>
 			<tr>		
 			     	<td width="10%" Class="tex-negro-Arial-11">Cantidad de Repeticiones:</td>
 				<td width="10%" Class="tex-azul-Arial-bold-11" >
-					"""+cantidad_repeticiones+"""
+					{cantidad_repeticiones}
 				</td>
 			</tr>
 			<tr>							
 			    	<td width="10%" Class="tex-negro-Arial-11">Cantidad de Mezclas:</td>
 				<td width="10%" Class="tex-azul-Arial-bold-11" >
-					"""+cantidad_mezclas+"""
+					{cantidad_mezclas}
 				</td>
 			</tr>
 			<tr>		
 				<td width="10%" Class="tex-negro-Arial-11">Tamano Entrada:</td>
 				<td width="10%" Class="tex-azul-Arial-bold-11" >
-					"""+tamano_entrada+"""
+					{tamano_entrada}
 				</td>
 			</tr>
 			<tr>		
 				<td width="10%" Class="tex-negro-Arial-11">Tamano Salida:</td>
 				<td width="10%" Class="tex-azul-Arial-bold-11" >
-					"""+tamano_salida+"""
+					{tamano_salida}
 				</td>
 			</tr>
 			<tr>		
 				<td width="10%" Class="tex-negro-Arial-11">Tamano Capa:</td>
 				<td width="10%" Class="tex-azul-Arial-bold-11" >
-					"""+tamano_capa+"""
+					{tamano_capa}
 				</td>						
 			</tr>
 			<tr>		
 				<td width="10%" Class="tex-negro-Arial-11">Beta Activacion 1 Capa:</td>
 				<td width="10%" Class="tex-azul-Arial-bold-11" >
-					"""+beta1+"""
+					{beta1}
 				</td>						
 			</tr>
 			<tr>		"ME%d" % i
 				<td width="10%" Class="tex-negro-Arial-11">Beta Activacion 2 Capa:</td>
 				<td width="10%" Class="tex-azul-Arial-bold-11" >
-					"""+ beta2 +"""
+					{beta2}
 				</td>						
 			</tr>
 		</table>
 
 		<div class="tex-azul-Arial-bold-11" >
   			<p class="ItemMenu"> Resultados Obtenidos para cada Etapa </p>
-		</div>"""
+		</div>""".format(input_file=input_file, output_file=output_file, cantidad_entradas=cantidad_entradas, learning_rate=learning_rate, tolerancia_error=tolerancia_error, cantidad_repeticiones=cantidad_repeticiones, cantidad_mezclas=cantidad_mezclas, tamano_entrada=tamano_entrada, tamano_salida=tamano_salida, tamano_capa=tamano_capa, beta1=beta1, beta2=beta2)
 
-	etapa = 1
-	for etapa in cantidad_mezclas:
-		imagen_ecm = 'mezcla10_ecm_' + etapa +'.jpg'
-		imagen_promedios ='mezcla10_' + etapa +'.jpg'
+	for etapa in xrange(0, cantidad_mezclas):
+		imagen_ecm = "mezcla10_ecm_" + str(etapa) + ".jpg"
+		imagen_promedios ="mezcla10_" + str(etapa) + ".jpg"
 		informe = informe + """<div>
 			
-			<p class="tex-negro-Arial-12">Etapa: """ + etapa + """</p>
-			<img src=" +""" imagen_ecm  """+" alt="Convergencia del Error">			
-			<img src=" +""" imagen_promedios """+ " alt="Error Cuadratico Medio">
+			<p class="tex-negro-Arial-12">Etapa: {etapa}</p>
+			<img src="{imagen_ecm}" alt="Convergencia del Error">			
+			<img src="{imagen_promedios}" alt="Error Cuadratico Medio">
 			
 	  		<p class="tex-negro-Arial-11"> Error Cuadratico Medio Promedio: aca va el ECM</p>
 			<p class="tex-negro-Arial-11"> Testing de la Etapa: aca va el testing de la etapa</p>
-		</div>"""
+		</div>""".format(etapa=etapa, imagen_ecm=imagen_ecm, imagen_promedios=imagen_promedios)
 
-	informe =  informe + """<div class="tex-azul-Arial-bold-11" >
+	informe = informe + """<div class="tex-azul-Arial-bold-11" >
   			<p class="ItemMenu"> Testing Final </p>
 		</div>
 
@@ -141,7 +141,7 @@ def informe(cantidad_entradas,learning_rate,tolerancia_error, cantidad_repeticio
 	</body>
 </html>"""
 
-	f.write(message)
+	f.write(informe)
 	f.close()
 	print "Informe Finalizado."
 	return
