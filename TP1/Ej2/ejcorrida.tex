@@ -1,0 +1,32 @@
+Ejemplo de una corrida
+
+----->Importo la base de datos de la corrida que quiera
+import entrenamiento/corrida4/red.in
+
+----->Cambio los archivos de salida a las ubicaciones que me convenga
+-----> OJO! tiene que existir la ubicación (por ejemplo, ya tuve que crear la carpeta corrida5 adentro de entrenamiento)
+change outtr entrenamiento/corrida5/train.sal
+change outva entrenamiento/corrida5/valid.sal
+change outt1 entrenamiento/corrida5/test1.sal
+change outt2 entrenamiento/corrida5/test2.sal
+
+----->Cambio los parámetros que quiera
+change tol 3
+
+----->Entreno
+train
+
+----->Guardo la red nueva
+export entrenamiento/corrida5/red.in
+
+----->Genero los gráficos de entrenamiento
+graph train
+
+----->Genero los gráficos de validación
+graph valid
+
+----->Corro el test
+test
+
+----->Genero los gráficos del test
+graph test
