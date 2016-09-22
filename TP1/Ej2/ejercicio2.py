@@ -17,7 +17,7 @@ class perceptron:
     def __init__(self):
         #--------------------------------------------
         #------Parametros
-        self.learning_rate = 0.1
+        self.learning_rate = 3
         self.beta1 = 0.1 #--beta en la funcion de activacion 1
         self.beta2 = 0.1 #--beta en la funcion de activacion 2
         self.tolerancia_error = 1
@@ -439,6 +439,7 @@ msg = ""
 #Agregado para informe
 cantidad_entradas =0
 
+perc.importarW("red_3.in")
 
 while (not salir):
     mostrar_menu(perc, msg)

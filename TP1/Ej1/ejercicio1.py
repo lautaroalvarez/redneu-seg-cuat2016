@@ -1,6 +1,7 @@
 import csv, sys, math, os
 import numpy as np
 import generadorInforme
+import graficador
 
 
 def getDataSet(filename):
@@ -332,6 +333,10 @@ def mostrar_ayuda():
     print "         Descripcion: ejecuta el entrenamiento con los parametros guardados"
     print "         Uso: train"
     print ""
+    print "  - Graficar resultados"
+    print "         Descripcion: exporta una imagen grafico de los errores durante el entrenamiento"
+    print "         Uso: graph"
+    print ""
 
 perc = perceptron()
 
@@ -341,6 +346,7 @@ msg = ""
 #Agregado para informe
 cantidad_entradas =0
 
+perc.importarW("red_5_train_reducida.in")
 
 while (not salir):
     mostrar_menu(perc, msg)
@@ -367,3 +373,5 @@ while (not salir):
     elif (comando[0] == 'reporte'):
         perc.reporte()
         raw_input("Pulse enter para volver al menu...")
+    elif comando[0] == 'graph':
+        msg = graficador.graficar(perc.output_file)
