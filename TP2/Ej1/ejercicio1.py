@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
-import math
+import math, sys
 from mpl_toolkits.mplot3d import Axes3D
 
 fig = plt.figure()
@@ -22,8 +22,11 @@ xp = np.zeros((N,M))
 y = np.zeros((1,M))
 
 es_oja = 1
-M_oja = np.triu(np.ones((M,M)))
-M_sanjer = np.ones((M,M))
+if len(sys.argv) > 0:
+	es_oja = int(sys.argv[1])
+
+M_sanjer = np.triu(np.ones((M,M)))
+M_oja = np.ones((M,M))
 
 
 #-- lectura de entrada
@@ -42,7 +45,7 @@ fact_act = 0.2
 error_min = 20
 ultimo_error = 20
 cant_ultimo_error = 0
-while num_epoca < 200 and error_min > 0.000001 and cant_ultimo_error < 5:
+while num_epoca < 500 and error_min > 0.000001 and cant_ultimo_error < 5:
 	#fact_act -= fact_act / 2
 	for fila in datos_entrenamiento:
 
@@ -63,7 +66,7 @@ while num_epoca < 200 and error_min > 0.000001 and cant_ultimo_error < 5:
 		W[:] = W + dW
 		cant_rep += 1
 
-	error_min = 20000
+	error_min = 2000000000
 
 	for i in xrange(0,M-1):
 		for j in xrange(i+1,M):
