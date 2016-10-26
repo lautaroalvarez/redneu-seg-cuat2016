@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import math, sys, csv
 from mpl_toolkits.mplot3d import Axes3D
-#from sklearn import preprocessing
 
 fig = plt.figure()
 fig2 = plt.figure()
@@ -59,16 +58,16 @@ np.random.shuffle(entrada)
 
 #print np.amax(entrada[:,1:])
 
-#entrada[:,1:] = entrada[:,1:] / 10
+entrada[:,1:] = entrada[:,1:] / 10
 datos_entrenamiento = entrada[:cF,:]
 datos_validacion = entrada[cF:,:]
 
 fact_act = 0.2
 cota_error = 0.00001
-cantidad_epocas = 2000
+cantidad_epocas = 3000
 
 csv_salida = csv.writer(open("salida.csv", "wb"))
-csv_salida.writerow([filename, "1/t2", cantidad_epocas, cota_error, es_oja])
+csv_salida.writerow([filename, "1/t", cantidad_epocas, cota_error, es_oja])
 csv_salida.writerow(["Grafico de convergencia de la normal", "Error", "Epoca"])
 csv_salida.writerow(["Error"])
 
@@ -79,8 +78,8 @@ while num_epoca < cantidad_epocas and error > cota_error:
 	#fact_act -= fact_act / 2
 	for fila in datos_entrenamiento:
 
-		#fact_act = 1/(float(cant_rep)**0.5)
-		fact_act = 1/float(cant_rep)
+		fact_act = 1/(float(cant_rep)**0.6)
+		#fact_act = 1/float(cant_rep)
 		
 		x[:] = np.array([fila[1:]])
 
@@ -92,8 +91,6 @@ while num_epoca < cantidad_epocas and error > cota_error:
 			xp[:] = W.dot(np.multiply(y.T, M_sanjer))
 
 		dW[:] = fact_act * np.multiply((x.T - xp),y)
-		
-		#print dW
 
 		W[:] = W + dW
 		cant_rep += 1
@@ -130,6 +127,7 @@ for cat in xrange(1,10):
 		if int(fila[0]) == int(cat):
 			x[:] = np.array([fila[1:]])
 			pos_categoria = np.append(pos_categoria, x.dot(W), axis=0)
+	print pos_categoria
 	ax2.scatter(pos_categoria[:,0], pos_categoria[:,1], zs=pos_categoria[:,2], color=colores_cat[cat])
 
 #fig2.savefig("saida_validacion.png")
