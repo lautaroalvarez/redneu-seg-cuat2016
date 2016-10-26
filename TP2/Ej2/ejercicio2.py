@@ -4,20 +4,26 @@ import math
 
 N = 856
 #N = 4
-M1 = 15
-M2 = 15
+M1 = 20
+M2 = 20
 M = M1 * M2
-radio = 9
-coef_aprendizaje_const = 0.1
+radio = 15
+coef_aprendizaje_const = 0.999
+
+
+def preprocesamiento(datos):
+    datos[:,1:] = (datos[:,1:] - np.median(datos[:,1:])) / np.std(datos[:,1:])
+    return
 
 
 filename = "../tp2_training_dataset.csv"
 #filename = "prueba.csv"
 
 entrada = np.genfromtxt(filename, delimiter=',')
-datos_entrenamiento = entrada[0:200,:]
+datos_entrenamiento = entrada[0:100,:]
 #datos_entrenamiento = np.array([entrada[:]])
-datos_entrenamiento[:,1:N+1] = datos_entrenamiento[:,1:N+1] / 10
+#datos_entrenamiento[:,1:N+1] = datos_entrenamiento[:,1:N+1] / 10
+#preprocesamiento(datos_entrenamiento)
 
 
 W = np.random.random_sample((M,N))
@@ -30,8 +36,9 @@ cant_categorias = 9
 
 num_etapa = 1
 num = 1
-maximo_etapas = 30
+maximo_etapas = 500
 while num_etapa < maximo_etapas:
+	print "epoca:" + str(num_etapa)
 	num_fila = 0
 	#coef_aprendizaje = 1/(float(num_etapa))
 	#sigma = (float(M2)/2) * 1/(float(num_etapa**3))
@@ -51,14 +58,24 @@ while num_etapa < maximo_etapas:
 	
 	matriz_resultados = np.zeros((M1,M2,cant_categorias))
 	matriz_colores = np.zeros((M1, M2))
-	
+
 	sigma_o = M2/2
+
 	lambd = float(maximo_etapas*len(datos_entrenamiento))/math.log(sigma_o)
 	for fila in datos_entrenamiento:
 		
-		sigma = sigma_o * math.exp(-float(num)/lambd)
-		coef_aprendizaje = coef_aprendizaje_const * math.exp(-float(num)/lambd)
-		
+		#sigma = sigma_o * math.exp(-float(num)/lambd)
+		#coef_aprendizaje = coef_aprendizaje_const * math.exp(-float(num)/lambd)
+		#sigma = sigma_o * 1 / (float(num_etapa)**(1/3) * (1/lambd) + 1)
+		#coef_aprendizaje = coef_aprendizaje_const * math.exp(-float(num)/lambd)
+		#sigma = sigma_o * 1 / ((float(num_etapa)**(1/3)))
+		#coef_aprendizaje = coef_aprendizaje_const * 0.95
+
+		sigma = sigma_o * 1 / (float(num_etapa)**(1/3) * (1/float(maximo_etapas*len(datos_entrenamiento))*1/4 / 1/4) + 1)
+		coef_aprendizaje = coef_aprendizaje_const * 0.9
+
+
+
 		dW[:] = np.zeros((M,N))
 		x[:] = np.array([fila[1:N+1]])
 
@@ -76,7 +93,8 @@ while num_etapa < maximo_etapas:
 			#print str(ganadora[0][0])+", "+str(ganadora[1][0])+" -> "+str(categoria)
 		matriz_resultados[ganadora[0][0],ganadora[1][0],categoria] += 1
 
-		print str(num_etapa)+" "+str(num_fila)+" -> "+str(ganadora[0][0])+", "+str(ganadora[1][0])
+		#print str(num_etapa)+" "+str(num_fila)+" -> "+str(ganadora[0][0])+", "+str(ganadora[1][0]) para optimizar
+
 
 
 		#...........raro < j / m2, j mod m2 >..............
@@ -141,8 +159,9 @@ while num_etapa < maximo_etapas:
 			else :
 				matriz_colores[i,j] = np.argmax(matriz_resultados[i,j])+1
 
-	print matriz_colores
+	#print matriz_colores para optimizar
 
-	plt.matshow(matriz_colores)
-	#plt.show()
-	plt.savefig("mapa_"+str(num_etapa)+".png")
+	if num_etapa % 20 == 0: 
+		plt.matshow(matriz_colores)
+		#plt.show()
+		plt.savefig("mapa_"+str(num_etapa)+".png")
