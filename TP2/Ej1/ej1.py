@@ -1,19 +1,16 @@
-import csv, sys, math, os, pickle
+import csv, sys, math, os
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from mpl_toolkits.mplot3d import Axes3D
 import graficador
 
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-
 class hebbian:
     def __init__(self):
         #--------------------------------------------
         #------Parametros
         self.tolerancia_error = 0.0001
-        self.cantidad_etapas = 200
+        self.cantidad_etapas = 2000
 
         self.input_file = "../tp2_training_dataset.csv" #--archivo csv de entrada
         self.output_file_train = "ej1_train.sal" #--archivo csv de salida de training
@@ -23,7 +20,7 @@ class hebbian:
         self.data_entrenamiento = np.empty((1,1))
         self.data_validacion = np.empty((1,1))
         
-        self.oja = 1
+        self.oja = 0
 
         #--------------------------------------------
 
@@ -108,8 +105,8 @@ class hebbian:
 
     def entrenar(self):
         os.system("clear");
-        print "INICIANDO ENTRENAMIENTO"
-
+        print 'ENTRENAMIENTO:\n'
+        
         #--se fija si tiene que haber salida
         csv_salida = 0
         if self.output_file_train != "":
@@ -127,13 +124,12 @@ class hebbian:
         cant_repeticiones = 1
         error = 20
         num_etapa = 1
-        resultados_muestra = np.zeros(self.cantidad_etapas)
         #--ciclo de entrenamiento por etapas
         while num_etapa < self.cantidad_etapas and error > self.tolerancia_error:
 
             for fila in self.data_entrenamiento:
 
-                fact_act = 1/(float(cant_repeticiones)**0.5)
+                fact_act = 1/(float(cant_repeticiones)**0.25)
 
                 x[:] = np.array([fila[1:]])
 
@@ -155,51 +151,60 @@ class hebbian:
             if csv_salida:
                 csv_salida.writerow([num_etapa, error])
 
-            resultados_muestra[num_etapa] = error
-
             
-            os.system('clear');
-            print 'ENTRENAMIENTO:\n'
-            for j in xrange(1,num_etapa+1):
-                print "Etapa "+str(j)+":"
-                print "      Error: "+str(resultados_muestra[j])
-                print ""
+            print "Etapa "+str(num_etapa)+":"
+            print "      Error: "+str(error)
+            print ""
 
             num_etapa += 1
         
         csv_salida.writerow([])
+        return "Fin entrenamiento"
 
+    def graficar3dTrain(self):
+        os.system("clear");
+
+        plt.close('all')
+        fig = plt.figure()
+        ax = fig.gca(projection='3d')
 
         for cat in xrange(1,10):
             pos_categoria = np.empty((1,3));
             for fila in self.data_entrenamiento:
                 if int(fila[0]) == int(cat):
-                    x[:] = np.array([fila[1:]])
-                    pos_categoria = np.append(pos_categoria, x.dot(self.W), axis=0)
-            ax.scatter(pos_categoria[:,0], pos_categoria[:,1], zs=pos_categoria[:,2], color=self.colores_cat[cat])
+                    pos_categoria = np.append(pos_categoria, np.array([fila[1:]]).dot(self.W), axis=0)
+            if len(pos_categoria) > 0:
+                ax.scatter(pos_categoria[:,0], pos_categoria[:,1], pos_categoria[:,2], zdir='z', c=self.colores_cat[cat], marker='o', edgecolors='none')
 
-        fig.savefig(self.output_img_train)
-        fig.show()
+        plt.show()
+        plt.savefig(self.output_img_train)
+        
+        raw_input("Pulse enter para volver al menu...")
+        #plt.cla()
+        return "Fin grafico"
 
-        return "Fin entrenamiento"
 
-
-    def validacion(self):
+    def graficar3dValid(self):
         os.system("clear");
-        print "INICIANDO VALIDACION"
 
-        x = np.zeros((1,self.tamano_entrada))
+        plt.close('all')
+        fig = plt.figure()
+        ax = fig.gca(projection='3d')
+        
         for cat in xrange(1,10):
             pos_categoria = np.empty((1,3));
             for fila in self.data_validacion:
                 if int(fila[0]) == int(cat):
-                    x[:] = np.array([fila[1:]])
-                    pos_categoria = np.append(pos_categoria, x.dot(self.W), axis=0)
-            ax.scatter(pos_categoria[:,0], pos_categoria[:,1], zs=pos_categoria[:,2], color=self.colores_cat[cat])
+                    pos_categoria = np.append(pos_categoria, np.array([fila[1:]]).dot(self.W), axis=0)
+            if len(pos_categoria) > 0:
+                ax.scatter(pos_categoria[:,0], pos_categoria[:,1], pos_categoria[:,2], zdir='z', c=self.colores_cat[cat], marker='o', edgecolors='none')
 
-        fig.savefig(self.output_img_valid)
-        fig.show()
-        return "Fin validacion"
+        plt.show()
+        plt.savefig(self.output_img_valid)
+
+        raw_input("Pulse enter para volver al menu...")
+        #plt.cla()
+        return "Fin grafico"
 
 
 def mostrar_menu(hebbian, msg):
@@ -252,10 +257,13 @@ def mostrar_ayuda():
     print "                      se debe haber ejecutado un entrenamiento antes."
     print "         Uso: graph train"
     print ""
-    print "  - Comenzar validacion"
-    print "         Descripcion: Calcula los valores de redimencion de los datos de validacion"
-    print "                      y los grafica."
-    print "         Uso: valid"
+    print "  - Graficar resultados de entrenamiento"
+    print "         Descripcion: grafica la reduccion de los datos de entrenamiento a 3 dimensiones"
+    print "         Uso: show train"
+    print ""
+    print "  - Graficar resultados de validacion"
+    print "         Descripcion: grafica la reduccion de los datos de validacion a 3 dimensiones"
+    print "         Uso: show valid"
     print ""
 
 hebb = hebbian()
@@ -284,8 +292,10 @@ while (not salir):
         msg = hebb.exportarW(comando[1])
     elif (comando[0] == 'import'):
         msg = hebb.importarW(comando[1])
-    elif (comando[0] == 'valid'):
-        hebb.validacion()
-        raw_input("Pulse enter para volver al menu...")
     elif comando[0] == 'graph' and comando[1] == 'train':
         msg = graficador.graficar_train(hebb.output_file_train)
+    elif comando[0] == 'show':
+        if comando[1] == 'train':
+            hebb.graficar3dTrain()
+        elif comando[1] == 'valid':
+            hebb.graficar3dValid()
