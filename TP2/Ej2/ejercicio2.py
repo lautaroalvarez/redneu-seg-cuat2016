@@ -12,7 +12,7 @@ class kohonen:
 		self.tolerancia_error = 0.00001
 		self.cantidad_epocas = 100000
 		self.dimension = 20
-		self.entradas = 200
+		self.entradas = 300
 		self.input_file = "../tp2_training_dataset.csv" #--archivo csv de entrada
 
 		#--------------------------------------------
@@ -37,6 +37,11 @@ class kohonen:
 		dW = np.zeros((self.M,self.N))
 		y = np.zeros((self.M1,self.M2))
 		x = np.zeros((1,self.N))
+		yp = np.zeros((self.M,1))
+
+#teeest
+		#matriz_resultados = np.zeros((self.M1,self.M2,self.cant_categorias))
+		#matriz_colores = np.zeros((self.M1, self.M2))
 
 		while epoca_actual < self.cantidad_epocas and diferencia_norma > self.tolerancia_error:
 			print "epoca:" +  str(epoca_actual)
@@ -45,8 +50,9 @@ class kohonen:
 			matriz_colores = np.zeros((self.M1, self.M2))
 			sigma_o = self.M2/2
 			lambd = float(self.cantidad_epocas*len(datos_entrenamiento))/math.log(sigma_o)
-			coef_aprendizaje = epoca_actual ** (-0.5)
-			sigma = sigma_o * epoca_actual ** (-0.33)
+			coef_aprendizaje = epoca_actual ** (-1)
+			sigma = sigma_o * epoca_actual ** (-1.0/3.0)
+			coef_aprendizaje =self.learning_rate / (1 + epoca_actual * 0.5 * self.learning_rate)
 
 			for fila in datos_entrenamiento:
 				# va bien
@@ -61,7 +67,7 @@ class kohonen:
 				dW[:] = np.zeros((self.M,self.N))
 				x[:] = np.array([fila[1:self.N+1]])
 				categoria = fila[0]-1
-				yp = np.zeros((self.M,1))
+				#yp = np.zeros((self.M,1))
 				yp.T[:] = np.array([np.sum(np.absolute(x - self.W), axis=-1)])
 				y = ((yp == np.min(yp))*1).reshape(self.M1,self.M2)
 				ganadora = np.nonzero(y)
@@ -95,10 +101,10 @@ class kohonen:
 						matriz_colores[i,j] = np.argmax(matriz_resultados[i,j])+1
 
 
-			#if epoca_actual % 20 == 0: 
-				#plt.matshow(matriz_colores)
+			if epoca_actual % 20 == 0: 
+				plt.matshow(matriz_colores)
 				#plt.show()
-				#plt.savefig("mapa_"+str(epoca_actual)+".png")
+				plt.savefig("mapa_"+str(epoca_actual)+".png")
 
 		plt.matshow(matriz_colores)
 		#plt.show()
