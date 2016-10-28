@@ -13,6 +13,7 @@ class hebbian:
         self.cantidad_etapas = 2000
 
         self.input_file = "../tp2_training_dataset.csv" #--archivo csv de entrada
+        #self.input_file = "prueba.csv"
         self.output_file_train = "ej1_train.sal" #--archivo csv de salida de training
         self.output_img_train = "ej1_train.png" #--archivo csv de salida de validacion
         self.output_img_valid = "ej1_valid.png" #--archivo csv de salida de validacion
@@ -41,7 +42,7 @@ class hebbian:
         #--lectura de archivo de entrada
         data_input = np.genfromtxt(self.input_file, delimiter=',')
         #--preprocesamiento
-        data_input[:,1:] = data_input[:,1:] / 10
+        #data_input[:,1:] = data_input[:,1:] / 10
         
         #--cambiamos el orden del dataset
         np.random.shuffle(data_input)
@@ -124,13 +125,20 @@ class hebbian:
         cant_repeticiones = 1
         error = 20
         num_etapa = 1
+
+        etapas_igual = 0
+        error_ultima_etapa = -1
+
         #--ciclo de entrenamiento por etapas
-        while num_etapa < self.cantidad_etapas and error > self.tolerancia_error:
+        while num_etapa < self.cantidad_etapas and error > self.tolerancia_error and etapas_igual < 10:
 
             for fila in self.data_entrenamiento:
 
-                fact_act = 1/(float(cant_repeticiones)**0.25)
-
+                #fact_act = 1/(float(cant_repeticiones)**0.5)
+                #fact_act = 1/(float(cant_repeticiones)**0.7)
+                #fact_act = 1/float(cant_repeticiones)
+                fact_act = 0.01
+                
                 x[:] = np.array([fila[1:]])
 
                 y[:] = x.dot(self.W)
@@ -146,6 +154,13 @@ class hebbian:
                 cant_repeticiones += 1
 
             error = np.linalg.norm(self.W.T.dot(self.W) - np.identity(self.tamano_salida))
+
+            if error == error_ultima_etapa:
+                etapas_igual += 1
+            else:
+                etapas_igual = 0
+                error_ultima_etapa = error
+
             
             #--imprime en el archivo de salida
             if csv_salida:
@@ -169,18 +184,32 @@ class hebbian:
         ax = fig.gca(projection='3d')
 
         for cat in xrange(1,10):
-            pos_categoria = np.empty((1,3));
+            pos_categoria = np.empty((0,self.dimension_final));
             for fila in self.data_entrenamiento:
                 if int(fila[0]) == int(cat):
-                    pos_categoria = np.append(pos_categoria, np.array([fila[1:]]).dot(self.W), axis=0)
+                    pos_categoria = np.append(pos_categoria, np.array([fila[1:]]).dot(self.W)[:,0:self.dimension_final], axis=0)
             if len(pos_categoria) > 0:
-                ax.scatter(pos_categoria[:,0], pos_categoria[:,1], pos_categoria[:,2], zdir='z', c=self.colores_cat[cat], marker='o', edgecolors='none')
+                ax.scatter(pos_categoria[:,0], pos_categoria[:,1], pos_categoria[:,2], c=self.colores_cat[cat], marker='o', edgecolors='none')
 
-        plt.show()
+        #plt.show()
         plt.savefig(self.output_img_train)
+
+        #--vista por cada parametro
+        for i in xrange(0,self.dimension_final):
+            plt.close('all')
+
+            for cat in xrange(1,10):
+                pos_categoria = np.empty((0,self.dimension_final));
+                for fila in self.data_entrenamiento:
+                    if int(fila[0]) == int(cat):
+                        pos_categoria = np.append(pos_categoria, np.array([fila[1:]]).dot(self.W)[:,0:self.dimension_final], axis=0)
+                if len(pos_categoria) > 0:
+                    plt.scatter(pos_categoria[:,i], pos_categoria[:,(i+1) % self.dimension_final], c=self.colores_cat[cat], marker='o', edgecolors='none')
+
+            #plt.show()
+            plt.savefig("param_"+str(i)+"_"+self.output_img_train)
         
         raw_input("Pulse enter para volver al menu...")
-        #plt.cla()
         return "Fin grafico"
 
 
@@ -192,7 +221,7 @@ class hebbian:
         ax = fig.gca(projection='3d')
         
         for cat in xrange(1,10):
-            pos_categoria = np.empty((1,3));
+            pos_categoria = np.empty((0,3));
             for fila in self.data_validacion:
                 if int(fila[0]) == int(cat):
                     pos_categoria = np.append(pos_categoria, np.array([fila[1:]]).dot(self.W), axis=0)
@@ -285,7 +314,6 @@ while (not salir):
         raw_input("Pulse enter para volver al menu...")
     elif (comando[0] == 'train'):
         msg = hebb.entrenar()
-        raw_input("Pulse enter para volver al menu...")
     elif (comando[0] == 'change'):
         hebb.cambiar_valor(comando[1], comando[2])
     elif (comando[0] == 'export'):
