@@ -45,17 +45,19 @@ class kohonen:
 			matriz_colores = np.zeros((self.M1, self.M2))
 			sigma_o = self.M2/2
 			lambd = float(self.cantidad_epocas*len(datos_entrenamiento))/math.log(sigma_o)
+			coef_aprendizaje = epoca_actual ** (-0.5)
+			sigma = sigma_o * epoca_actual ** (-0.33)
 
 			for fila in datos_entrenamiento:
 				# va bien
 				#sigma = sigma_o * math.exp(-float(epoca_actual)/lambd)
 				#coef_aprendizaje = self.learning_rate * math.exp(-float(epoca_actual)/lambd)
 
-				sigma = sigma_o * math.exp(-float(num)/lambd)
+				#sigma = sigma_o * math.exp(-float(num)/lambd)
 				#coef_aprendizaje = self.learning_rate * math.exp(-float(num)/lambd)
 				
 				#sigma = sigma_o * 1 / (float(epoca_actual)**(1/3) * (1/float(self.cantidad_epocas*len(datos_entrenamiento))*1/4 / 1/4) + 1)
-				coef_aprendizaje = self.learning_rate * 0.9
+				#coef_aprendizaje = self.learning_rate * 0.9
 				dW[:] = np.zeros((self.M,self.N))
 				x[:] = np.array([fila[1:self.N+1]])
 				categoria = fila[0]-1
