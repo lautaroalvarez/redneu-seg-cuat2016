@@ -10,9 +10,9 @@ class kohonen:
 		#------Parametros
 		self.learning_rate = 0.999
 		self.tolerancia_error = 0.00001
-		self.cantidad_epocas = 100000
+		self.cantidad_epocas = 10000
 		self.dimension = 20
-		self.entradas = 300
+		self.entradas = 800
 		self.input_file = "../tp2_training_dataset.csv" #--archivo csv de entrada
 
 		self.data_entrenamiento = np.empty((1,1))
@@ -40,12 +40,12 @@ class kohonen:
 		#--cambiamos el orden del dataset
 		np.random.shuffle(data_input)
 		self.data_entrenamiento = data_input[0:self.entradas,:]
-		self.data_validacion = data_input[self.entradas+1:,:]
+		self.data_validacion = data_input[0:,:]
 
 
 	def entrenar(self):
 		num = 1
-
+		self.actualizarDataSet()
 		epoca_actual = 1
 		norma_actual = 0
 		norma_anterior = 0
@@ -55,16 +55,16 @@ class kohonen:
 		y = np.zeros((self.M1,self.M2))
 		x = np.zeros((1,self.N))
 		yp = np.zeros((self.M,1))
-
+		sigma_o = self.M2/2
 		self.Mres[:] = 0;
 
 		while epoca_actual < self.cantidad_epocas and diferencia_norma > self.tolerancia_error:
 			print "epoca:" +  str(epoca_actual)
 			print "diferencia:" +  str(diferencia_norma)
 			matriz_resultados = np.zeros((self.M1,self.M2,self.cant_categorias))
-			sigma_o = self.M2/2
-			lambd = float(self.cantidad_epocas*len(self.data_entrenamiento))/math.log(sigma_o)
-			coef_aprendizaje = epoca_actual ** (-1)
+			#sigma_o = self.M2/2
+			#lambd = float(self.cantidad_epocas*len(self.data_entrenamiento))/math.log(sigma_o)
+			#coef_aprendizaje = epoca_actual ** (-1)
 			sigma = sigma_o * epoca_actual ** (-1.0/3.0)
 			coef_aprendizaje =self.learning_rate / (1 + epoca_actual * 0.5 * self.learning_rate)
 
@@ -114,10 +114,10 @@ class kohonen:
 						self.Mres[i,j] = np.argmax(matriz_resultados[i,j])+1
 
 
-			if epoca_actual % 20 == 0: 
-				plt.matshow(self.Mres)
+			#if epoca_actual % 20 == 0: 
+			#	plt.matshow(self.Mres)
 				#plt.show()
-				plt.savefig("mapa_"+str(epoca_actual)+".png")
+			#	plt.savefig("mapa_"+str(epoca_actual)+".png")
 
 		plt.matshow(self.Mres)
 		#plt.show()
@@ -198,7 +198,9 @@ class kohonen:
 		y = np.zeros((self.M1,self.M2))
 		x = np.zeros((1,self.N))
 		yp = np.zeros((self.M,1))
-		
+		matriz_aciertos = np.zeros((self.M1,self.M2))
+		matriz_errores = np.zeros((self.M1,self.M2)) 
+		matriz_indefinida = np.zeros((self.M1,self.M2)) 
 		for fila in self.data_validacion:
 			x[:] = np.array([fila[1:self.N+1]])
 			categoria = fila[0]
@@ -210,13 +212,28 @@ class kohonen:
 			if self.Mres[ganadora[0][0]][ganadora[1][0]] == categoria:
 				#--cayo en su categoria
 				cant_bien += 1
+				matriz_aciertos[ganadora[0][0]][ganadora[1][0]] = 5
 			elif self.Mres[ganadora[0][0]][ganadora[1][0]] == 0:
 				cant_vacio += 1
+				matriz_indefinida[ganadora[0][0]][ganadora[1][0]] = 5
+			else:		
+				matriz_errores[ganadora[0][0]][ganadora[1][0]] = 5
 
 		print "Resultado Validacion:"
 		print "      "+str(cant_bien)+" bien"
 		print "      "+str(cant_vacio)+" sin determinar"
-		print "      "+str(len(self.data_validacion)-cant_bien)+" mal"
+		print "      "+str(len(self.data_validacion)-cant_bien -cant_vacio)+" mal"
+		plt.matshow(self.Mres)
+		plt.savefig("mapa_final.png")
+		plt.clf()
+		plt.matshow(matriz_aciertos)
+		plt.savefig("mapa_de_aciertos.png")
+		plt.clf()
+		plt.matshow(matriz_errores)
+		plt.savefig("mapa_de_errores.png")
+		plt.clf()
+		plt.matshow(matriz_indefinida)
+		plt.savefig("mapa_de_indefinidas.png")
 
 		return
 

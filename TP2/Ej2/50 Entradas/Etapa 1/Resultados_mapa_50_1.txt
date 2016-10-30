@@ -1,0 +1,8 @@
+Cantidad epocas: 1000
+Epocas usadas: 1000
+Cantidad datos: 50
+Archivo mapa: mapa_corto_3.in
+Resultados:
+	Bien: 494
+	Mal: 388
+	Sin determinar: 18

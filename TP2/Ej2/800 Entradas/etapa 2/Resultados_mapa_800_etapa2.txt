@@ -1,0 +1,9 @@
+Cantidad epocas: 10000
+Cota norma: 0.00001
+Epocas usadas: 687
+Cantidad datos: 800
+Archivo mapa: mapa_largo_2.in
+Resultados:
+	Bien: 720
+	Mal: 178
+	Sin determinar: 2
