@@ -1,136 +1,331 @@
+import csv, sys, math, os
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
-import math, sys, csv
 from mpl_toolkits.mplot3d import Axes3D
+import graficador
 
-fig = plt.figure()
-fig2 = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-ax2 = fig2.add_subplot(111, projection='3d')
+class hebbian:
+    def __init__(self):
+        #--------------------------------------------
+        #------Parametros
+        self.tolerancia_error = 0.0001
+        self.cantidad_epocas = 2000
+
+        self.input_file = "../tp2_training_dataset.csv" #--archivo csv de entrada
+        #self.input_file = "prueba.csv"
+        self.output_file_train = "ej1_train.sal" #--archivo csv de salida de training
+        self.output_img_train = "ej1_train.png" #--archivo csv de salida de validacion
+        self.output_img_valid = "ej1_valid.png" #--archivo csv de salida de validacion
+
+        self.data_entrenamiento = np.empty((1,1))
+        self.data_validacion = np.empty((1,1))
+        
+        self.oja = 0
+
+        #--------------------------------------------
+
+        self.tamano_entrada = 856 #--dimension de la entrada
+        self.tamano_salida = 3 #--dimension de la salida
+        self.dimension_final = 3 #--dimension final de la salida
+        self.W = np.random.random_sample((self.tamano_entrada, self.tamano_salida))
+        self.colores_cat = cm.rainbow(np.linspace(0, 1, 10))
+
+        #--------------------------------------------
+        self.actualizarDataSet()
+
+        self.M_sanger = np.tril(np.ones((self.tamano_salida,self.tamano_salida)))
+        self.M_oja = np.ones((self.tamano_salida,self.tamano_salida))
 
 
-N = 856
-M = 3
+    def actualizarDataSet(self):
+        #--lectura de archivo de entrada
+        data_input = np.genfromtxt(self.input_file, delimiter=',')
+        #--preprocesamiento
+        data_input[:,1:] = data_input[:,1:] / 10
+        
+        #--cambiamos el orden del dataset
+        np.random.shuffle(data_input)
+        #--tomamos el 75% para entrenar
+        self.data_entrenamiento = data_input[0:len(data_input)*0.30,:]
+        #--tomamos el 25% restante para validar
+        self.data_validacion = data_input[len(data_input)*0.30 + 1:,:]
 
-cF = 600
+    def importarW(self, filename):
+        csv_entrada = csv.reader(open(filename, "rb"), delimiter=',')
+        
+        cont = 0
+        filas1 = 0
+        for row in csv_entrada:
+            if cont == 0:
+                self.tamano_entrada = int(row[0])
+                self.tamano_salida = int(row[1])
+                self.W = np.zeros((self.tamano_entrada, self.tamano_salida))
+            else:
+                self.W[cont-1,:] = row
+            cont += 1
+        return "Red importada con exito!"
 
-W = np.random.random_sample((N,M))
-dW = np.zeros((N,M))
-x = np.zeros((1,N))
-xp = np.zeros((N,M))
-y = np.zeros((1,M))
+    def exportarW(self, filename):
+        csv_salida = csv.writer(open(filename, "wb"))
+        csv_salida.writerow([self.tamano_entrada, self.tamano_salida])
+        for fila in self.W:
+            csv_salida.writerow(fila)
+        return "Red exportada con exito!"
 
-es_oja = 1
-if len(sys.argv) > 1:
-	es_oja = int(sys.argv[1])
+    def cambiar_valor(self, clave, valor):
+        if clave == 'tol':
+            self.tolerancia_error = float(valor)
+        elif clave == 'oja':
+            self.oja = int(valor)
+        elif clave == 'cep':
+            self.cantidad_epocas = int(valor)
+        elif clave == 'tin':
+            tamano_viejo = self.tamano_entrada
+            self.tamano_entrada = int(valor)
+            if tamano_viejo < self.tamano_entrada:
+                self.W = np.append(self.W, np.random.randn(self.tamano_entrada - tamano_viejo, self.tamano_salida), axis=1)
+            else:
+                self.W = self.W[0:self.tamano_entrada,:]
+        elif clave == 'tout':
+            tamano_viejo = self.tamano_salida
+            self.tamano_salida = int(valor)
+            if tamano_viejo < self.tamano_salida:
+                self.W = np.append(self.W, np.random.randn(self.tamano_entrada, self.tamano_salida - tamano_viejo), axis=0)
+            else:
+                self.W = self.W[:,0:self.tamano_salida]
+        elif clave == 'input':
+            self.input_file = valor
+            self.actualizarDataSet()
+        elif clave == 'outtr':
+            self.output_file_train = valor
+        elif clave == 'outit':
+            self.output_img_train = valor
+        elif clave == 'outiv':
+            self.output_img_valid = valor
 
-M_sanjer = np.triu(np.ones((M,M)))
-M_oja = np.ones((M,M))
+    def entrenar(self):
+        os.system("clear");
+        print 'ENTRENAMIENTO:\n'
+        
+        #--se fija si tiene que haber salida
+        csv_salida = 0
+        if self.output_file_train != "":
+            #--crea el archivo de salida y setea los labels (para el grafico)
+            csv_salida = csv.writer(open(self.output_file_train, "wb"))
+            csv_salida.writerow([self.input_file, self.tamano_salida, self.cantidad_epocas, self.tolerancia_error, self.oja])
+            csv_salida.writerow(["Training: Convergencia de la ortonormalidad", "Error", "Epoca"])
+            csv_salida.writerow(["Error"])
 
 
-#-- lectura de entrada
-filename = "../tp2_training_dataset.csv"
-entrada = np.genfromtxt(filename, delimiter=',')
-np.random.shuffle(entrada)
+        x = np.zeros((1,self.tamano_entrada))
+        y = np.zeros((1,self.tamano_salida))
+        xp = np.zeros((self.tamano_salida, self.tamano_entrada))
+        dW = np.zeros((self.tamano_entrada, self.tamano_salida))
+        cant_repeticiones = 1
+        error = 20
+        num_epoca = 1
 
-#entrada[:,1:] = entrada[:,1:] + 2
+        epocas_igual = 0
+        error_ultima_epoca = -1
 
-#entrada[:,1:] = preprocessing.scale(entrada[:,1:])
-#entrada[:,1:] = preprocessing.normalize(entrada[:,1:], norm='l1')
+        #--ciclo de entrenamiento por epocas
+        while num_epoca <= self.cantidad_epocas and error > self.tolerancia_error and epocas_igual < 10:
 
-#print np.amax(entrada[:,1:])
-#print np.mean(entrada[:,1:])
-#print np.std(entrada[:,1:])
-#print "-------------------"
+            for fila in self.data_entrenamiento:
 
-#for fila in entrada[:,1:]:
-#	for i in xrange(0,len(fila)):
-#		if fila[i] > 1 or fila[i] < -1:
-#			print fila[i]
+                fact_act = 1/(float(cant_repeticiones)**0.5)
+                #fact_act = 1/(float(cant_repeticiones)**0.7)
+                #fact_act = 1/float(cant_repeticiones)
+                #fact_act = 0.01
+                
+                x[:] = np.array([fila[1:self.tamano_entrada+1]])
 
-#for i in xrange(1,N+1):
-#	print "----------i: "+str(i)
-#	print np.median(entrada[:,i])
-#	print np.std(entrada[:,i])
-#	entrada[:,i] = (entrada[:,i] - np.median(entrada[:,i])) / np.std(entrada[:,i])
-#entrada[:,1:] = (entrada[:,1:] - np.median(entrada[:,1:])) / np.std(entrada[:,1:])
+                y[:] = x.dot(self.W)
 
-#print np.amax(entrada[:,1:])
+                if self.oja == 1:
+                    xp[:] = np.multiply(self.M_oja, y).dot(self.W.T)
+                else:
+                    xp[:] = np.multiply(self.M_sanger, y).dot(self.W.T)
 
-entrada[:,1:] = entrada[:,1:] / 10
-datos_entrenamiento = entrada[:cF,:]
-datos_validacion = entrada[cF:,:]
+                dW[:] = fact_act * np.multiply( (x - xp).T, y)
 
-fact_act = 0.2
-cota_error = 0.00001
-cantidad_epocas = 3000
+                self.W[:] = self.W + dW
+                cant_repeticiones += 1
 
-csv_salida = csv.writer(open("salida.csv", "wb"))
-csv_salida.writerow([filename, "1/t", cantidad_epocas, cota_error, es_oja])
-csv_salida.writerow(["Grafico de convergencia de la normal", "Error", "Epoca"])
-csv_salida.writerow(["Error"])
+            error = np.linalg.norm(self.W.T.dot(self.W) - np.identity(self.tamano_salida))
 
-num_epoca = 1
-cant_rep = 1
-error = 20
-while num_epoca < cantidad_epocas and error > cota_error:
-	#fact_act -= fact_act / 2
-	for fila in datos_entrenamiento:
+            if error == error_ultima_epoca:
+                epocas_igual += 1
+            else:
+                epocas_igual = 0
+                error_ultima_epoca = error
 
-		fact_act = 1/(float(cant_rep)**0.6)
-		#fact_act = 1/float(cant_rep)
-		
-		x[:] = np.array([fila[1:]])
+            
+            #--imprime en el archivo de salida
+            if csv_salida:
+                csv_salida.writerow([num_epoca, error])
 
-		y[:] = x.dot(W)
+            
+            print "Epoc "+str(num_epoca)+":"
+            print "      Error: "+str(error)
+            print ""
 
-		if es_oja == 1:
-			xp[:] = W.dot(np.multiply(y.T, M_oja))
-		else:
-			xp[:] = W.dot(np.multiply(y.T, M_sanjer))
+            num_epoca += 1
+        
+        csv_salida.writerow([])
+        return "Fin entrenamiento"
 
-		dW[:] = fact_act * np.multiply((x.T - xp),y)
+    def graficar3dTrain(self):
+        os.system("clear");
 
-		W[:] = W + dW
-		cant_rep += 1
+        plt.close('all')
+        fig = plt.figure()
+        ax = fig.gca(projection='3d')
 
-	error = np.linalg.norm(W.T.dot(W) - np.identity(M))
+        for cat in xrange(1,10):
+            pos_categoria = np.empty((0,self.dimension_final));
+            for fila in self.data_entrenamiento:
+                if int(fila[0]) == int(cat):
+                    pos_categoria = np.append(pos_categoria, np.array([fila[1:]]).dot(self.W)[:,0:self.dimension_final], axis=0)
+            if len(pos_categoria) > 0:
+                ax.scatter(pos_categoria[:,0], pos_categoria[:,1], pos_categoria[:,2], c=self.colores_cat[cat], marker='o', edgecolors='none')
 
-	if num_epoca % 20 == 0:
-		print "---epoca "+str(num_epoca)+": "+str(error)
+        plt.show()
+        #plt.savefig(self.output_img_train)
 
-	csv_salida.writerow([num_epoca, error])
+        #--vista por cada parametro
+        for i in xrange(0,self.dimension_final):
+            plt.close('all')
 
-	num_epoca += 1
+            for cat in xrange(1,10):
+                pos_categoria = np.empty((0,self.dimension_final));
+                for fila in self.data_entrenamiento:
+                    if int(fila[0]) == int(cat):
+                        pos_categoria = np.append(pos_categoria, np.array([fila[1:]]).dot(self.W)[:,0:self.dimension_final], axis=0)
+                if len(pos_categoria) > 0:
+                    plt.scatter(pos_categoria[:,i], pos_categoria[:,(i+1) % self.dimension_final], c=self.colores_cat[cat], marker='o', edgecolors='none')
 
-csv_salida.writerow([])
+            #plt.show()
+            plt.savefig("param_"+str(i)+"_"+self.output_img_train)
+        
+        raw_input("Pulse enter para volver al menu...")
+        return "Fin grafico"
 
-colores_cat = cm.rainbow(np.linspace(0, 1, 10))
 
-for cat in xrange(1,10):
-	pos_categoria = np.empty((1,3));
-	for fila in datos_entrenamiento:
-		if int(fila[0]) == int(cat):
-			x[:] = np.array([fila[1:]])
-			pos_categoria = np.append(pos_categoria, x.dot(W), axis=0)
-	ax.scatter(pos_categoria[:,0], pos_categoria[:,1], zs=pos_categoria[:,2], color=colores_cat[cat])
+    def graficar3dValid(self):
+        os.system("clear");
 
-#fig.savefig("saida_entrenamiento.png")
-fig.show()
+        plt.close('all')
+        fig = plt.figure()
+        ax = fig.gca(projection='3d')
+        
+        for cat in xrange(1,10):
+            pos_categoria = np.empty((0,3));
+            for fila in self.data_validacion:
+                if int(fila[0]) == int(cat):
+                    pos_categoria = np.append(pos_categoria, np.array([fila[1:]]).dot(self.W), axis=0)
+            if len(pos_categoria) > 0:
+                ax.scatter(pos_categoria[:,0], pos_categoria[:,1], pos_categoria[:,2], zdir='z', c=self.colores_cat[cat], marker='o', edgecolors='none')
 
-raw_input()
+        #plt.show()
+        plt.savefig(self.output_img_valid)
 
-for cat in xrange(1,10):
-	pos_categoria = np.empty((1,3));
-	for fila in datos_validacion:
-		if int(fila[0]) == int(cat):
-			x[:] = np.array([fila[1:]])
-			pos_categoria = np.append(pos_categoria, x.dot(W), axis=0)
-	print pos_categoria
-	ax2.scatter(pos_categoria[:,0], pos_categoria[:,1], zs=pos_categoria[:,2], color=colores_cat[cat])
+        raw_input("Pulse enter para volver al menu...")
+        #plt.cla()
+        return "Fin grafico"
 
-#fig2.savefig("saida_validacion.png")
-fig2.show()
 
-raw_input()
+def mostrar_menu(hebbian, msg):
+    os.system('clear');
+    print "MENU DEL EJ1:\n"
+    print "Parametros activos:"
+    print "  - tolerancia de error        (tol)        " + str(hebbian.tolerancia_error)
+    print "  - cantidad de epocas         (cep)        " + str(hebbian.cantidad_epocas)
+    print "  - oja (1->Oja; 0->Sanjer)    (oja)        " + str(hebbian.oja)
+    print "  - tamano entrada             (tin)        " + str(hebbian.tamano_entrada)
+    print "  - tamano salida              (tout)       " + str(hebbian.tamano_salida)
+    print "  - input file                 (input)      " + str(hebbian.input_file)
+    print "  - output file training       (outtr)      " + str(hebbian.output_file_train)
+    print "  - output img training        (outit)      " + str(hebbian.output_img_train)
+    print "  - output img validacion      (outiv)      " + str(hebbian.output_img_valid)
+    print "\n"
+    print "help -> para ver los comandos validos y su modo de uso"
+    print "exit -> terminar la ejecucion del programa\n"
+    if len(msg) > 0:
+        print "Respuesta:  "+str(msg)
+    else:
+        print ""
+    print ""
+
+def mostrar_ayuda():
+    os.system('clear');
+    print "AYUDA DEL EJ1:\n"
+    print "Acciones validas:\n"
+    print "  - Importar red neuronal"
+    print "         Descripcion: importa una red neuronal desde un archivo"
+    print "         Uso: import nombre_archivo.extension"
+    print "         Ejemplo: import redOK.in"
+    print ""
+    print "  - Exportar red neuronal"
+    print "         Descripcion: exporta la red neuronal actual hacia un archivo"
+    print "         Uso: export nombre_archivo.extension"
+    print "         Ejemplo: import red_v1.asd"
+    print ""
+    print "  - Cambiar parametro"
+    print "         Descripcion: modifica el valor de un parametro"
+    print "         Uso: change codigo_parametro nuevo_valor"
+    print "         Ejemplo: change tol 0.001"
+    print ""
+    print "  - Comenzar entrenamiento"
+    print "         Descripcion: ejecuta el entrenamiento con los parametros guardados"
+    print "         Uso: train"
+    print ""
+    print "  - Graficar error de entrenamiento"
+    print "         Descripcion: grafica lo que hay en el archivo de salida del entrenamiento"
+    print "                      se debe haber ejecutado un entrenamiento antes."
+    print "         Uso: graph train"
+    print ""
+    print "  - Graficar resultados de entrenamiento"
+    print "         Descripcion: grafica la reduccion de los datos de entrenamiento a 3 dimensiones"
+    print "         Uso: show train"
+    print ""
+    print "  - Graficar resultados de validacion"
+    print "         Descripcion: grafica la reduccion de los datos de validacion a 3 dimensiones"
+    print "         Uso: show valid"
+    print ""
+
+hebb = hebbian()
+
+salir = 0
+msg = ""
+
+#hebb.importarW("red.in")
+
+while (not salir):
+    mostrar_menu(hebb, msg)
+    msg = ""
+    comando = raw_input("Ingrese un comando: ");
+    comando = comando.split(" ")
+    if (comando[0] == 'exit'):
+        salir = 1
+    elif (comando[0] == 'help'):
+        mostrar_ayuda()
+        raw_input("Pulse enter para volver al menu...")
+    elif (comando[0] == 'train'):
+        msg = hebb.entrenar()
+    elif (comando[0] == 'change'):
+        hebb.cambiar_valor(comando[1], comando[2])
+    elif (comando[0] == 'export'):
+        msg = hebb.exportarW(comando[1])
+    elif (comando[0] == 'import'):
+        msg = hebb.importarW(comando[1])
+    elif comando[0] == 'graph' and comando[1] == 'train':
+        msg = graficador.graficar_train(hebb.output_file_train)
+    elif comando[0] == 'show':
+        if comando[1] == 'color':
+            hebb.graficarPorColor()
+        elif comando[1] == 'train':
+            hebb.graficar3dTrain()
+        elif comando[1] == 'valid':
+            hebb.graficar3dValid()

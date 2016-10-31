@@ -45,8 +45,8 @@ def graficar_train(inputFile):
 	plt.ylabel(labely)
 	plt.title(titulo)
 	plt.legend()
-	plt.show()
+	#plt.show()
+	#raw_input()
 	plt.savefig(outputFile+".png")
-	raw_input()
 
 	return "grafico OK"
