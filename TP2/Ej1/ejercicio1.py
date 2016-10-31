@@ -134,27 +134,43 @@ class hebbian:
 
             for fila in self.data_entrenamiento:
 
+            	#-- distintas variantes de funcion de activacion
                 fact_act = 1/(float(cant_repeticiones)**0.5)
                 #fact_act = 1/(float(cant_repeticiones)**0.7)
                 #fact_act = 1/float(cant_repeticiones)
                 #fact_act = 0.01
                 
+                #-- toma los valores de entrada (descartando la categoría)
                 x[:] = np.array([fila[1:self.tamano_entrada+1]])
 
+                #-- calcula la salida multiplicando x con W
                 y[:] = x.dot(self.W)
 
                 if self.oja == 1:
+                	#-- en oja usa la matriz M_oja, que tiene todos 1s,
+                	# ya que oja hace la sumatoria de 1 a M
+                	#-- luego multiplica por W traspuesta
                     xp[:] = np.multiply(self.M_oja, y).dot(self.W.T)
                 else:
+                	#-- en sanger usa la matriz M_sanger, que es triangular inferior
+                	# ya que oja hace la sumatoria de 1 a J
+                	#-- al ser triangular inferior, cuando toma la fila i tiene los
+                	# valores y(1) hasta y(i-1)
+                	#-- luego multiplica por W traspuesta
                     xp[:] = np.multiply(self.M_sanger, y).dot(self.W.T)
 
+                #-- calcula la delta W haciendo la resta de x con xp y lo multiplica
+                # por y
                 dW[:] = fact_act * np.multiply( (x - xp).T, y)
 
                 self.W[:] = self.W + dW
                 cant_repeticiones += 1
 
+            #-- toma el error -> diferencia cuadrática de la multiplicacion de W y
+            # W traspuesta con la identidad (ortonormalidad)
             error = np.linalg.norm(self.W.T.dot(self.W) - np.identity(self.tamano_salida))
 
+            #-- se fija si el error se mantiene igual
             if error == error_ultima_epoca:
                 epocas_igual += 1
             else:
@@ -162,12 +178,12 @@ class hebbian:
                 error_ultima_epoca = error
 
             
-            #--imprime en el archivo de salida
+            #--imprime en el archivo de salida el error de cada epoca
             if csv_salida:
                 csv_salida.writerow([num_epoca, error])
 
             
-            print "Epoc "+str(num_epoca)+":"
+            print "Epoca "+str(num_epoca)+":"
             print "      Error: "+str(error)
             print ""
 
