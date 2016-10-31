@@ -1,0 +1,40 @@
+\section{Ejercicio 2: Mapeo de características}
+
+\subsection{Introducción}
+
+\par En este caso el objetivo fue realizar un mapa auto\-organizado mediante el método de Kohonen para el mismo set de datos que en la sección anterior, con el objetivo de clasificar automáticamente los documentos de entrada en un arreglo de dos dimensiones. Para esto se probaron mapas de distinto tamaños, distinto número de iteraciones, tasas de aprendizaje y funciones de vecindad. Para la tasa de aprendizaje se consideró una función lineal monótonamente decreciente (ec \ref{eq: ej2_taza1}) y una exponencial decreciente (ec \ref{eq: ej2_taza2}) , para la función de vecindad se consideró una función Gaussiana, con distintas  dispersiones ($\sigma$) (ec \ref{eq: ej2_vecin1} \- \ref{eq: ej2_vecin2}).
+
+
+\textbf{Taza de aprendizaje}
+\begin{equation}
+	\label{eq: ej2_taza1}
+	v_1 = v_A \cdot e^{\frac{-t}{v_E}}
+\end{equation}
+\begin{equation}
+	\label{eq: ej2_taza2}
+	v_1 = v_A \cdot ( 1 - \frac{t}{v_C} )
+\end{equation}
+
+\textbf{Función de vecindad}
+\begin{equation}
+	\label{eq: ej2_vecin1}
+	\sigma_1 = \frac{\sigma_0}{1 + (t-1) \cdot \sigma_R}
+\end{equation}
+\begin{equation}
+	\label{eq: ej2_vecin2}
+	\sigma_2 = \sigma_0 \cdot e^{\frac{-t}{\sigma_R}}
+\end{equation}
+
+con $t$ número de iteraciones, $\sigma_R$ $v_B$ $v_C$ tomando valores 
+
+\par Para la realización de cada mapa se tiene en cuenta la respuesta de cada neurona sobre todos los datos considerados y se asocia dicha neurona a la categorıía que más actividad genera (contando número de eventos por categorıía para cada neurona). Cada color en el mapa representa una categorıía diferente de empresa, existiendo nueve categorías.
+
+\subsection{Ejemplos de instancias de entrenamiento (gráficos de error, datos, pesos, etc)}
+
+\par Resultados del entrenamiento para los distintos parametros seleccionados
+
+\subsection{Ejemplos de instancias de validación (gráficos de error, datos, pesos, etc)}
+
+\par Resultados de validación para las distintas instancias de entrenamiento
+
+\subsection{Conclusiones si las hubiere}
