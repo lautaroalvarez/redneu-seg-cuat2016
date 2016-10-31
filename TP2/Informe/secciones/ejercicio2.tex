@@ -69,9 +69,9 @@ entrada se solapaban mucho, como lo muestra la figura:
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{red_5_ecm.png}
-  \caption{Mapa 10 x 10 para 250 entradas.}
-  \label{fig:mapa 10 10 250}
+  \includegraphics[width=0.8\columnwidth]{mapa1010.png}
+  \caption{Mapa 10 x 10 para 200 entradas.}
+  \label{fig:mapa 10 10 200}
 \end{figure}
 
 
@@ -84,9 +84,9 @@ aunque hay un porcentaje de neuronas que no se activaron.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{red_5_ecm.png}
-  \caption{Mapa 10 x 10 para 250 entradas.}
-  \label{fig:mapa 10 10 250}
+  \includegraphics[width=0.8\columnwidth]{mapa2020.png}
+  \caption{Mapa 20 x 20 para 200 entradas.}
+  \label{fig:mapa 20 20 200}
 \end{figure}
 
 
@@ -98,9 +98,9 @@ la siguiente figura
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{red_5_ecm.png}
-  \caption{Mapa 10 x 10 para 250 entradas.}
-  \label{fig:mapa 10 10 250}
+  \includegraphics[width=0.8\columnwidth]{mapa3030.png}
+  \caption{Mapa 30 x 30 para 200 entradas.}
+  \label{fig:mapa 30 30 200}
 \end{figure}
 
 
@@ -187,7 +187,7 @@ El que nos permitió encontrar el balance fue \textbf{Coeficientes Adaptativos}
 tomando como coeficiente = 0.5.
 
 La función de \textbf{Sigma} basada en sigmaInicial * e^\frac{epocaActual}{lambd}
-nos dió que decrecia de forma muy rápido, impidiendo el aprendisaje.
+nos dió que decrecia de forma muy rápido, impidiendo el aprendizaje.
 La función sigmaInicial * {epocaActual^\frac{-1}{3}} combinado al \emph{Learning Rate}
 de tipo \textbf{adaptativo} nos dió un buen balance.
 
@@ -220,13 +220,77 @@ ciclos de entrenamiento.
 
 La basada en la \textbf{Norma} calcula la norma de la matriz de pesos (W) 
 correspondiete a la epoca actual, hace la diferencia con la epoca anterior.
-En caso que sea menor a una epsilon termina el entrenamiento.
+En caso que sea menor a una epsilon termina el entrenamiento. La ventaja
+de esta es que cuando los pesos se modifican de forma despreciable entre
+dos epocas significa que el aprendizaje comienza a estancarse.
 
 
 \subsection{Entrenamiento}
 
+Con los parametros seleccionados procedemos a realizar el entrenamiento de
+nuestro mapa, para esto nos queda determinar la cantidad de datos con los que
+conviene entrenar y estudiar si hay alguna diferencia variando las entradas
+y las cotas con las que se finaliza el entrenamiento.
+
+Tomamos distintos valores de entrada para entrenar, realizamos los test, y
+reentrenamos el mapa nuevamente durante 3 etapas.
+
+Con estas pruebas esperamos ver con que cantidad de datos de entrenamiento, 
+con cual de las cotas y si la repetición influyen en la calidad de los resultados.
+
+Al ingresar el parametro de entrenamiento, se toma una porción del dataset correspondiente
+a la cantidad de entradas de forma random.
+
+
+\subsubsection{50 Datos de Entrada}
+
+\subsubsection{200 Datos de Entrada}
+
+\subsubsection{800 Datos de Entrada}
+
 
 \subsection{Detalles de Implementación}
+
+La implementación de la solución fue desarrollada usando el lenguaje python,
+con la librería numpy para facilitar las operaciones aritméticas y los gráficos
+fueron construidos con la librería matplotlib.pyplot.
+
+Para armar el mapa de Kohonen implementamos una clase \textbf{Kohonen} con la siguiente estructura:
+
+\begin{lstlisting}
+  struct kohonen {
+    learning_rate = coeficiente de aprendizaje.
+    tolerancia_error = cota de salida del entrenamiento para la diferencia entre normas.
+    cantidad_epocas = cantidad máxima de epocas de entrenamiento.
+    dimension = dimensión del mapa.
+    entradas = cantidad de archivos usados para entrenar.
+    input_file = archivo de entrada del dataset.
+    data_entrenamiento = inicializado en 0.
+    data_validacion = inicializado en 0.
+    N = fijo en 856
+    M1 = M2 = dimensión de entrada
+    M = M1* M2 
+    W = matriz de pesos inicializada en random.  
+    cant_categorias = fijo en 9
+    Mres = resultado de las categorias, inicializado en 0
+    actualizarDataSet() = toma valores de entrada random segun la cantidad de entradas
+  }
+\end{lstlisting}
+
+Para ejecutar el algoritmo correr: python ejercicio2.py
+
+Para acceder al menú de ayuda ingresar: help
+
+Para iniciar un entrenamiento ingresar: train
+
+Para validar los datos ingresar: test
+
+Para guardar los resultados de entrenamiento ingresar: export nombreMapa.in
+
+Para importar un mapa ingresar import nombreMapa.in
+
+Para salir del programa ingresar: exit
+
 
 \subsection{Detalles de Resultados}
 
