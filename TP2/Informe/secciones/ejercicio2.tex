@@ -1,40 +1,252 @@
-\section{Ejercicio 2: Mapeo de características}
 
-\subsection{Introducción}
+\section{Mapeo de Características}
 
-\par En este caso el objetivo fue realizar un mapa auto\-organizado mediante el método de Kohonen para el mismo set de datos que en la sección anterior, con el objetivo de clasificar automáticamente los documentos de entrada en un arreglo de dos dimensiones. Para esto se probaron mapas de distinto tamaños, distinto número de iteraciones, tasas de aprendizaje y funciones de vecindad. Para la tasa de aprendizaje se consideró una función lineal monótonamente decreciente (ec \ref{eq: ej2_taza1}) y una exponencial decreciente (ec \ref{eq: ej2_taza2}) , para la función de vecindad se consideró una función Gaussiana, con distintas  dispersiones ($\sigma$) (ec \ref{eq: ej2_vecin1} \- \ref{eq: ej2_vecin2}).
+Esta etapa del trabajo consiste en la implementación de un \textbf{mapa
+de características} para la clasificación de las palabras según
+la \textbf{categoría} que les fue asignada previamente.
+
+Lo que se espera obtener es un \textbf{mapa auto-organizado} en el cual
+cada \textbf{categoría} este claramente diferenciada.
+
+Para lograr el objetivo presentaremos un \textbf{mapa auto-organizado} 
+basado en el algoritmo de \emph{Kohonen}.
+
+Detalleremos los pasos que realizamos para la implementación de la solución,
+la elección de la implementación y las dificultades que nos topamos al
+implementarlo.
+
+Dividimos el informe en las siguientes secciones:
+
+\begin{itemize}
+\item Implementación del Algoritmo: detallamos de forma introductoria la
+implementación del algoritmo. En las siguientes etapas discutiremos los pasos
+hacia la implementación final.
+\item Dimensiones Adecuadas: discutimos las alternativas para la dimensión
+del mapa.
+\item Vecindad, Learning Rate y Sigma: discutimos las alternativas que
+estudiamos para seleccionar los parámetros.
+\item 
+\end{itemize}
+
+\subsection{Implementación del Algoritmo}
+
+Para implementar la solución tomamos el algoritmo de mapas
+de \emph{Kohonen} visto en clase.
+
+La versión que implementamos es la que realiza los calculos 
+por \textbf{columna}, esta versión demora mas en los calculos 
+que la versión matricial, pero su implementación nos resulto mas 
+sencilla.
+
+Tomamos una dimensíón del mapa de 20 x 20 y para la actualización 
+de las vecindades utilizamos la \textbf{función gaussiana} con un 
+\textbf{learning rate adaptativo}. Comenzando con un radio de 
+vecindad de 10.
+
+Para el entrenamiento utilizamos dos tipos de cota, una por \textbf{cantidad
+de epocas} y la otra por \textbf{la diferencia de la norma de la matriz de pesos
+entre dos epocas distintas}, cuando es menor a un delta se finaliza 
+el entrenamiento.
 
 
-\textbf{Taza de aprendizaje}
-\begin{equation}
-	\label{eq: ej2_taza1}
-	v_1 = v_A \cdot e^{\frac{-t}{v_E}}
-\end{equation}
-\begin{equation}
-	\label{eq: ej2_taza2}
-	v_1 = v_A \cdot ( 1 - \frac{t}{v_C} )
-\end{equation}
+\subsection{Dimensiones Adecuadas}
 
-\textbf{Función de vecindad}
-\begin{equation}
-	\label{eq: ej2_vecin1}
-	\sigma_1 = \frac{\sigma_0}{1 + (t-1) \cdot \sigma_R}
-\end{equation}
-\begin{equation}
-	\label{eq: ej2_vecin2}
-	\sigma_2 = \sigma_0 \cdot e^{\frac{-t}{\sigma_R}}
-\end{equation}
+Buscamos una dimensión adecuada para el mapa, conociendo que queremos
+clasificar 900 datos en 9 categorías.
 
-con $t$ número de iteraciones, $\sigma_R$ $v_B$ $v_C$ tomando valores 
+Probamos con las siguientes dimensiones:
 
-\par Para la realización de cada mapa se tiene en cuenta la respuesta de cada neurona sobre todos los datos considerados y se asocia dicha neurona a la categorıía que más actividad genera (contando número de eventos por categorıía para cada neurona). Cada color en el mapa representa una categorıía diferente de empresa, existiendo nueve categorías.
+\begin{itemize}
+	\item 10 x 10
+	\item 20 x 20
+	\item 30 x 30
+\end{itemize}
 
-\subsection{Ejemplos de instancias de entrenamiento (gráficos de error, datos, pesos, etc)}
+\subsubsection{Dimensión 10 x 10 }
 
-\par Resultados del entrenamiento para los distintos parametros seleccionados
+Obtuvimos que el mapa no era lo suficientemente grande y los valores de
+entrada se solapaban mucho, como lo muestra la figura:
 
-\subsection{Ejemplos de instancias de validación (gráficos de error, datos, pesos, etc)}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{red_5_ecm.png}
+  \caption{Mapa 10 x 10 para 250 entradas.}
+  \label{fig:mapa 10 10 250}
+\end{figure}
 
-\par Resultados de validación para las distintas instancias de entrenamiento
 
-\subsection{Conclusiones si las hubiere}
+Por lo tanto descartamos esta configuración
+
+\subsubsection{Dimensión 20 x 20 }
+
+Con estas dimensiones obtuvimos una buena distribución de las categorías,
+aunque hay un porcentaje de neuronas que no se activaron.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{red_5_ecm.png}
+  \caption{Mapa 10 x 10 para 250 entradas.}
+  \label{fig:mapa 10 10 250}
+\end{figure}
+
+
+\subsubsection{Dimensión 30 x 30 }
+
+Para esta configuración obtuvimos mayor desperdicio de neuronas,
+es decir el porcentaje que nunca se activo fue muy alto, como lo muestra
+la siguiente figura
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{red_5_ecm.png}
+  \caption{Mapa 10 x 10 para 250 entradas.}
+  \label{fig:mapa 10 10 250}
+\end{figure}
+
+
+\subsubsection{Conclusión sobre la Dimensiones}
+
+
+La que mejor se adapta a las características del problema, es la
+de dimensión de 20 x 20.
+
+
+\subsection{Vecindad, Learning Rate y Sigma}
+
+Para la elección de estos parametros consideramos las siguientes
+alternativas:
+
+\textbf{Vecindad} por:
+
+\begin{itemize}
+	\item Escalones: influenciamos vecinos a distancia n formando
+un cuadrado.
+	\item Función Gaussiana: influenciamos n vecinos utilizando
+una función gaussiana.
+\end{itemize}
+
+
+\textbf{Learning Rate} por:
+
+\begin{itemize}
+	\item Basado en la cantidad de epocas: definimos el learning
+rate basado en la cantidad de epocas aplicadas a una función.
+	\item Coeficientes adaptativos: definimos un valor de
+learning rate inicial y lo disminuimos a traves de coeficientes.
+	\item Decrecimiento porcentual: Definimos un valor de 
+learning rate inicial y por epoca lo decrementamos en un 0.X por ciento.
+\end{itemize}
+
+Para el \emph{Learning Rate} basados en la \textbf{Cantidad de Epocas}, probamos con 
+las siguientes funciones:
+
+\begin{itemize}
+	\item \frac{1}{t^\frac{-1}{2}}
+	\item \frac{1}{t^\frac{-1}{3}}
+\end{itemize}
+
+En el caso de \textbf{Coeficientes Adaptativos}, probamos con:
+learning rate inicial / (1 + epoca_actual * coeficiente * learning rate inicial)
+
+Y para del \textbf{Decrecimiento Porcentual}: por cada epoca learning rate inicial * 0.X
+
+
+\textbf{Sigma} por:
+
+Definimos un valor de sigma_inicial, lo suficientemente grande para influenciar a todo 
+el mapa. Y variandolo con las epocas con dos alternativas:
+
+\begin{itemize}
+	\item sigmaInicial * {epocaActual^\frac{-1}{3}}
+	\item sigmaInicial * e^\frac{epocaActual}{lambd}
+\end{itemize}
+
+Tomando como lambd: cantidadEpocas * cantidadDatosEntrenamiento / log (sigmaInicial)
+
+
+\subsubsection{Buscando la Combinación Ideal}
+
+Realizamos una bateria de prueba tomando un set de datos de 300 valores, para
+estudiar cual de la siguiente combinación de parametros organizaba mejor
+las categorías.
+
+Primero definimos un sigma inicial: (dimensión mapa) / 2, así en las primeras
+epocas gran parte del mapa seria influenciado.
+
+De las primeras pruebas concluimos que el \emph{Learning Rate} basado en la 
+\textbf{cantidad de epocas} resultaba no ser una buena elección, ya que
+decrece de forma muy rápido sin dar el tiempo suficiente para aprender.
+Entonces descartamos esta opción.
+
+Entonces utilizamos las otras dos opciones, definiendo un \emph{Learning Rate}
+alto con valor de 0.999.En el caso de \textbf{Decrecimiento Porcentual}
+tuvimos el inconveniente de que o decrecía muy rápido o demasiado lento, haciendo
+dificil encontrar el punto justo.
+
+El que nos permitió encontrar el balance fue \textbf{Coeficientes Adaptativos}
+tomando como coeficiente = 0.5.
+
+La función de \textbf{Sigma} basada en sigmaInicial * e^\frac{epocaActual}{lambd}
+nos dió que decrecia de forma muy rápido, impidiendo el aprendisaje.
+La función sigmaInicial * {epocaActual^\frac{-1}{3}} combinado al \emph{Learning Rate}
+de tipo \textbf{adaptativo} nos dió un buen balance.
+
+Para la función de vecindad decidimos quedarnos con la \textbf{función uniforme} ya
+que presentaba una distribución más ármonica.
+
+\subsubsection{Conclusiones de los Parámetros}
+
+La combinación que nos resulto mejor fue tomar:
+
+
+\begin{itemize}
+	\item Sigma Inicial = 10
+	\item Learning Rate Adaptativo = 0.999 / (1 + epoca_actual * 0.5 * 0.99)
+	\item Sigma = Sigma Inicial * {epocaActual^\frac{-1}{3}}
+\end{itemize}
+
+
+\subsection{Cotas}
+
+Para finalizar el entrenamiento definimos dos tipos de cotas:
+
+\begin{itemize}
+	\item Epocas
+	\item Norma
+\end{itemize}
+
+La basada en la cantidad de \textbf{Epocas} establece una cantidad máxima de
+ciclos de entrenamiento.
+
+La basada en la \textbf{Norma} calcula la norma de la matriz de pesos (W) 
+correspondiete a la epoca actual, hace la diferencia con la epoca anterior.
+En caso que sea menor a una epsilon termina el entrenamiento.
+
+
+\subsection{Entrenamiento}
+
+
+\subsection{Detalles de Implementación}
+
+\subsection{Detalles de Resultados}
+
+Los resultados correspondientes a la sección de entrenamiento son adjuntados con 
+la siguiente estructura:
+
+XXX Entradas/Etapa X/: la carpeta Entradas corresponde a la cantidad de datos usados para entrenar la red
+y la subcarpeta Etapa corresponde a una etapa de entrenamiento. Dentro de la carpeta de
+Etapas se encuentran los siguientes archivos
+
+\begin{itemize}
+	\item mapa XXX X.in =  corresponde al mapa entrenado.
+	\item resultados mapa XXX X.txt = corresponde a los resultados de ejecutar la
+validación sobre el entrenamiento.
+	\item mapa XXX X aciertos.png = muestra la posición en la mapa de los registros bien clasicados.
+	\item mapa XXX X errores.png = muestra la posición en la mapa de los registros mal clasicados.
+	\item mapa XXX X indefinidas.png = = muestra la posición en la mapa de los registros que no
+se han podido clasificar.
+	\item mapa XXX X entrenamiento = es el mapa obtenido del entrenamiento.
+\end{itemize}
+
+\subsection{Conclusiones}
+
