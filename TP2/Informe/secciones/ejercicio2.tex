@@ -49,6 +49,23 @@ entre dos epocas distintas}, cuando es menor a un delta se finaliza
 el entrenamiento.
 
 
+\subsection{Preprocesamiento de Datos}
+
+Analizando el \textbf{dataset} notamos que los datos son muy esparsos, hay gran cantidad
+de valores en 0 y muy pocos datos númericos.
+
+Como primer medida corrimos el algoritmo con los datos sin procesar, luego
+los estandarizamos tomando varianza: 0 y sigma: 1. Pero no hubo mejoras en la
+clasificación.
+
+El siguiente intento fue dividir los datos por 10, para llevarlo a valores entre
+0 y 1, pero luego descartamos esta opción ya que no soportaría leves cambios 
+en las escalas del \textbf{dataset}, al agregar algun parámetro de mayor magnitud.
+
+Entonces decidimos dejar el \textbf{dataset} sin procesar y trabajar con los datos como
+vienen.
+
+
 \subsection{Dimensiones Adecuadas}
 
 Buscamos una dimensión adecuada para el mapa, conociendo que queremos
@@ -69,7 +86,7 @@ entrada se solapaban mucho, como lo muestra la figura:
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{mapa1010.png}
+  \includegraphics[width=0.8\columnwidth]{../graficos/mapa1010.png}
   \caption{Mapa 10 x 10 para 200 entradas.}
   \label{fig:mapa 10 10 200}
 \end{figure}
@@ -84,7 +101,7 @@ aunque hay un porcentaje de neuronas que no se activaron.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{mapa2020.png}
+  \includegraphics[width=0.8\columnwidth]{../graficos/mapa2020.png}
   \caption{Mapa 20 x 20 para 200 entradas.}
   \label{fig:mapa 20 20 200}
 \end{figure}
@@ -98,7 +115,7 @@ la siguiente figura
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{mapa3030.png}
+  \includegraphics[width=0.8\columnwidth]{../graficos/mapa3030.png}
   \caption{Mapa 30 x 30 para 200 entradas.}
   \label{fig:mapa 30 30 200}
 \end{figure}
@@ -241,12 +258,359 @@ con cual de las cotas y si la repetición influyen en la calidad de los resultad
 Al ingresar el parametro de entrenamiento, se toma una porción del dataset correspondiente
 a la cantidad de entradas de forma random.
 
+Los resultados del entrenamiento, los clasificamos en 3 categorías \textbf{Bien}, \textbf{Mal}
+y \textbf{Sin Determinar} esta última corresponde a que existen dos o mas categorias a la que
+podría pertenecer.
+
+
 
 \subsubsection{50 Datos de Entrada}
 
+Primero realizamos una prueba para ver si tomando un pequeña cantidad de datos alcanza para
+categorizar todos los valores de una forma eficiente.
+
+Configuramos los siguientes parametros como cotas:
+
+\begin{itemize}
+	\item Cantidad Máxima de Epocas = 1000
+	\item Cota de la norma = 0.00001
+	\item Learning Rate = 0.999
+\end{itemize}
+
+
+Y ejecutamos la función de entrenamiento.
+
+Al finalizar consumió las 1000 epocas, y manteniendo una diferencia den la norma del orden 0.008 
+y disminuyendo, eso quiere decir que si bien gran parte se había agrupado, todavía podía seguir
+corrigiendose.
+
+Guardamos el mapa de entrenamiento y repetimos el proceso para el mismo mapa dos veces mas,
+para analizar si el entrenamiento en etapas produce mejoras.
+
+En las dos etapas siguientes nuevamente volvio a consumir las 1000 epocas de entrenamiento,
+sin alcanzar la cota de la norma.
+
+En cada etapa ejecutamos la función \textbf{Test} y volcamos los resultados obtenidos 
+de la clasificación en una tabla:
+
+
+\begin{table}[htbp]
+	\begin{center}
+	\begin{tabular}{|l|l|}
+		\hline
+		Etapa & Bien & Mal & Sin Determinar 	\\
+							\hline \hline
+		1     & 494  & 388 & 18 		\\ \hline
+		2     & 526  & 299 & 75 		\\ \hline
+		3     & 522  & 344 & 34			\\ \hline
+	\end{tabular}
+	\caption{Resultados de Validación}
+	\label{tabla:entrenamiento 50 entradas}
+	\end{center}
+\end{table}
+
+Como se puede ver en entrenamiento mejoró levemente respecto a la primer etapa, para la 
+tercera se generó una disminución respecto a los aciertos, pero una mejor clasificación
+de los incorrectos.
+
+Presentamos el mapa obtenido del entramiento para la tercera etapa.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{../graficos/mapaentrenamiento50.png}
+  \caption{Mapa de Entrenamiento para 50 entradas.}
+  \label{fig:mapa train 50}
+\end{figure}
+
+
+Para detectar las áreas que fueron mejor clasificadas, graficamos el mapa de
+los aciertos.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{../graficos/mapaaciertos50.png}
+  \caption{Mapa de Aciertos para 50 entradas.}
+  \label{fig:mapa aciertos 50}
+\end{figure}
+
+Hacemos lo mismo con los datos mal clasificados.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{../graficos/mapaerrores50.png}
+  \caption{Mapa de Errores para 50 entradas.}
+  \label{fig:mapa errores 50}
+\end{figure}
+
+
+Y para los datos sin determinar.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{../graficos/mapaindefinidas50.png}
+  \caption{Mapa de Indefinidos para 50 entradas.}
+  \label{fig:mapa indefinidos 50}
+\end{figure}
+
+
+Como se puede ver la mayor cantidad de malas clasificaciones y e imposibilidad
+de clasificar se da en el área donde las neuronas no llegaron a organizarse completamente.
+
+
 \subsubsection{200 Datos de Entrada}
 
+Incrementamos los datos de entrenamiento, con la premisa de que un mayor set de entrenamiento
+va a mejorar la clasificación.
+
+Asique configuramos el algoritmo con los siguientes parametros para 200 datos
+
+
+\begin{itemize}
+	\item Cantidad Máxima de Epocas = 300
+	\item Cota de la norma = 0.00001
+	\item Learning Rate = 0.999
+\end{itemize}
+
+Disminuimos la cantidad de épocas, ya que al ser mas datos, pensamos que se organizarían mas 
+rápido.
+
+Corrimos el entrenamiento y nos consumió las 300 épocas. Guardamos el mapa y repetimos para 
+una siguiente etapa con la configuración
+
+\begin{itemize}
+	\item Cantidad Máxima de Epocas = 500
+	\item Cota de la norma = 0.00001
+	\item Learning Rate = 0.999
+\end{itemize}
+
+Nuevamente volvió a consumir la cantidad total de epocas. Entonces para la etapa 3 lo
+configuramos con los siguientes parámetros:
+
+\begin{itemize}
+	\item Cantidad Máxima de Epocas = 1000
+	\item Cota de la norma = 0.00001
+	\item Learning Rate = 0.999
+\end{itemize}
+
+Terminada la tercer etapa, también consumió las 1000 epocas.
+
+Para cada etapa de entrenamiento realizamos la validación y volcamos los resultados
+en la siguiente tabla:
+
+
+\begin{table}[htbp]
+	\begin{center}
+	\begin{tabular}{|l|l|}
+		\hline
+		Etapa & Bien & Mal & Sin Determinar 	\\
+							\hline \hline
+		1     & 612  & 288 & 23 		\\ \hline
+		2     & 625  & 275 & 19 		\\ \hline
+		3     & 658  & 235 & 7			\\ \hline
+	\end{tabular}
+	\caption{Resultados de Validación}
+	\label{tabla:entrenamiento 50 entradas}
+	\end{center}
+\end{table}
+
+
+En este caso tuvimos una mayor tasa de aciertos, y el entrenamiento resulto
+en mejoras progresivas.
+
+Además el mapa generado del entrenamiento logra un mejor agrupamiento de las
+categorías
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{../graficos/mapaentrenamiento200.png}
+  \caption{Mapa de Entrenamiento para 200 entradas.}
+  \label{fig:mapa train 200}
+\end{figure}
+
+
+Presentamos el mapa de los aciertos:
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{../graficos/mapaaciertos200.png}
+  \caption{Mapa de Aciertos para 200 entradas.}
+  \label{fig:mapa acierto 200}
+\end{figure}
+
+Se pudo lograr buen porcentaje de aciertos para muchas de las categorías.
+
+Presentamos el mapa de las mal clasificadas:
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{../graficos/mapaerrores200.png}
+  \caption{Mapa de Errores para 200 entradas.}
+  \label{fig:mapa error 200}
+\end{figure}
+
+Vemos que la mayor parte de los errores se centra de nuevo en el area de 
+mayor error de categorización
+
+Y vemos los que no pudieron clasificarse:
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{../graficos/mapaindefinidas200.png}
+  \caption{Mapa de Indefinidas para 200 entradas.}
+  \label{fig:mapa indefinidas 200}
+\end{figure}
+
+Aquí no pudimos establecer un patrón.
+
+Por lo que notamos a mayor cantidad de datos tomados del dataset de entrenamiento
+mejor resulta la clasificación. Por eso para el siguiente caso vamos a tomar un
+dataset mucho mayor.
+
+
 \subsubsection{800 Datos de Entrada}
+
+Por lo analizado hasta ahora, cuanto mas datos tengamos en entrenamiento, mejor
+sería la clasificación, para comprobar esto tomamos un set de entrenamiento
+de 800 entradas.
+
+Configuramos el algoritmo con los siguientes parametros:
+
+\begin{itemize}
+	\item Cantidad Máxima de Epocas = 10000
+	\item Cota de la norma = 0.00001
+	\item Learning Rate = 0.999
+\end{itemize}
+
+
+Asignamos una cantidad de epocas mas grande que en los anteriores casos, ya que
+no teniamos idea de cuanto podria tardar en organizarse.
+
+Ejecutamos el entrenamiento y en solo 368 epocas alcanzó la cota de la norma.
+
+Repetimos el mismo entreamiento y en la siguiente etapa alcanzó la cota de la norma
+en la época 687. En la tercer etapa fue en la 645.
+
+Para cada etapa nuevamente ejecutamos la función test, para validar los datos
+y presentamos los resultados obtenidos en la siguiente tabla:
+
+
+\begin{table}[htbp]
+	\begin{center}
+	\begin{tabular}{|l|l|}
+		\hline
+		Etapa & Bien & Mal & Sin Determinar 	\\
+							\hline \hline
+		1     & 699  & 199 & 2 			\\ \hline
+		2     & 720  & 178 & 2	 		\\ \hline
+		3     & 710  & 188 & 2			\\ \hline
+	\end{tabular}
+	\caption{Resultados de Validación}
+	\label{tabla:entrenamiento 50 entradas}
+	\end{center}
+\end{table}
+
+
+Logramos una mayor tasa de aciertos, insumiendo menos epocas de entrenamiento
+que en los casos anteriores.
+
+Presentamos el mapa de entrenamiento obtenido para la tercer etapa:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{../graficos/mapaentrenamiento800.png}
+  \caption{Mapa de Entrenamiento para 800 entradas.}
+  \label{fig:mapa train 800}
+\end{figure}
+
+En este caso podemos ver una mejor clasificación de las categorías
+
+Presentamos el mapa de los aciertos:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{../graficos/mapaaciertos800.png}
+  \caption{Mapa de Aciertos para 800 entradas.}
+  \label{fig:mapa aciertos 800}
+\end{figure}
+
+Notamos que las bien categorizadas cubren casi todo el mapa.
+
+Ahora veamos que áreas presentaron los mayores problemas y se clasificaron mal
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{../graficos/mapaerrores800.png}
+  \caption{Mapa de Errores para 800 entradas.}
+  \label{fig:mapa errores 800}
+\end{figure}
+
+Podemos ver que los errores se concentran en las areas bordes que del mapa
+de entrenamiento se ve que no quedo del todo separado.
+
+Y en este caso el mapa de las sin determinar solo tiene 2 valores.
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{../graficos/mapaindefinidas800.png}
+  \caption{Mapa de Indefinidas para 800 entradas.}
+  \label{fig:mapa indefinidas 800}
+\end{figure}
+
+
+\subsubsection{El mejor mapa}
+
+De los casos analizados, el mapa que nos dio los mejores resultados corresponden
+al de 800 entradas de entrenamiento, en la etapa 2.
+
+Mostramos aquí como nos queda el mapa:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{../graficos/mapaentrenamientomejor.png}
+  \caption{Mapa de Entrenamiento.}
+  \label{fig:mapa train}
+\end{figure}
+
+
+Mapa de Aciertos:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{../graficos/mapaaciertosmejor.png}
+  \caption{Mapa de Aciertos.}
+  \label{fig:mapa aciertos}
+\end{figure}
+
+Mapa de Errores:
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{../graficos/mapaerrores800.png}
+  \caption{Mapa de Errores para 800 entradas.}
+  \label{fig:mapa errores 800}
+\end{figure}
+
+Sin clasificar:
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{../graficos/mapaindefinidasmejor.png}
+  \caption{Mapa de Indefinidas.}
+  \label{fig:mapa indefinidas}
+\end{figure}
+
+
+\subsubsection{Futuros Entrenamientos}
+
+Luego de analizar los casos vemos que agregando etapas de entrenamiento, la clasificación mejora.
+Nos queda pendiente seguir entrenando los mapas hasta encontrar el punto de balance donde no se
+produzcan mejoras significativas entre etapas de entrenamiento.
 
 
 \subsection{Detalles de Implementación}
@@ -313,4 +677,25 @@ se han podido clasificar.
 \end{itemize}
 
 \subsection{Conclusiones}
+
+En nuestro experimento, la implementación propuesta del mapa auto organizado basado en el algoritmo
+de \textbf{mapa de Kohonen} alcanzo una efectividad del 80 por ciento de aciertos en nuestra mejor
+ejecución.
+Estamos convencidos de que realizando mas etapas de entrenamiento podemos mejorar ese número.
+
+Como conclusión notamos que la cota basada en la norma, es mas efectiva que la de cantidad de epocas,
+ya que nos da una medida justa de cuanto esta modificandose la matriz de pesos, es decir, sobre cuanto
+esta aprendiendo con el correr de las epocas.
+
+
+
+
+
+
+
+
+
+
+
+
 
