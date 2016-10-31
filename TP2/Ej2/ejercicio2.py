@@ -40,7 +40,7 @@ class kohonen:
 		#--cambiamos el orden del dataset
 		np.random.shuffle(data_input)
 		self.data_entrenamiento = data_input[0:self.entradas,:]
-		self.data_validacion = data_input[0:,:]
+		self.data_validacion = data_input[self.entradas+1:,:]
 
 
 	def entrenar(self):
@@ -201,6 +201,9 @@ class kohonen:
 		matriz_aciertos = np.zeros((self.M1,self.M2))
 		matriz_errores = np.zeros((self.M1,self.M2)) 
 		matriz_indefinida = np.zeros((self.M1,self.M2)) 
+		matriz_validacion = np.zeros((self.M1,self.M2)) 
+		matriz_resultados = np.zeros((self.M1,self.M2,self.cant_categorias))
+
 		for fila in self.data_validacion:
 			x[:] = np.array([fila[1:self.N+1]])
 			categoria = fila[0]
@@ -208,6 +211,8 @@ class kohonen:
 			yp.T[:] = np.array([np.sum(np.absolute(x - self.W), axis=-1)])
 			y = ((yp == np.min(yp))*1).reshape(self.M1,self.M2)
 			ganadora = np.nonzero(y)
+
+			matriz_resultados[ganadora[0][0], ganadora[1][0], categoria-1] += 1
 		
 			if self.Mres[ganadora[0][0]][ganadora[1][0]] == categoria:
 				#--cayo en su categoria
@@ -219,12 +224,23 @@ class kohonen:
 			else:		
 				matriz_errores[ganadora[0][0]][ganadora[1][0]] = 5
 
+
+		for i in xrange(0,self.M1):
+			for j in xrange(0,self.M2):
+				if matriz_resultados[i,j,np.argmax(matriz_resultados[i,j])] == 0:
+					matriz_validacion[i,j] = 0
+				else :
+					matriz_validacion[i,j] = np.argmax(matriz_resultados[i,j])+1
+
 		print "Resultado Validacion:"
 		print "      "+str(cant_bien)+" bien"
 		print "      "+str(cant_vacio)+" sin determinar"
 		print "      "+str(len(self.data_validacion)-cant_bien -cant_vacio)+" mal"
 		plt.matshow(self.Mres)
 		plt.savefig("mapa_final.png")
+		plt.clf()
+		plt.matshow(matriz_validacion)
+		plt.savefig("mapa_validacion.png")
 		plt.clf()
 		plt.matshow(matriz_aciertos)
 		plt.savefig("mapa_de_aciertos.png")
