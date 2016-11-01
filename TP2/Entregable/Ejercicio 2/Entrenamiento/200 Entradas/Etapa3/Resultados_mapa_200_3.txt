@@ -3,6 +3,6 @@ Epocas usadas: 1000
 Cantidad datos: 200
 Archivo mapa: mapa_200_3.in
 Resultados:
-	Bien: 658
-	Mal: 235
-	Sin determinar: 7
+	Bien: 470
+	Mal: 198
+	Sin determinar: 31

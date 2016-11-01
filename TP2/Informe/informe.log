@@ -1,0 +1,1699 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.1)  1 NOV 2016 01:49
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**informe.tex
+(./informe.tex
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@layoutwidth=\dimen107
+\Gm@layoutheight=\dimen108
+\Gm@layouthoffset=\dimen109
+\Gm@layoutvoffset=\dimen110
+\Gm@dimlist=\toks15
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2015/03/17 v1.2c Input encoding file
+\inpenc@prehook=\toks16
+\inpenc@posthook=\toks17
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2015/12/03 v1.1r UTF-8 support for inputenc
+Now handling font encoding OML ...
+... no UTF-8 mapping file for font encoding OML
+Now handling font encoding T1 ...
+... processing UTF-8 mapping file for font encoding T1
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu
+File: t1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
+   defining Unicode char U+00A0 (decimal 160)
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00AB (decimal 171)
+   defining Unicode char U+00AD (decimal 173)
+   defining Unicode char U+00BB (decimal 187)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C0 (decimal 192)
+   defining Unicode char U+00C1 (decimal 193)
+   defining Unicode char U+00C2 (decimal 194)
+   defining Unicode char U+00C3 (decimal 195)
+   defining Unicode char U+00C4 (decimal 196)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00C7 (decimal 199)
+   defining Unicode char U+00C8 (decimal 200)
+   defining Unicode char U+00C9 (decimal 201)
+   defining Unicode char U+00CA (decimal 202)
+   defining Unicode char U+00CB (decimal 203)
+   defining Unicode char U+00CC (decimal 204)
+   defining Unicode char U+00CD (decimal 205)
+   defining Unicode char U+00CE (decimal 206)
+   defining Unicode char U+00CF (decimal 207)
+   defining Unicode char U+00D0 (decimal 208)
+   defining Unicode char U+00D1 (decimal 209)
+   defining Unicode char U+00D2 (decimal 210)
+   defining Unicode char U+00D3 (decimal 211)
+   defining Unicode char U+00D4 (decimal 212)
+   defining Unicode char U+00D5 (decimal 213)
+   defining Unicode char U+00D6 (decimal 214)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00D9 (decimal 217)
+   defining Unicode char U+00DA (decimal 218)
+   defining Unicode char U+00DB (decimal 219)
+   defining Unicode char U+00DC (decimal 220)
+   defining Unicode char U+00DD (decimal 221)
+   defining Unicode char U+00DE (decimal 222)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E0 (decimal 224)
+   defining Unicode char U+00E1 (decimal 225)
+   defining Unicode char U+00E2 (decimal 226)
+   defining Unicode char U+00E3 (decimal 227)
+   defining Unicode char U+00E4 (decimal 228)
+   defining Unicode char U+00E5 (decimal 229)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00E7 (decimal 231)
+   defining Unicode char U+00E8 (decimal 232)
+   defining Unicode char U+00E9 (decimal 233)
+   defining Unicode char U+00EA (decimal 234)
+   defining Unicode char U+00EB (decimal 235)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F0 (decimal 240)
+   defining Unicode char U+00F1 (decimal 241)
+   defining Unicode char U+00F2 (decimal 242)
+   defining Unicode char U+00F3 (decimal 243)
+   defining Unicode char U+00F4 (decimal 244)
+   defining Unicode char U+00F5 (decimal 245)
+   defining Unicode char U+00F6 (decimal 246)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+00F9 (decimal 249)
+   defining Unicode char U+00FA (decimal 250)
+   defining Unicode char U+00FB (decimal 251)
+   defining Unicode char U+00FC (decimal 252)
+   defining Unicode char U+00FD (decimal 253)
+   defining Unicode char U+00FE (decimal 254)
+   defining Unicode char U+00FF (decimal 255)
+   defining Unicode char U+0100 (decimal 256)
+   defining Unicode char U+0101 (decimal 257)
+   defining Unicode char U+0102 (decimal 258)
+   defining Unicode char U+0103 (decimal 259)
+   defining Unicode char U+0104 (decimal 260)
+   defining Unicode char U+0105 (decimal 261)
+   defining Unicode char U+0106 (decimal 262)
+   defining Unicode char U+0107 (decimal 263)
+   defining Unicode char U+0108 (decimal 264)
+   defining Unicode char U+0109 (decimal 265)
+   defining Unicode char U+010A (decimal 266)
+   defining Unicode char U+010B (decimal 267)
+   defining Unicode char U+010C (decimal 268)
+   defining Unicode char U+010D (decimal 269)
+   defining Unicode char U+010E (decimal 270)
+   defining Unicode char U+010F (decimal 271)
+   defining Unicode char U+0110 (decimal 272)
+   defining Unicode char U+0111 (decimal 273)
+   defining Unicode char U+0112 (decimal 274)
+   defining Unicode char U+0113 (decimal 275)
+   defining Unicode char U+0114 (decimal 276)
+   defining Unicode char U+0115 (decimal 277)
+   defining Unicode char U+0116 (decimal 278)
+   defining Unicode char U+0117 (decimal 279)
+   defining Unicode char U+0118 (decimal 280)
+   defining Unicode char U+0119 (decimal 281)
+   defining Unicode char U+011A (decimal 282)
+   defining Unicode char U+011B (decimal 283)
+   defining Unicode char U+011C (decimal 284)
+   defining Unicode char U+011D (decimal 285)
+   defining Unicode char U+011E (decimal 286)
+   defining Unicode char U+011F (decimal 287)
+   defining Unicode char U+0120 (decimal 288)
+   defining Unicode char U+0121 (decimal 289)
+   defining Unicode char U+0122 (decimal 290)
+   defining Unicode char U+0123 (decimal 291)
+   defining Unicode char U+0124 (decimal 292)
+   defining Unicode char U+0125 (decimal 293)
+   defining Unicode char U+0128 (decimal 296)
+   defining Unicode char U+0129 (decimal 297)
+   defining Unicode char U+012A (decimal 298)
+   defining Unicode char U+012B (decimal 299)
+   defining Unicode char U+012C (decimal 300)
+   defining Unicode char U+012D (decimal 301)
+   defining Unicode char U+012E (decimal 302)
+   defining Unicode char U+012F (decimal 303)
+   defining Unicode char U+0130 (decimal 304)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0132 (decimal 306)
+   defining Unicode char U+0133 (decimal 307)
+   defining Unicode char U+0134 (decimal 308)
+   defining Unicode char U+0135 (decimal 309)
+   defining Unicode char U+0136 (decimal 310)
+   defining Unicode char U+0137 (decimal 311)
+   defining Unicode char U+0139 (decimal 313)
+   defining Unicode char U+013A (decimal 314)
+   defining Unicode char U+013B (decimal 315)
+   defining Unicode char U+013C (decimal 316)
+   defining Unicode char U+013D (decimal 317)
+   defining Unicode char U+013E (decimal 318)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0143 (decimal 323)
+   defining Unicode char U+0144 (decimal 324)
+   defining Unicode char U+0145 (decimal 325)
+   defining Unicode char U+0146 (decimal 326)
+   defining Unicode char U+0147 (decimal 327)
+   defining Unicode char U+0148 (decimal 328)
+   defining Unicode char U+014A (decimal 330)
+   defining Unicode char U+014B (decimal 331)
+   defining Unicode char U+014C (decimal 332)
+   defining Unicode char U+014D (decimal 333)
+   defining Unicode char U+014E (decimal 334)
+   defining Unicode char U+014F (decimal 335)
+   defining Unicode char U+0150 (decimal 336)
+   defining Unicode char U+0151 (decimal 337)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+0154 (decimal 340)
+   defining Unicode char U+0155 (decimal 341)
+   defining Unicode char U+0156 (decimal 342)
+   defining Unicode char U+0157 (decimal 343)
+   defining Unicode char U+0158 (decimal 344)
+   defining Unicode char U+0159 (decimal 345)
+   defining Unicode char U+015A (decimal 346)
+   defining Unicode char U+015B (decimal 347)
+   defining Unicode char U+015C (decimal 348)
+   defining Unicode char U+015D (decimal 349)
+   defining Unicode char U+015E (decimal 350)
+   defining Unicode char U+015F (decimal 351)
+   defining Unicode char U+0160 (decimal 352)
+   defining Unicode char U+0161 (decimal 353)
+   defining Unicode char U+0162 (decimal 354)
+   defining Unicode char U+0163 (decimal 355)
+   defining Unicode char U+0164 (decimal 356)
+   defining Unicode char U+0165 (decimal 357)
+   defining Unicode char U+0168 (decimal 360)
+   defining Unicode char U+0169 (decimal 361)
+   defining Unicode char U+016A (decimal 362)
+   defining Unicode char U+016B (decimal 363)
+   defining Unicode char U+016C (decimal 364)
+   defining Unicode char U+016D (decimal 365)
+   defining Unicode char U+016E (decimal 366)
+   defining Unicode char U+016F (decimal 367)
+   defining Unicode char U+0170 (decimal 368)
+   defining Unicode char U+0171 (decimal 369)
+   defining Unicode char U+0172 (decimal 370)
+   defining Unicode char U+0173 (decimal 371)
+   defining Unicode char U+0174 (decimal 372)
+   defining Unicode char U+0175 (decimal 373)
+   defining Unicode char U+0176 (decimal 374)
+   defining Unicode char U+0177 (decimal 375)
+   defining Unicode char U+0178 (decimal 376)
+   defining Unicode char U+0179 (decimal 377)
+   defining Unicode char U+017A (decimal 378)
+   defining Unicode char U+017B (decimal 379)
+   defining Unicode char U+017C (decimal 380)
+   defining Unicode char U+017D (decimal 381)
+   defining Unicode char U+017E (decimal 382)
+   defining Unicode char U+01CD (decimal 461)
+   defining Unicode char U+01CE (decimal 462)
+   defining Unicode char U+01CF (decimal 463)
+   defining Unicode char U+01D0 (decimal 464)
+   defining Unicode char U+01D1 (decimal 465)
+   defining Unicode char U+01D2 (decimal 466)
+   defining Unicode char U+01D3 (decimal 467)
+   defining Unicode char U+01D4 (decimal 468)
+   defining Unicode char U+01E2 (decimal 482)
+   defining Unicode char U+01E3 (decimal 483)
+   defining Unicode char U+01E6 (decimal 486)
+   defining Unicode char U+01E7 (decimal 487)
+   defining Unicode char U+01E8 (decimal 488)
+   defining Unicode char U+01E9 (decimal 489)
+   defining Unicode char U+01EA (decimal 490)
+   defining Unicode char U+01EB (decimal 491)
+   defining Unicode char U+01F0 (decimal 496)
+   defining Unicode char U+01F4 (decimal 500)
+   defining Unicode char U+01F5 (decimal 501)
+   defining Unicode char U+0218 (decimal 536)
+   defining Unicode char U+0219 (decimal 537)
+   defining Unicode char U+021A (decimal 538)
+   defining Unicode char U+021B (decimal 539)
+   defining Unicode char U+01E02 (decimal 7682)
+   defining Unicode char U+01E03 (decimal 7683)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201A (decimal 8218)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+   defining Unicode char U+201E (decimal 8222)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+2039 (decimal 8249)
+   defining Unicode char U+203A (decimal 8250)
+   defining Unicode char U+2423 (decimal 9251)
+)
+Now handling font encoding OT1 ...
+... processing UTF-8 mapping file for font encoding OT1
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
+File: ot1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
+   defining Unicode char U+00A0 (decimal 160)
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00AD (decimal 173)
+   defining Unicode char U+00B8 (decimal 184)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+0174 (decimal 372)
+   defining Unicode char U+0175 (decimal 373)
+   defining Unicode char U+0176 (decimal 374)
+   defining Unicode char U+0177 (decimal 375)
+   defining Unicode char U+0218 (decimal 536)
+   defining Unicode char U+0219 (decimal 537)
+   defining Unicode char U+021A (decimal 538)
+   defining Unicode char U+021B (decimal 539)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+)
+Now handling font encoding OMS ...
+... processing UTF-8 mapping file for font encoding OMS
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu
+File: omsenc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+)
+Now handling font encoding OMX ...
+... no UTF-8 mapping file for font encoding OMX
+Now handling font encoding U ...
+... no UTF-8 mapping file for font encoding U
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+02C6 (decimal 710)
+   defining Unicode char U+02DC (decimal 732)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2026 (decimal 8230)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2423 (decimal 9251)
+))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2016/02/24 3.9q The Babel package
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel-spanish/spanish.ldf
+Language: spanish.ldf 2016/01/15 v5.0o Spanish support from the babel system
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2016/02/24 3.9q Babel common definitions
+\babel@savecnt=\count90
+\U@D=\dimen111
+)
+\es@quottoks=\toks18
+\es@quotdepth=\count91
+Package babel Info: Making " an active character on input line 533.
+Package babel Info: Making . an active character on input line 634.
+Package babel Info: Making < an active character on input line 679.
+Package babel Info: Making > an active character on input line 679.
+))
+(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks19
+)
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box26
+
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfrcs.code.tex
+Package: pgfrcs 2010/10/25 v2.10 (rcs-revision 1.24)
+))
+Package: pgf 2008/01/15 v2.10 (rcs-revision 1.12)
+
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 95.
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count92
+))
+\Gin@req@height=\dimen112
+\Gin@req@width=\dimen113
+)
+(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2010/06/30 v2.10 (rcs-revision 1.37)
+
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks20
+\pgfkeys@temptoks=\toks21
+
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
+\pgfkeys@tmptoks=\toks22
+))
+\pgf@x=\dimen114
+\pgf@y=\dimen115
+\pgf@xa=\dimen116
+\pgf@ya=\dimen117
+\pgf@xb=\dimen118
+\pgf@yb=\dimen119
+\pgf@xc=\dimen120
+\pgf@yc=\dimen121
+\w@pgf@writea=\write3
+\r@pgf@reada=\read1
+\c@pgf@counta=\count93
+\c@pgf@countb=\count94
+\c@pgf@countc=\count95
+\c@pgf@countd=\count96
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
+)
+Package pgfsys Info: Driver file for pgf: pgfsys-pdftex.def on input line 900.
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2009/05/22  (rcs-revision 1.26)
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2008/05/19  (rcs-revision 1.10)
+)))
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2008/07/18  (rcs-revision 1.7)
+\pgfsyssoftpath@smallbuffer@items=\count97
+\pgfsyssoftpath@bigbuffer@items=\count98
+)
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
+))
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2010/04/11 v2.10 (rcs-revision 1.7)
+
+(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen122
+\pgfmath@count=\count99
+\pgfmath@box=\box27
+\pgfmath@toks=\toks23
+\pgfmath@stack@operand=\toks24
+\pgfmath@stack@operation=\toks25
+)
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex)
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex)
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.random.code.tex)
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex)
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.base.code.tex)
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.round.code.tex)
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex)))
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count100
+))
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2010/04/09  (rcs-revision 1.20)
+\pgf@picminx=\dimen123
+\pgf@picmaxx=\dimen124
+\pgf@picminy=\dimen125
+\pgf@picmaxy=\dimen126
+\pgf@pathminx=\dimen127
+\pgf@pathmaxx=\dimen128
+\pgf@pathminy=\dimen129
+\pgf@pathmaxy=\dimen130
+\pgf@xx=\dimen131
+\pgf@xy=\dimen132
+\pgf@yx=\dimen133
+\pgf@yy=\dimen134
+\pgf@zx=\dimen135
+\pgf@zy=\dimen136
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2010/08/03  (rcs-revision 1.24)
+\pgf@path@lastx=\dimen137
+\pgf@path@lasty=\dimen138
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2008/04/22  (rcs-revision 1.12)
+\pgf@shorten@end@additional=\dimen139
+\pgf@shorten@start@additional=\dimen140
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2010/09/08  (rcs-revision 1.34)
+\pgfpic=\box28
+\pgf@hbox=\box29
+\pgf@layerbox@main=\box30
+\pgf@picture@serial@count=\count101
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2008/04/22  (rcs-revision 1.9)
+\pgflinewidth=\dimen141
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2009/06/10  (rcs-revision 1.11)
+\pgf@pt@x=\dimen142
+\pgf@pt@y=\dimen143
+\pgf@pt@temp=\dimen144
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2008/10/09  (rcs-revision 1.8)
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2008/04/23  (rcs-revision 1.11)
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2008/11/23  (rcs-revision 1.13)
+\pgf@max=\dimen145
+\pgf@sys@shading@range@num=\count102
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2010/03/25  (rcs-revision 1.16)
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2010/09/01  (rcs-revision 1.17)
+\pgfexternal@startupbox=\box31
+))
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2010/08/27  (rcs-revision 1.2)
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2008/01/17  (rcs-revision 1.2)
+)
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2009/07/02  (rcs-revision 1.3)
+)))
+(/usr/share/texmf/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2010/09/09  (rcs-revision 1.13)
+\pgfnodeparttextbox=\box32
+)
+(/usr/share/texmf/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2010/10/22  (rcs-revision 1.8)
+)
+(/usr/share/texmf/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2007/07/03 v2.10 (rcs-revision 1.7)
+\pgf@nodesepstart=\dimen146
+\pgf@nodesepend=\dimen147
+)
+(/usr/share/texmf/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2007/07/23 v2.10 (rcs-revision 1.1)
+))
+(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/usr/share/texmf/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2010/03/23 v2.10 (rcs-revision 1.18)
+\pgffor@iter=\dimen148
+\pgffor@skip=\dimen149
+\pgffor@stack=\toks26
+\pgffor@toks=\toks27
+))
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2010/10/13 v2.10 (rcs-revision 1.76)
+
+(/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2010/05/31 v2.10 (rcs-revision 1.15)
+\pgf@plot@mark@count=\count103
+\pgfplotmarksize=\dimen150
+)
+\tikz@lastx=\dimen151
+\tikz@lasty=\dimen152
+\tikz@lastxsaved=\dimen153
+\tikz@lastysaved=\dimen154
+\tikzleveldistance=\dimen155
+\tikzsiblingdistance=\dimen156
+\tikz@figbox=\box33
+\tikz@tempbox=\box34
+\tikztreelevel=\count104
+\tikznumberofchildren=\count105
+\tikznumberofcurrentchild=\count106
+\tikz@fig@count=\count107
+
+(/usr/share/texmf/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2010/08/24  (rcs-revision 1.4)
+\pgfmatrixcurrentrow=\count108
+\pgfmatrixcurrentcolumn=\count109
+\pgf@matrix@numberofcolumns=\count110
+)
+\tikz@expandcount=\count111
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
+hs.code.tex
+File: tikzlibrarytopaths.code.tex 2008/06/17 v2.10 (rcs-revision 1.2)
+))) (/usr/share/texlive/texmf-dist/tex/latex/paralist/paralist.sty
+Package: paralist 2015/12/30 v2.5 Extended list environments
+\pltopsep=\skip43
+\plpartopsep=\skip44
+\plitemsep=\skip45
+\plparsep=\skip46
+\pl@lab=\toks28
+)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2016/02/20 v1.1-142 Sub-captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen157
+\captionmargin@=\dimen158
+\captionwidth=\dimen159
+\caption@tempdima=\dimen160
+\caption@indent=\dimen161
+\caption@parindent=\dimen162
+\caption@hangindent=\dimen163
+)
+\c@ContinuedFloat=\count112
+)
+\c@subfigure=\count113
+\c@subtable=\count114
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2016/03/03 v2.15a AMS math features
+\@mathmargin=\skip47
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks29
+\ex@=\dimen164
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen165
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count115
+LaTeX Info: Redefining \frac on input line 199.
+\uproot@=\count116
+\leftroot@=\count117
+LaTeX Info: Redefining \overline on input line 297.
+\classnum@=\count118
+\DOTSCASE@=\count119
+LaTeX Info: Redefining \ldots on input line 394.
+LaTeX Info: Redefining \dots on input line 397.
+LaTeX Info: Redefining \cdots on input line 518.
+\Mathstrutbox@=\box35
+\strutbox@=\box36
+\big@size=\dimen166
+LaTeX Font Info:    Redeclaring font encoding OML on input line 630.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
+\macc@depth=\count120
+\c@MaxMatrixCols=\count121
+\dotsspace@=\muskip10
+\c@parentequation=\count122
+\dspbrk@lvl=\count123
+\tag@help=\toks30
+\row@=\count124
+\column@=\count125
+\maxfields@=\count126
+\andhelp@=\toks31
+\eqnshift@=\dimen167
+\alignsep@=\dimen168
+\tagshift@=\dimen169
+\tagwidth@=\dimen170
+\totwidth@=\dimen171
+\lineht@=\dimen172
+\@envbody=\toks32
+\multlinegap=\skip48
+\multlinetaggap=\skip49
+\mathdisplay@stack=\toks33
+LaTeX Info: Redefining \[ on input line 2735.
+LaTeX Info: Redefining \] on input line 2736.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count127
+\lst@gtempboxa=\box37
+\lst@token=\toks34
+\lst@length=\count128
+\lst@currlwidth=\dimen173
+\lst@column=\count129
+\lst@pos=\count130
+\lst@lostspace=\dimen174
+\lst@width=\dimen175
+\lst@newlines=\count131
+\lst@lineno=\count132
+\lst@maxwidth=\dimen176
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count133
+\lst@skipnumbers=\count134
+\lst@framebox=\box38
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+(/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count135
+\float@exts=\toks35
+\float@box=\box39
+\@float@everytoks=\toks36
+\@floatcapt=\box40
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks37
+\c@algorithm=\count136
+)
+(/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
+
+(/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count137
+\c@ALG@rem=\count138
+\c@ALG@nested=\count139
+\ALG@tlm=\skip50
+\ALG@thistlm=\skip51
+\c@ALG@Lnr=\count140
+\c@ALG@blocknr=\count141
+\c@ALG@storecount=\count142
+\c@ALG@tmpcounter=\count143
+\ALG@tmplength=\skip52
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+) (./informe.aux
+LaTeX Info: Redefining \. on input line 7.
+LaTeX Info: Redefining \% on input line 7.
+
+(./secciones/problema.aux) (./secciones/ejercicio1.aux
+
+LaTeX Warning: Label `fig: ej1_oja_categoria_4' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig: ej1_oja_categoria_4' multiply defined.
+
+
+LaTeX Warning: Label `fig: ej1_sanger_categoria_4' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig: ej1_sanger_categoria_4' multiply defined.
+
+) (./secciones/ejercicio2.aux
+
+LaTeX Warning: Label `fig:mapa train 50' multiply defined.
+
+
+LaTeX Warning: Label `tabla:entrenamiento 50 entradas' multiply defined.
+
+
+LaTeX Warning: Label `fig:mapa train 200' multiply defined.
+
+
+LaTeX Warning: Label `tabla:entrenamiento 50 entradas' multiply defined.
+
+
+LaTeX Warning: Label `fig:mapa train 800' multiply defined.
+
+
+LaTeX Warning: Label `fig:mapa train' multiply defined.
+
+
+LaTeX Warning: Label `fig:mapa errores 800' multiply defined.
+
+))
+\openout1 = `informe.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 500.484pt, 56.9055pt)
+* v-part:(T,H,B)=(56.9055pt, 681.15898pt, 56.9055pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=500.484pt
+* \textheight=681.15898pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-52.36449pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Info: Redefining \. on input line 62.
+LaTeX Info: Redefining \% on input line 62.
+ABD: EveryShipout initializing macros
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count144
+\scratchdimen=\dimen177
+\scratchbox=\box41
+\nofMPsegments=\count145
+\nofMParguments=\count146
+\everyMPshowfont=\toks38
+\MPscratchCnt=\count147
+\MPscratchDim=\dimen178
+\MPnumerator=\count148
+\makeMPintoPDFobject=\count149
+\everyMPtoPDFconversion=\toks39
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count150
+LaTeX Font Info:    Try loading font information for U+msa on input line 73.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 73.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./informe.toc
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+)
+\tf@toc=\write4
+\openout4 = `informe.toc'.
+
+ [2]
+\openout2 = `secciones/problema.aux'.
+
+
+(./secciones/problema.tex) [3
+
+]
+\openout2 = `secciones/ejercicio1.aux'.
+
+ (./secciones/ejercicio1.tex
+<secciones/graficos/oja/1_train.png, id=20, 699.5736pt x 739.3221pt>
+File: secciones/graficos/oja/1_train.png Graphic file (type png)
+
+<use secciones/graficos/oja/1_train.png>
+Package pdftex.def Info: secciones/graficos/oja/1_train.png used on input line 
+29.
+(pdftex.def)             Requested size: 250.24199pt x 264.46358pt.
+File: secciones/graficos/oja/1_train.png Graphic file (type png)
+
+<use secciones/graficos/oja/1_train.png>
+Package pdftex.def Info: secciones/graficos/oja/1_train.png used on input line 
+34.
+(pdftex.def)             Requested size: 250.24199pt x 264.46358pt.
+ [4
+
+
+]
+<secciones/graficos/oja/2_train.png, id=31, 699.5736pt x 739.3221pt>
+File: secciones/graficos/oja/2_train.png Graphic file (type png)
+
+<use secciones/graficos/oja/2_train.png>
+Package pdftex.def Info: secciones/graficos/oja/2_train.png used on input line 
+44.
+(pdftex.def)             Requested size: 250.24199pt x 264.46358pt.
+File: secciones/graficos/oja/2_train.png Graphic file (type png)
+
+<use secciones/graficos/oja/2_train.png>
+Package pdftex.def Info: secciones/graficos/oja/2_train.png used on input line 
+49.
+(pdftex.def)             Requested size: 250.24199pt x 264.46358pt.
+ [5 <./secciones/graficos/oja/1_train.png> <./secciones/graficos/oja/2_train.pn
+g>]
+<secciones/graficos/oja/eje1_train.png, id=38, 578.16pt x 433.62pt>
+File: secciones/graficos/oja/eje1_train.png Graphic file (type png)
+
+<use secciones/graficos/oja/eje1_train.png>
+Package pdftex.def Info: secciones/graficos/oja/eje1_train.png used on input li
+ne 62.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/oja/eje2_train.png, id=39, 578.16pt x 433.62pt>
+File: secciones/graficos/oja/eje2_train.png Graphic file (type png)
+
+<use secciones/graficos/oja/eje2_train.png>
+Package pdftex.def Info: secciones/graficos/oja/eje2_train.png used on input li
+ne 67.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/oja/eje3_train.png, id=40, 578.16pt x 433.62pt>
+File: secciones/graficos/oja/eje3_train.png Graphic file (type png)
+
+<use secciones/graficos/oja/eje3_train.png>
+Package pdftex.def Info: secciones/graficos/oja/eje3_train.png used on input li
+ne 72.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/oja/eje1_valid.png, id=41, 578.16pt x 433.62pt>
+File: secciones/graficos/oja/eje1_valid.png Graphic file (type png)
+
+<use secciones/graficos/oja/eje1_valid.png>
+Package pdftex.def Info: secciones/graficos/oja/eje1_valid.png used on input li
+ne 82.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/oja/eje2_valid.png, id=42, 578.16pt x 433.62pt>
+File: secciones/graficos/oja/eje2_valid.png Graphic file (type png)
+
+<use secciones/graficos/oja/eje2_valid.png>
+Package pdftex.def Info: secciones/graficos/oja/eje2_valid.png used on input li
+ne 87.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/oja/eje3_valid.png, id=43, 578.16pt x 433.62pt>
+File: secciones/graficos/oja/eje3_valid.png Graphic file (type png)
+
+<use secciones/graficos/oja/eje3_valid.png>
+Package pdftex.def Info: secciones/graficos/oja/eje3_valid.png used on input li
+ne 92.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+
+LaTeX Warning: Reference `ej1_oja_ejes_train' on page 6 undefined on input line
+ 103.
+
+<secciones/graficos/oja/categoria_1.png, id=44, 578.16pt x 433.62pt>
+File: secciones/graficos/oja/categoria_1.png Graphic file (type png)
+
+<use secciones/graficos/oja/categoria_1.png>
+Package pdftex.def Info: secciones/graficos/oja/categoria_1.png used on input l
+ine 107.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/oja/categoria_2.png, id=45, 578.16pt x 433.62pt>
+File: secciones/graficos/oja/categoria_2.png Graphic file (type png)
+
+<use secciones/graficos/oja/categoria_2.png>
+Package pdftex.def Info: secciones/graficos/oja/categoria_2.png used on input l
+ine 112.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/oja/categoria_3.png, id=46, 578.16pt x 433.62pt>
+File: secciones/graficos/oja/categoria_3.png Graphic file (type png)
+
+<use secciones/graficos/oja/categoria_3.png>
+Package pdftex.def Info: secciones/graficos/oja/categoria_3.png used on input l
+ine 117.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/oja/categoria_4.png, id=47, 578.16pt x 433.62pt>
+File: secciones/graficos/oja/categoria_4.png Graphic file (type png)
+
+<use secciones/graficos/oja/categoria_4.png>
+Package pdftex.def Info: secciones/graficos/oja/categoria_4.png used on input l
+ine 122.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/oja/categoria_5.png, id=48, 578.16pt x 433.62pt>
+File: secciones/graficos/oja/categoria_5.png Graphic file (type png)
+
+<use secciones/graficos/oja/categoria_5.png>
+Package pdftex.def Info: secciones/graficos/oja/categoria_5.png used on input l
+ine 127.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/oja/categoria_6.png, id=49, 578.16pt x 433.62pt>
+File: secciones/graficos/oja/categoria_6.png Graphic file (type png)
+
+<use secciones/graficos/oja/categoria_6.png>
+Package pdftex.def Info: secciones/graficos/oja/categoria_6.png used on input l
+ine 132.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/oja/categoria_7.png, id=50, 578.16pt x 433.62pt>
+File: secciones/graficos/oja/categoria_7.png Graphic file (type png)
+
+<use secciones/graficos/oja/categoria_7.png>
+Package pdftex.def Info: secciones/graficos/oja/categoria_7.png used on input l
+ine 137.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/oja/categoria_8.png, id=51, 578.16pt x 433.62pt>
+File: secciones/graficos/oja/categoria_8.png Graphic file (type png)
+
+<use secciones/graficos/oja/categoria_8.png>
+Package pdftex.def Info: secciones/graficos/oja/categoria_8.png used on input l
+ine 142.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/oja/categoria_9.png, id=52, 578.16pt x 433.62pt>
+File: secciones/graficos/oja/categoria_9.png Graphic file (type png)
+
+<use secciones/graficos/oja/categoria_9.png>
+Package pdftex.def Info: secciones/graficos/oja/categoria_9.png used on input l
+ine 147.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+ [6 <./secciones/graficos/oja/eje1_train.png> <./secciones/graficos/oja/eje2_tr
+ain.png> <./secciones/graficos/oja/eje3_train.png> <./secciones/graficos/oja/ej
+e1_valid.png> <./secciones/graficos/oja/eje2_valid.png> <./secciones/graficos/o
+ja/eje3_valid.png>]
+<secciones/graficos/varianza_entrada.png, id=62, 578.16pt x 433.62pt>
+File: secciones/graficos/varianza_entrada.png Graphic file (type png)
+
+<use secciones/graficos/varianza_entrada.png>
+Package pdftex.def Info: secciones/graficos/varianza_entrada.png used on input 
+line 160.
+(pdftex.def)             Requested size: 400.38872pt x 300.28984pt.
+ [7 <./secciones/graficos/oja/categoria_1.png> <./secciones/graficos/oja/catego
+ria_2.png> <./secciones/graficos/oja/categoria_3.png> <./secciones/graficos/oja
+/categoria_4.png> <./secciones/graficos/oja/categoria_5.png> <./secciones/grafi
+cos/oja/categoria_6.png> <./secciones/graficos/oja/categoria_7.png> <./seccione
+s/graficos/oja/categoria_8.png> <./secciones/graficos/oja/categoria_9.png>]
+<secciones/graficos/oja/error.png, id=76, 578.16pt x 433.62pt>
+File: secciones/graficos/oja/error.png Graphic file (type png)
+
+<use secciones/graficos/oja/error.png>
+Package pdftex.def Info: secciones/graficos/oja/error.png used on input line 17
+0.
+(pdftex.def)             Requested size: 250.24199pt x 187.67702pt.
+
+<secciones/graficos/oja/error_zoom.png, id=77, 578.16pt x 433.62pt>
+File: secciones/graficos/oja/error_zoom.png Graphic file (type png)
+
+<use secciones/graficos/oja/error_zoom.png>
+Package pdftex.def Info: secciones/graficos/oja/error_zoom.png used on input li
+ne 175.
+(pdftex.def)             Requested size: 250.24199pt x 187.67702pt.
+
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 169--179
+[][] [] 
+ []
+
+[8 <./secciones/graficos/varianza_entrada.png> <./secciones/graficos/oja/error.
+png> <./secciones/graficos/oja/error_zoom.png>]
+<secciones/graficos/sanger/1_train.png, id=84, 699.5736pt x 739.3221pt>
+File: secciones/graficos/sanger/1_train.png Graphic file (type png)
+
+<use secciones/graficos/sanger/1_train.png>
+Package pdftex.def Info: secciones/graficos/sanger/1_train.png used on input li
+ne 190.
+(pdftex.def)             Requested size: 250.24199pt x 264.46358pt.
+File: secciones/graficos/sanger/1_train.png Graphic file (type png)
+
+<use secciones/graficos/sanger/1_train.png>
+Package pdftex.def Info: secciones/graficos/sanger/1_train.png used on input li
+ne 195.
+(pdftex.def)             Requested size: 250.24199pt x 264.46358pt.
+
+<secciones/graficos/sanger/2_train.png, id=85, 699.5736pt x 739.3221pt>
+File: secciones/graficos/sanger/2_train.png Graphic file (type png)
+
+<use secciones/graficos/sanger/2_train.png>
+Package pdftex.def Info: secciones/graficos/sanger/2_train.png used on input li
+ne 205.
+(pdftex.def)             Requested size: 250.24199pt x 264.46358pt.
+File: secciones/graficos/sanger/2_train.png Graphic file (type png)
+
+<use secciones/graficos/sanger/2_train.png>
+Package pdftex.def Info: secciones/graficos/sanger/2_train.png used on input li
+ne 210.
+(pdftex.def)             Requested size: 250.24199pt x 264.46358pt.
+
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 204--214
+[][] [] 
+ []
+
+[9 <./secciones/graficos/sanger/1_train.png>]
+<secciones/graficos/sanger/eje1_train.png, id=90, 578.16pt x 433.62pt>
+File: secciones/graficos/sanger/eje1_train.png Graphic file (type png)
+
+<use secciones/graficos/sanger/eje1_train.png>
+Package pdftex.def Info: secciones/graficos/sanger/eje1_train.png used on input
+ line 222.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/sanger/eje2_train.png, id=91, 578.16pt x 433.62pt>
+File: secciones/graficos/sanger/eje2_train.png Graphic file (type png)
+
+<use secciones/graficos/sanger/eje2_train.png>
+Package pdftex.def Info: secciones/graficos/sanger/eje2_train.png used on input
+ line 227.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/sanger/eje3_train.png, id=92, 578.16pt x 433.62pt>
+File: secciones/graficos/sanger/eje3_train.png Graphic file (type png)
+
+<use secciones/graficos/sanger/eje3_train.png>
+Package pdftex.def Info: secciones/graficos/sanger/eje3_train.png used on input
+ line 232.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/sanger/eje1_valid.png, id=93, 578.16pt x 433.62pt>
+File: secciones/graficos/sanger/eje1_valid.png Graphic file (type png)
+
+<use secciones/graficos/sanger/eje1_valid.png>
+Package pdftex.def Info: secciones/graficos/sanger/eje1_valid.png used on input
+ line 242.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/sanger/eje2_valid.png, id=94, 578.16pt x 433.62pt>
+File: secciones/graficos/sanger/eje2_valid.png Graphic file (type png)
+
+<use secciones/graficos/sanger/eje2_valid.png>
+Package pdftex.def Info: secciones/graficos/sanger/eje2_valid.png used on input
+ line 247.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/sanger/eje3_valid.png, id=95, 578.16pt x 433.62pt>
+File: secciones/graficos/sanger/eje3_valid.png Graphic file (type png)
+
+<use secciones/graficos/sanger/eje3_valid.png>
+Package pdftex.def Info: secciones/graficos/sanger/eje3_valid.png used on input
+ line 252.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+ [10 <./secciones/graficos/sanger/2_train.png> <./secciones/graficos/sanger/eje
+1_train.png> <./secciones/graficos/sanger/eje2_train.png> <./secciones/graficos
+/sanger/eje3_train.png>]
+
+Package caption Warning: \label without proper reference on input line 309.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `fig: ej1_sanger_categorias' on page 11 undefined on i
+nput line 261.
+
+<secciones/graficos/sanger/categoria_1.png, id=103, 578.16pt x 433.62pt>
+File: secciones/graficos/sanger/categoria_1.png Graphic file (type png)
+
+<use secciones/graficos/sanger/categoria_1.png>
+Package pdftex.def Info: secciones/graficos/sanger/categoria_1.png used on inpu
+t line 265.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/sanger/categoria_2.png, id=104, 578.16pt x 433.62pt>
+File: secciones/graficos/sanger/categoria_2.png Graphic file (type png)
+
+<use secciones/graficos/sanger/categoria_2.png>
+Package pdftex.def Info: secciones/graficos/sanger/categoria_2.png used on inpu
+t line 270.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/sanger/categoria_3.png, id=105, 578.16pt x 433.62pt>
+File: secciones/graficos/sanger/categoria_3.png Graphic file (type png)
+
+<use secciones/graficos/sanger/categoria_3.png>
+Package pdftex.def Info: secciones/graficos/sanger/categoria_3.png used on inpu
+t line 275.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/sanger/categoria_4.png, id=106, 578.16pt x 433.62pt>
+File: secciones/graficos/sanger/categoria_4.png Graphic file (type png)
+
+<use secciones/graficos/sanger/categoria_4.png>
+Package pdftex.def Info: secciones/graficos/sanger/categoria_4.png used on inpu
+t line 280.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/sanger/categoria_5.png, id=107, 578.16pt x 433.62pt>
+File: secciones/graficos/sanger/categoria_5.png Graphic file (type png)
+
+<use secciones/graficos/sanger/categoria_5.png>
+Package pdftex.def Info: secciones/graficos/sanger/categoria_5.png used on inpu
+t line 285.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/sanger/categoria_6.png, id=108, 578.16pt x 433.62pt>
+File: secciones/graficos/sanger/categoria_6.png Graphic file (type png)
+
+<use secciones/graficos/sanger/categoria_6.png>
+Package pdftex.def Info: secciones/graficos/sanger/categoria_6.png used on inpu
+t line 290.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/sanger/categoria_7.png, id=109, 578.16pt x 433.62pt>
+File: secciones/graficos/sanger/categoria_7.png Graphic file (type png)
+
+<use secciones/graficos/sanger/categoria_7.png>
+Package pdftex.def Info: secciones/graficos/sanger/categoria_7.png used on inpu
+t line 295.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/sanger/categoria_8.png, id=110, 578.16pt x 433.62pt>
+File: secciones/graficos/sanger/categoria_8.png Graphic file (type png)
+
+<use secciones/graficos/sanger/categoria_8.png>
+Package pdftex.def Info: secciones/graficos/sanger/categoria_8.png used on inpu
+t line 300.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+
+<secciones/graficos/sanger/categoria_9.png, id=111, 578.16pt x 433.62pt>
+File: secciones/graficos/sanger/categoria_9.png Graphic file (type png)
+
+<use secciones/graficos/sanger/categoria_9.png>
+Package pdftex.def Info: secciones/graficos/sanger/categoria_9.png used on inpu
+t line 305.
+(pdftex.def)             Requested size: 165.16063pt x 123.8675pt.
+ [11 <./secciones/graficos/sanger/eje1_valid.png> <./secciones/graficos/sanger/
+eje2_valid.png> <./secciones/graficos/sanger/eje3_valid.png> <./secciones/grafi
+cos/sanger/categoria_1.png> <./secciones/graficos/sanger/categoria_2.png> <./se
+cciones/graficos/sanger/categoria_3.png> <./secciones/graficos/sanger/categoria
+_4.png> <./secciones/graficos/sanger/categoria_5.png> <./secciones/graficos/san
+ger/categoria_6.png> <./secciones/graficos/sanger/categoria_7.png> <./secciones
+/graficos/sanger/categoria_8.png> <./secciones/graficos/sanger/categoria_9.png>
+]
+<secciones/graficos/sanger/error.png, id=127, 578.16pt x 433.62pt>
+File: secciones/graficos/sanger/error.png Graphic file (type png)
+
+<use secciones/graficos/sanger/error.png>
+Package pdftex.def Info: secciones/graficos/sanger/error.png used on input line
+ 320.
+(pdftex.def)             Requested size: 250.24199pt x 187.67702pt.
+
+<secciones/graficos/sanger/error_zoom.png, id=128, 578.16pt x 433.62pt>
+File: secciones/graficos/sanger/error_zoom.png Graphic file (type png)
+
+<use secciones/graficos/sanger/error_zoom.png>
+Package pdftex.def Info: secciones/graficos/sanger/error_zoom.png used on input
+ line 325.
+(pdftex.def)             Requested size: 250.24199pt x 187.67702pt.
+
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 319--329
+[][] [] 
+ []
+
+) [12 <./secciones/graficos/sanger/error.png> <./secciones/graficos/sanger/erro
+r_zoom.png>]
+\openout2 = `secciones/ejercicio2.aux'.
+
+ (./secciones/ejercicio2.tex
+<secciones/graficos/kohonen/mapa1010.png, id=134, 433.62pt x 433.62pt>
+File: secciones/graficos/kohonen/mapa1010.png Graphic file (type png)
+
+<use secciones/graficos/kohonen/mapa1010.png>
+Package pdftex.def Info: secciones/graficos/kohonen/mapa1010.png used on input 
+line 77.
+(pdftex.def)             Requested size: 250.24199pt x 250.24265pt.
+ [13
+
+
+]
+<secciones/graficos/kohonen/mapa2020.png, id=140, 433.62pt x 433.62pt>
+File: secciones/graficos/kohonen/mapa2020.png Graphic file (type png)
+
+<use secciones/graficos/kohonen/mapa2020.png>
+Package pdftex.def Info: secciones/graficos/kohonen/mapa2020.png used on input 
+line 92.
+(pdftex.def)             Requested size: 250.24199pt x 250.24265pt.
+
+<secciones/graficos/kohonen/mapa3030.png, id=141, 433.62pt x 433.62pt>
+File: secciones/graficos/kohonen/mapa3030.png Graphic file (type png)
+
+<use secciones/graficos/kohonen/mapa3030.png>
+Package pdftex.def Info: secciones/graficos/kohonen/mapa3030.png used on input 
+line 106.
+(pdftex.def)             Requested size: 250.24199pt x 250.24265pt.
+ [14 <./secciones/graficos/kohonen/mapa1010.png> <./secciones/graficos/kohonen/
+mapa2020.png>] [15 <./secciones/graficos/kohonen/mapa3030.png>] [16]
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.285 		Etapa & Bien &
+                       Mal & Sin Determinar 	\\
+? 
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.287 		1     & 465  &
+                       367 & 17 		\\ \hline
+? 
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.288 		2     & 492  &
+                       285 & 72 		\\ \hline
+? 
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.289 		3     & 414  &
+                       400 & 35			\\ \hline
+? 
+
+<secciones/graficos/kohonen/mapaentrenamiento50.png, id=155, 433.62pt x 433.62p
+t>
+File: secciones/graficos/kohonen/mapaentrenamiento50.png Graphic file (type png
+)
+ <use secciones/graficos/kohonen/mapaentrenamiento50.png>
+Package pdftex.def Info: secciones/graficos/kohonen/mapaentrenamiento50.png use
+d on input line 305.
+(pdftex.def)             Requested size: 250.24199pt x 250.24265pt.
+ [17]
+<secciones/graficos/kohonen/mapavalidacion50.png, id=159, 433.62pt x 433.62pt>
+File: secciones/graficos/kohonen/mapavalidacion50.png Graphic file (type png)
+
+<use secciones/graficos/kohonen/mapavalidacion50.png>
+Package pdftex.def Info: secciones/graficos/kohonen/mapavalidacion50.png used o
+n input line 314.
+(pdftex.def)             Requested size: 250.24199pt x 250.24265pt.
+ [18 <./secciones/graficos/kohonen/mapaentrenamiento50.png>]
+<secciones/graficos/kohonen/mapaaciertos50.png, id=164, 433.62pt x 433.62pt>
+File: secciones/graficos/kohonen/mapaaciertos50.png Graphic file (type png)
+
+<use secciones/graficos/kohonen/mapaaciertos50.png>
+Package pdftex.def Info: secciones/graficos/kohonen/mapaaciertos50.png used on 
+input line 325.
+(pdftex.def)             Requested size: 250.24199pt x 250.24265pt.
+
+<secciones/graficos/kohonen/mapaerrores50.png, id=165, 433.62pt x 433.62pt>
+File: secciones/graficos/kohonen/mapaerrores50.png Graphic file (type png)
+
+<use secciones/graficos/kohonen/mapaerrores50.png>
+Package pdftex.def Info: secciones/graficos/kohonen/mapaerrores50.png used on i
+nput line 334.
+(pdftex.def)             Requested size: 250.24199pt x 250.24265pt.
+ [19 <./secciones/graficos/kohonen/mapavalidacion50.png> <./secciones/graficos/
+kohonen/mapaaciertos50.png>]
+<secciones/graficos/kohonen/mapaindefinidas50.png, id=172, 433.62pt x 433.62pt>
+File: secciones/graficos/kohonen/mapaindefinidas50.png Graphic file (type png)
+<use secciones/graficos/kohonen/mapaindefinidas50.png>
+Package pdftex.def Info: secciones/graficos/kohonen/mapaindefinidas50.png used 
+on input line 344.
+(pdftex.def)             Requested size: 250.24199pt x 250.24265pt.
+ [20 <./secciones/graficos/kohonen/mapaerrores50.png> <./secciones/graficos/koh
+onen/mapaindefinidas50.png>]
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.399 		Etapa & Bien &
+                       Mal & Sin Determinar 	\\
+? 
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.401 		1     & 481  &
+                       201 & 17 		\\ \hline
+? 
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.402 		2     & 494  &
+                       192 & 13 		\\ \hline
+? 
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.403 		3     & 470  &
+                       198 & 31			\\ \hline
+? 
+
+<secciones/graficos/kohonen/mapaentrenamiento200.png, id=178, 433.62pt x 433.62
+pt>
+File: secciones/graficos/kohonen/mapaentrenamiento200.png Graphic file (type pn
+g)
+ <use secciones/graficos/kohonen/mapaentrenamiento200.png>
+Package pdftex.def Info: secciones/graficos/kohonen/mapaentrenamiento200.png us
+ed on input line 419.
+(pdftex.def)             Requested size: 250.24199pt x 250.24265pt.
+ [21]
+<secciones/graficos/kohonen/mapavalidacion200.png, id=182, 433.62pt x 433.62pt>
+File: secciones/graficos/kohonen/mapavalidacion200.png Graphic file (type png)
+<use secciones/graficos/kohonen/mapavalidacion200.png>
+Package pdftex.def Info: secciones/graficos/kohonen/mapavalidacion200.png used 
+on input line 430.
+(pdftex.def)             Requested size: 250.24199pt x 250.24265pt.
+
+<secciones/graficos/kohonen/mapaaciertos200.png, id=183, 433.62pt x 433.62pt>
+File: secciones/graficos/kohonen/mapaaciertos200.png Graphic file (type png)
+
+<use secciones/graficos/kohonen/mapaaciertos200.png>
+Package pdftex.def Info: secciones/graficos/kohonen/mapaaciertos200.png used on
+ input line 442.
+(pdftex.def)             Requested size: 250.24199pt x 250.24265pt.
+ [22 <./secciones/graficos/kohonen/mapaentrenamiento200.png> <./secciones/grafi
+cos/kohonen/mapavalidacion200.png>]
+<secciones/graficos/kohonen/mapaerrores200.png, id=189, 433.62pt x 433.62pt>
+File: secciones/graficos/kohonen/mapaerrores200.png Graphic file (type png)
+
+<use secciones/graficos/kohonen/mapaerrores200.png>
+Package pdftex.def Info: secciones/graficos/kohonen/mapaerrores200.png used on 
+input line 454.
+(pdftex.def)             Requested size: 250.24199pt x 250.24265pt.
+
+<secciones/graficos/kohonen/mapaindefinidas200.png, id=190, 433.62pt x 433.62pt
+>
+File: secciones/graficos/kohonen/mapaindefinidas200.png Graphic file (type png)
+
+ <use secciones/graficos/kohonen/mapaindefinidas200.png>
+Package pdftex.def Info: secciones/graficos/kohonen/mapaindefinidas200.png used
+ on input line 467.
+(pdftex.def)             Requested size: 250.24199pt x 250.24265pt.
+ [23 <./secciones/graficos/kohonen/mapaaciertos200.png> <./secciones/graficos/k
+ohonen/mapaerrores200.png>]
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.510 		Etapa & Bien &
+                       Mal & Sin Determinar 	\\
+? 
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.512 		1     & 74   &
+                       25  & 0 			\\ \hline
+? 
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.513 		2     & 83   &
+                       16  & 0	 		\\ \hline
+? 
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.514 		3     & 77   &
+                       22  & 0			\\ \hline
+? 
+
+<secciones/graficos/kohonen/mapaentrenamiento800.png, id=196, 433.62pt x 433.62
+pt>
+File: secciones/graficos/kohonen/mapaentrenamiento800.png Graphic file (type pn
+g)
+ <use secciones/graficos/kohonen/mapaentrenamiento800.png>
+Package pdftex.def Info: secciones/graficos/kohonen/mapaentrenamiento800.png us
+ed on input line 529.
+(pdftex.def)             Requested size: 250.24199pt x 250.24265pt.
+ [24 <./secciones/graficos/kohonen/mapaindefinidas200.png>]
+<secciones/graficos/kohonen/mapavalidacion800.png, id=201, 433.62pt x 433.62pt>
+File: secciones/graficos/kohonen/mapavalidacion800.png Graphic file (type png)
+<use secciones/graficos/kohonen/mapavalidacion800.png>
+Package pdftex.def Info: secciones/graficos/kohonen/mapavalidacion800.png used 
+on input line 538.
+(pdftex.def)             Requested size: 250.24199pt x 250.24265pt.
+ [25 <./secciones/graficos/kohonen/mapaentrenamiento800.png>]
+<secciones/graficos/kohonen/mapaaciertos800.png, id=207, 433.62pt x 433.62pt>
+File: secciones/graficos/kohonen/mapaaciertos800.png Graphic file (type png)
+
+<use secciones/graficos/kohonen/mapaaciertos800.png>
+Package pdftex.def Info: secciones/graficos/kohonen/mapaaciertos800.png used on
+ input line 550.
+(pdftex.def)             Requested size: 250.24199pt x 250.24265pt.
+
+<secciones/graficos/kohonen/mapaerrores800.png, id=208, 433.62pt x 433.62pt>
+File: secciones/graficos/kohonen/mapaerrores800.png Graphic file (type png)
+
+<use secciones/graficos/kohonen/mapaerrores800.png>
+Package pdftex.def Info: secciones/graficos/kohonen/mapaerrores800.png used on 
+input line 561.
+(pdftex.def)             Requested size: 250.24199pt x 250.24265pt.
+ [26 <./secciones/graficos/kohonen/mapavalidacion800.png> <./secciones/graficos
+/kohonen/mapaaciertos800.png>]
+<secciones/graficos/kohonen/mapaentrenamientomejor.png, id=214, 433.62pt x 433.
+62pt>
+File: secciones/graficos/kohonen/mapaentrenamientomejor.png Graphic file (type 
+png)
+ <use secciones/graficos/kohonen/mapaentrenamientomejor.png>
+Package pdftex.def Info: secciones/graficos/kohonen/mapaentrenamientomejor.png 
+used on input line 579.
+(pdftex.def)             Requested size: 250.24199pt x 250.24265pt.
+ [27 <./secciones/graficos/kohonen/mapaerrores800.png>]
+<secciones/graficos/kohonen/mapavalidacionmejor.png, id=219, 433.62pt x 433.62p
+t>
+File: secciones/graficos/kohonen/mapavalidacionmejor.png Graphic file (type png
+)
+ <use secciones/graficos/kohonen/mapavalidacionmejor.png>
+Package pdftex.def Info: secciones/graficos/kohonen/mapavalidacionmejor.png use
+d on input line 589.
+(pdftex.def)             Requested size: 250.24199pt x 250.24265pt.
+
+<secciones/graficos/kohonen/mapaaciertosmejor.png, id=220, 433.62pt x 433.62pt>
+File: secciones/graficos/kohonen/mapaaciertosmejor.png Graphic file (type png)
+<use secciones/graficos/kohonen/mapaaciertosmejor.png>
+Package pdftex.def Info: secciones/graficos/kohonen/mapaaciertosmejor.png used 
+on input line 599.
+(pdftex.def)             Requested size: 250.24199pt x 250.24265pt.
+ [28 <./secciones/graficos/kohonen/mapaentrenamientomejor.png> <./secciones/gra
+ficos/kohonen/mapavalidacionmejor.png>]
+<secciones/graficos/kohonen/mapaerroresmejor.png, id=226, 433.62pt x 433.62pt>
+File: secciones/graficos/kohonen/mapaerroresmejor.png Graphic file (type png)
+
+<use secciones/graficos/kohonen/mapaerroresmejor.png>
+Package pdftex.def Info: secciones/graficos/kohonen/mapaerroresmejor.png used o
+n input line 609.
+(pdftex.def)             Requested size: 250.24199pt x 250.24265pt.
+ [29 <./secciones/graficos/kohonen/mapaaciertosmejor.png> <./secciones/graficos
+/kohonen/mapaerroresmejor.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 632.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 632.
+
+Overfull \hbox (27.52138pt too wide) in paragraph at lines 634--635
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (15.52126pt too wide) in paragraph at lines 647--648
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[30]) [31] (./informe.aux
+LaTeX Info: Redefining \. on input line 7.
+LaTeX Info: Redefining \% on input line 7.
+ (./secciones/problema.aux)
+(./secciones/ejercicio1.aux) (./secciones/ejercicio2.aux))
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 16337 strings out of 493029
+ 284991 string characters out of 6136235
+ 358055 words of memory out of 5000000
+ 19490 multiletter control sequences out of 15000+600000
+ 12846 words of font info for 49 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 56i,8n,55p,854b,1318s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on informe.pdf (31 pages, 2123484 bytes).
+PDF statistics:
+ 285 PDF objects out of 1000 (max. 8388607)
+ 116 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 313 words of extra memory for PDF output out of 10000 (max. 10000000)
+

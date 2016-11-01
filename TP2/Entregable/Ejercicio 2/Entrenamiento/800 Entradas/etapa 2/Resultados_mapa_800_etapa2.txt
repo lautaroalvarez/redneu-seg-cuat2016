@@ -4,6 +4,6 @@ Epocas usadas: 687
 Cantidad datos: 800
 Archivo mapa: mapa_largo_2.in
 Resultados:
-	Bien: 720
-	Mal: 178
-	Sin determinar: 2
+	Bien: 83
+	Mal: 16
+	Sin determinar: 0

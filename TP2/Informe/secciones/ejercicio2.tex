@@ -15,17 +15,6 @@ Detalleremos los pasos que realizamos para la implementación de la solución,
 la elección de la implementación y las dificultades que nos topamos al
 implementarlo.
 
-Dividimos el informe en las siguientes secciones:
-
-\begin{itemize}
-\item Implementación del Algoritmo: detallamos de forma introductoria la
-implementación del algoritmo. En las siguientes etapas discutiremos los pasos
-hacia la implementación final.
-\item Dimensiones Adecuadas: discutimos las alternativas para la dimensión
-del mapa.
-\item Vecindad, Learning Rate y Sigma: discutimos las alternativas que
-estudiamos para seleccionar los parámetros.
-\end{itemize}
 
 \subsection{Implementación del Algoritmo}
 
@@ -295,9 +284,9 @@ de la clasificación en una tabla:
 		\hline
 		Etapa & Bien & Mal & Sin Determinar 	\\
 							\hline \hline
-		1     & 494  & 388 & 18 		\\ \hline
-		2     & 526  & 299 & 75 		\\ \hline
-		3     & 522  & 344 & 34			\\ \hline
+		1     & 465  & 367 & 17 		\\ \hline
+		2     & 492  & 285 & 72 		\\ \hline
+		3     & 414  & 400 & 35			\\ \hline
 	\end{tabular}
 	\caption{Resultados de Validación}
 	\label{tabla:entrenamiento 50 entradas}
@@ -318,6 +307,14 @@ Presentamos el mapa obtenido del entramiento para la tercera etapa.
   \label{fig:mapa train 50}
 \end{figure}
 
+Y para contrastar presentamos el mapa obtenido de la validación
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{secciones/graficos/kohonen/mapavalidacion50.png}
+  \caption{Mapa de Entrenamiento para 50 entradas.}
+  \label{fig:mapa train 50}
+\end{figure}
 
 
 Para detectar las áreas que fueron mejor clasificadas, graficamos el mapa de
@@ -401,9 +398,9 @@ en la siguiente tabla:
 		\hline
 		Etapa & Bien & Mal & Sin Determinar 	\\
 							\hline \hline
-		1     & 612  & 288 & 23 		\\ \hline
-		2     & 625  & 275 & 19 		\\ \hline
-		3     & 658  & 235 & 7			\\ \hline
+		1     & 481  & 201 & 17 		\\ \hline
+		2     & 494  & 192 & 13 		\\ \hline
+		3     & 470  & 198 & 31			\\ \hline
 	\end{tabular}
 	\caption{Resultados de Validación}
 	\label{tabla:entrenamiento 50 entradas}
@@ -423,6 +420,18 @@ categorías
   \caption{Mapa de Entrenamiento para 200 entradas.}
   \label{fig:mapa train 200}
 \end{figure}
+
+
+Lo comparamos con el mapa obtenido de la validación y vemos que hay una mejor correlación,
+respesto a la primer prueba con menos datos
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{secciones/graficos/kohonen/mapavalidacion200.png}
+  \caption{Mapa de Entrenamiento para 200 entradas.}
+  \label{fig:mapa train 200}
+\end{figure}
+
 
 
 Presentamos el mapa de los aciertos:
@@ -500,9 +509,9 @@ y presentamos los resultados obtenidos en la siguiente tabla:
 		\hline
 		Etapa & Bien & Mal & Sin Determinar 	\\
 							\hline \hline
-		1     & 699  & 199 & 2 			\\ \hline
-		2     & 720  & 178 & 2	 		\\ \hline
-		3     & 710  & 188 & 2			\\ \hline
+		1     & 74   & 25  & 0 			\\ \hline
+		2     & 83   & 16  & 0	 		\\ \hline
+		3     & 77   & 22  & 0			\\ \hline
 	\end{tabular}
 	\caption{Resultados de Validación}
 	\label{tabla:entrenamiento 50 entradas}
@@ -521,6 +530,16 @@ Presentamos el mapa de entrenamiento obtenido para la tercer etapa:
   \caption{Mapa de Entrenamiento para 800 entradas.}
   \label{fig:mapa train 800}
 \end{figure}
+
+Y lo contrastamos contra el mapa de validación
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{secciones/graficos/kohonen/mapavalidacion800.png}
+  \caption{Mapa de Entrenamiento para 800 entradas.}
+  \label{fig:mapa train 800}
+\end{figure}
+
 
 En este caso podemos ver una mejor clasificación de las categorías
 
@@ -547,16 +566,6 @@ Ahora veamos que áreas presentaron los mayores problemas y se clasificaron mal
 Podemos ver que los errores se concentran en las areas bordes que del mapa
 de entrenamiento se ve que no quedo del todo separado.
 
-Y en este caso el mapa de las sin determinar solo tiene 2 valores.
-
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.5\columnwidth]{secciones/graficos/kohonen/mapaindefinidas800.png}
-  \caption{Mapa de Indefinidas para 800 entradas.}
-  \label{fig:mapa indefinidas 800}
-\end{figure}
-
 
 \subsubsection{El mejor mapa}
 
@@ -568,6 +577,16 @@ Mostramos aquí como nos queda el mapa:
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.5\columnwidth]{secciones/graficos/kohonen/mapaentrenamientomejor.png}
+  \caption{Mapa de Entrenamiento.}
+  \label{fig:mapa train}
+\end{figure}
+
+Lo contrastamos contra el mapa generado por la validación
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{secciones/graficos/kohonen/mapavalidacionmejor.png}
   \caption{Mapa de Entrenamiento.}
   \label{fig:mapa train}
 \end{figure}
@@ -592,15 +611,6 @@ Mapa de Errores:
   \label{fig:mapa errores 800}
 \end{figure}
 
-Sin clasificar:
-
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.5\columnwidth]{secciones/graficos/kohonen/mapaindefinidasmejor.png}
-  \caption{Mapa de Indefinidas.}
-  \label{fig:mapa indefinidas}
-\end{figure}
 
 
 \subsubsection{Futuros Entrenamientos}

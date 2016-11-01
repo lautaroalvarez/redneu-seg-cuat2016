@@ -1,0 +1,31 @@
+\select@language {spanish}
+\contentsline {section}{\numberline {1}Descripci\IeC {\'o}n del problema}{3}
+\contentsline {section}{\numberline {2}Ejercicio 1: Reducci\IeC {\'o}n de dimensiones}{4}
+\contentsline {subsection}{\numberline {2.1}Introducci\IeC {\'o}n}{4}
+\contentsline {subsection}{\numberline {2.2}An\IeC {\'a}lisis de la Red}{4}
+\contentsline {subsection}{\numberline {2.3}Procesamiento de Datos}{4}
+\contentsline {subsection}{\numberline {2.4}Experimentaci\IeC {\'o}n y Resultados}{4}
+\contentsline {subsubsection}{\numberline {2.4.1}Algoritmo de Oja}{4}
+\contentsline {subsubsection}{\numberline {2.4.2}Algoritmo de Sanger}{9}
+\contentsline {subsection}{\numberline {2.5}Conclusiones}{12}
+\contentsline {section}{\numberline {3}Mapeo de Caracter\IeC {\'\i }sticas}{13}
+\contentsline {subsection}{\numberline {3.1}Implementaci\IeC {\'o}n del Algoritmo}{13}
+\contentsline {subsection}{\numberline {3.2}Preprocesamiento de Datos}{13}
+\contentsline {subsection}{\numberline {3.3}Dimensiones Adecuadas}{13}
+\contentsline {subsubsection}{\numberline {3.3.1}Dimensi\IeC {\'o}n 10 x 10 }{13}
+\contentsline {subsubsection}{\numberline {3.3.2}Dimensi\IeC {\'o}n 20 x 20 }{14}
+\contentsline {subsubsection}{\numberline {3.3.3}Dimensi\IeC {\'o}n 30 x 30 }{15}
+\contentsline {subsubsection}{\numberline {3.3.4}Conclusi\IeC {\'o}n sobre la Dimensiones}{15}
+\contentsline {subsection}{\numberline {3.4}Vecindad, Learning Rate y Sigma}{15}
+\contentsline {subsubsection}{\numberline {3.4.1}Buscando la Combinaci\IeC {\'o}n Ideal}{16}
+\contentsline {subsubsection}{\numberline {3.4.2}Conclusiones de los Par\IeC {\'a}metros}{16}
+\contentsline {subsection}{\numberline {3.5}Cotas}{16}
+\contentsline {subsection}{\numberline {3.6}Entrenamiento}{17}
+\contentsline {subsubsection}{\numberline {3.6.1}50 Datos de Entrada}{17}
+\contentsline {subsubsection}{\numberline {3.6.2}200 Datos de Entrada}{21}
+\contentsline {subsubsection}{\numberline {3.6.3}800 Datos de Entrada}{24}
+\contentsline {subsubsection}{\numberline {3.6.4}El mejor mapa}{27}
+\contentsline {subsubsection}{\numberline {3.6.5}Futuros Entrenamientos}{29}
+\contentsline {subsection}{\numberline {3.7}Detalles de Implementaci\IeC {\'o}n}{30}
+\contentsline {subsection}{\numberline {3.8}Detalles de Resultados}{30}
+\contentsline {subsection}{\numberline {3.9}Conclusiones}{31}
