@@ -148,6 +148,7 @@ class kohonen:
 				self.Mres = self.Mres[0:self.dimension,0:self.dimension]
 		elif clave == 'cant':
 			self.entradas = float(valor)
+			self.actualizarDataSet()
 		elif clave == 'input':
 			self.input_file = valor
 			self.actualizarDataSet()

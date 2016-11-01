@@ -3,6 +3,6 @@ Epocas usadas: 1000
 Cantidad datos: 50
 Archivo mapa: mapa_corto_2.in
 Resultados:
-	Bien: 526
-	Mal: 299
-	Sin determinar: 75
+	Bien: 492
+	Mal: 285
+	Sin determinar: 72

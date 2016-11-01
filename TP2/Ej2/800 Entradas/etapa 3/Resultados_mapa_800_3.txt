@@ -4,6 +4,6 @@ Epocas usadas: 645
 Cantidad datos: 800
 Archivo mapa: mapa_800_3.in
 Resultados:
-	Bien: 710
-	Mal: 188
-	Sin determinar: 2
+	Bien: 77
+	Mal: 22
+	Sin determinar: 0
