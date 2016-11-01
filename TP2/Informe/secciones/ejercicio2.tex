@@ -25,7 +25,6 @@ hacia la implementación final.
 del mapa.
 \item Vecindad, Learning Rate y Sigma: discutimos las alternativas que
 estudiamos para seleccionar los parámetros.
-\item 
 \end{itemize}
 
 \subsection{Implementación del Algoritmo}
@@ -86,7 +85,7 @@ entrada se solapaban mucho, como lo muestra la figura:
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{../graficos/mapa1010.png}
+  \includegraphics[width=0.5\columnwidth]{graficos/mapa1010.png}
   \caption{Mapa 10 x 10 para 200 entradas.}
   \label{fig:mapa 10 10 200}
 \end{figure}
@@ -101,7 +100,7 @@ aunque hay un porcentaje de neuronas que no se activaron.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{../graficos/mapa2020.png}
+  \includegraphics[width=0.5\columnwidth]{graficos/mapa2020.png}
   \caption{Mapa 20 x 20 para 200 entradas.}
   \label{fig:mapa 20 20 200}
 \end{figure}
@@ -115,7 +114,7 @@ la siguiente figura
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{../graficos/mapa3030.png}
+  \includegraphics[width=0.5\columnwidth]{graficos/mapa3030.png}
   \caption{Mapa 30 x 30 para 200 entradas.}
   \label{fig:mapa 30 30 200}
 \end{figure}
@@ -155,22 +154,18 @@ learning rate inicial y por epoca lo decrementamos en un 0.X por ciento.
 \end{itemize}
 
 Para el \emph{Learning Rate} basados en la \textbf{Cantidad de Epocas}, probamos con 
-las siguientes funciones:
+las siguientes funciones: $\frac{1}{t^\frac{-1}{2}}$ y $\frac{1}{t^\frac{-1}{3}}$.
 
-\begin{itemize}
-	\item $\frac{1}{t^\frac{-1}{2}}$
-	\item $\frac{1}{t^\frac{-1}{3}}$
-\end{itemize}
 
 En el caso de \textbf{Coeficientes Adaptativos}, probamos con:
-$learning rate inicial / (1 + epoca_actual * coeficiente * learning rate inicial)$
+learning rate inicial / (1 + epoca actual * coeficiente * learning rate inicial)
 
-Y para del \textbf{Decrecimiento Porcentual}: por cada epoca $learning rate inicial * 0.X$
+Y para del \textbf{Decrecimiento Porcentual}: por cada epoca learning rate inicial * 0.X
 
 
 \textbf{Sigma} por:
 
-Definimos un valor de $sigma_inicial$, lo suficientemente grande para influenciar a todo 
+Definimos un valor de $sigma inicial$, lo suficientemente grande para influenciar a todo 
 el mapa. Y variandolo con las epocas con dos alternativas:
 
 \begin{itemize}
@@ -178,7 +173,7 @@ el mapa. Y variandolo con las epocas con dos alternativas:
 	\item $sigmaInicial * e^\frac{epocaActual}{lambd}$
 \end{itemize}
 
-Tomando como lambd: $cantidadEpocas * cantidadDatosEntrenamiento / log(sigmaInicial)$
+Tomando como lambd: $cantidadEpocas * cantidadDatosEntrenamiento / log (sigmaInicial)$
 
 
 \subsubsection{Buscando la Combinación Ideal}
@@ -187,7 +182,7 @@ Realizamos una bateria de prueba tomando un set de datos de 300 valores, para
 estudiar cual de la siguiente combinación de parametros organizaba mejor
 las categorías.
 
-Primero definimos un sigma inicial: (dimensión mapa) / 2, así en las primeras
+Primero definimos un sigma inicial: (dimensión mapa)$ / 2$, así en las primeras
 epocas gran parte del mapa seria influenciado.
 
 De las primeras pruebas concluimos que el \emph{Learning Rate} basado en la 
@@ -205,7 +200,7 @@ tomando como coeficiente = 0.5.
 
 La función de \textbf{Sigma} basada en $sigmaInicial * e^\frac{epocaActual}{lambd}$
 nos dió que decrecia de forma muy rápido, impidiendo el aprendizaje.
-La función $sigmaInicial * {epocaActual^\frac{-1}{3}}$ combinado al \emph{Learning Rate}
+La función $sigmaInicial * {epocaActual^\frac{-1}{3}} combinado al \emph{Learning Rate}$
 de tipo \textbf{adaptativo} nos dió un buen balance.
 
 Para la función de vecindad decidimos quedarnos con la \textbf{función uniforme} ya
@@ -217,9 +212,9 @@ La combinación que nos resulto mejor fue tomar:
 
 
 \begin{itemize}
-	\item $Sigma Inicial = 10$
-	\item $Learning Rate Adaptativo = 0.999 / (1 + epoca_actual * 0.5 * 0.99)$
-	\item $Sigma = Sigma Inicial * (epocaActual^\frac{-1}{3})$
+	\item Sigma Inicial = 10
+	\item Learning Rate Adaptativo =$ 0.999 / (1 + epoca_actual * 0.5 * 0.999)$
+	\item Sigma = Sigma Inicial *$ {epocaActual^\frac{-1}{3}}$
 \end{itemize}
 
 
@@ -317,7 +312,7 @@ Presentamos el mapa obtenido del entramiento para la tercera etapa.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{../graficos/mapaentrenamiento50.png}
+  \includegraphics[width=0.8\columnwidth]{graficos/mapaentrenamiento50.png}
   \caption{Mapa de Entrenamiento para 50 entradas.}
   \label{fig:mapa train 50}
 \end{figure}
@@ -328,7 +323,7 @@ los aciertos.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{../graficos/mapaaciertos50.png}
+  \includegraphics[width=0.8\columnwidth]{graficos/mapaaciertos50.png}
   \caption{Mapa de Aciertos para 50 entradas.}
   \label{fig:mapa aciertos 50}
 \end{figure}
@@ -337,7 +332,7 @@ Hacemos lo mismo con los datos mal clasificados.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{../graficos/mapaerrores50.png}
+  \includegraphics[width=0.8\columnwidth]{graficos/mapaerrores50.png}
   \caption{Mapa de Errores para 50 entradas.}
   \label{fig:mapa errores 50}
 \end{figure}
@@ -347,7 +342,7 @@ Y para los datos sin determinar.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{../graficos/mapaindefinidas50.png}
+  \includegraphics[width=0.6\columnwidth]{graficos/mapaindefinidas50.png}
   \caption{Mapa de Indefinidos para 50 entradas.}
   \label{fig:mapa indefinidos 50}
 \end{figure}
@@ -422,7 +417,7 @@ categorías
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{../graficos/mapaentrenamiento200.png}
+  \includegraphics[width=0.6\columnwidth]{graficos/mapaentrenamiento200.png}
   \caption{Mapa de Entrenamiento para 200 entradas.}
   \label{fig:mapa train 200}
 \end{figure}
@@ -433,7 +428,7 @@ Presentamos el mapa de los aciertos:
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{../graficos/mapaaciertos200.png}
+  \includegraphics[width=0.6\columnwidth]{graficos/mapaaciertos200.png}
   \caption{Mapa de Aciertos para 200 entradas.}
   \label{fig:mapa acierto 200}
 \end{figure}
@@ -445,7 +440,7 @@ Presentamos el mapa de las mal clasificadas:
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{../graficos/mapaerrores200.png}
+  \includegraphics[width=0.6\columnwidth]{graficos/mapaerrores200.png}
   \caption{Mapa de Errores para 200 entradas.}
   \label{fig:mapa error 200}
 \end{figure}
@@ -458,7 +453,7 @@ Y vemos los que no pudieron clasificarse:
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{../graficos/mapaindefinidas200.png}
+  \includegraphics[width=0.6\columnwidth]{graficos/mapaindefinidas200.png}
   \caption{Mapa de Indefinidas para 200 entradas.}
   \label{fig:mapa indefinidas 200}
 \end{figure}
@@ -520,7 +515,7 @@ Presentamos el mapa de entrenamiento obtenido para la tercer etapa:
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{../graficos/mapaentrenamiento800.png}
+  \includegraphics[width=0.6\columnwidth]{graficos/mapaentrenamiento800.png}
   \caption{Mapa de Entrenamiento para 800 entradas.}
   \label{fig:mapa train 800}
 \end{figure}
@@ -531,7 +526,7 @@ Presentamos el mapa de los aciertos:
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{../graficos/mapaaciertos800.png}
+  \includegraphics[width=0.6\columnwidth]{graficos/mapaaciertos800.png}
   \caption{Mapa de Aciertos para 800 entradas.}
   \label{fig:mapa aciertos 800}
 \end{figure}
@@ -542,7 +537,7 @@ Ahora veamos que áreas presentaron los mayores problemas y se clasificaron mal
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{../graficos/mapaerrores800.png}
+  \includegraphics[width=0.6\columnwidth]{graficos/mapaerrores800.png}
   \caption{Mapa de Errores para 800 entradas.}
   \label{fig:mapa errores 800}
 \end{figure}
@@ -555,7 +550,7 @@ Y en este caso el mapa de las sin determinar solo tiene 2 valores.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{../graficos/mapaindefinidas800.png}
+  \includegraphics[width=0.6\columnwidth]{graficos/mapaindefinidas800.png}
   \caption{Mapa de Indefinidas para 800 entradas.}
   \label{fig:mapa indefinidas 800}
 \end{figure}
@@ -570,7 +565,7 @@ Mostramos aquí como nos queda el mapa:
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{../graficos/mapaentrenamientomejor.png}
+  \includegraphics[width=0.6\columnwidth]{graficos/mapaentrenamientomejor.png}
   \caption{Mapa de Entrenamiento.}
   \label{fig:mapa train}
 \end{figure}
@@ -580,7 +575,7 @@ Mapa de Aciertos:
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{../graficos/mapaaciertosmejor.png}
+  \includegraphics[width=0.6\columnwidth]{graficos/mapaaciertosmejor.png}
   \caption{Mapa de Aciertos.}
   \label{fig:mapa aciertos}
 \end{figure}
@@ -590,7 +585,7 @@ Mapa de Errores:
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{../graficos/mapaerroresmejor.png}
+  \includegraphics[width=0.6\columnwidth]{graficos/mapaerroresmejor.png}
   \caption{Mapa de Errores para 800 entradas.}
   \label{fig:mapa errores 800}
 \end{figure}
@@ -600,7 +595,7 @@ Sin clasificar:
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{../graficos/mapaindefinidasmejor.png}
+  \includegraphics[width=0.6\columnwidth]{graficos/mapaindefinidasmejor.png}
   \caption{Mapa de Indefinidas.}
   \label{fig:mapa indefinidas}
 \end{figure}
