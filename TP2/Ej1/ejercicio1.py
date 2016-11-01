@@ -42,14 +42,14 @@ class hebbian:
         #--lectura de archivo de entrada
         data_input = np.genfromtxt(self.input_file, delimiter=',')
         #--preprocesamiento
-        data_input[:,1:] = data_input[:,1:] / 10
+        data_input[:,1:] = (data_input[:,1:] - np.mean(data_input[:,1:])) / np.amax(data_input[:,1:])
         
         #--cambiamos el orden del dataset
         np.random.shuffle(data_input)
         #--tomamos el 75% para entrenar
-        self.data_entrenamiento = data_input[0:len(data_input)*0.30,:]
+        self.data_entrenamiento = data_input[0:len(data_input)*0.70,:]
         #--tomamos el 25% restante para validar
-        self.data_validacion = data_input[len(data_input)*0.30 + 1:,:]
+        self.data_validacion = data_input[len(data_input)*0.70 + 1:,:]
 
     def importarW(self, filename):
         csv_entrada = csv.reader(open(filename, "rb"), delimiter=',')
@@ -104,6 +104,31 @@ class hebbian:
         elif clave == 'outiv':
             self.output_img_valid = valor
 
+    def varianza_entrada(self):
+        plt.close('all')
+
+        for cat in xrange(1,10):
+            filas_categoria = np.empty((0, self.tamano_entrada))
+            for fila in self.data_entrenamiento:
+                if int(fila[0]) == int(cat):
+                    filas_categoria = np.append(filas_categoria, np.array([fila[1:]]), axis=0)
+            suma_varianzas = 0
+            for i in xrange(0,self.tamano_entrada):
+                suma_varianzas += np.std(filas_categoria[:,i])
+            
+            plt.bar(cat, float(suma_varianzas) / self.tamano_entrada, color=self.colores_cat[cat])
+
+
+        plt.xlabel("Categorias")
+        plt.ylabel("Varianza")
+        plt.title("Varianza de los datos de entrada por categoria")
+        plt.legend()
+        #plt.show()
+        plt.savefig("varianza.png")
+
+        return "Graficos OK"
+
+
     def entrenar(self):
         os.system("clear");
         print 'ENTRENAMIENTO:\n'
@@ -140,7 +165,7 @@ class hebbian:
                 #fact_act = 1/float(cant_repeticiones)
                 #fact_act = 0.01
                 
-                #-- toma los valores de entrada (descartando la categoría)
+                #-- toma los valores de entrada (descartando la categoria)
                 x[:] = np.array([fila[1:self.tamano_entrada+1]])
 
                 #-- calcula la salida multiplicando x con W
@@ -166,7 +191,7 @@ class hebbian:
                 self.W[:] = self.W + dW
                 cant_repeticiones += 1
 
-            #-- toma el error -> diferencia cuadrática de la multiplicacion de W y
+            #-- toma el error -> diferencia cuadratica de la multiplicacion de W y
             # W traspuesta con la identidad (ortonormalidad)
             error = np.linalg.norm(self.W.T.dot(self.W) - np.identity(self.tamano_salida))
 
@@ -192,6 +217,31 @@ class hebbian:
         csv_salida.writerow([])
         return "Fin entrenamiento"
 
+    def graficarPorColor(self):
+        os.system("clear");
+
+        for cat in xrange(1,10):
+            plt.close('all')
+            fig = plt.figure()
+            ax = fig.gca(projection='3d')
+
+            ax.set_xlim3d(-0.4, 0.95)
+            ax.set_ylim3d(-1.1, 0.8)
+            ax.set_zlim3d(-0.9, 0.7)
+
+            pos_categoria = np.empty((0,self.dimension_final));
+            for fila in self.data_entrenamiento:
+                if int(fila[0]) == int(cat):
+                    pos_categoria = np.append(pos_categoria, np.array([fila[1:]]).dot(self.W)[:,0:self.dimension_final], axis=0)
+            if len(pos_categoria) > 0:
+                ax.scatter(pos_categoria[:,0], pos_categoria[:,1], pos_categoria[:,2], zdir='z', c=self.colores_cat[cat], marker='o', edgecolors='none')
+            
+            #plt.show()
+            plt.savefig("categoria_"+str(cat)+".png")
+
+        raw_input("Pulse enter para volver al menu...")
+        return "Fin grafico"
+
     def graficar3dTrain(self):
         os.system("clear");
 
@@ -199,21 +249,28 @@ class hebbian:
         fig = plt.figure()
         ax = fig.gca(projection='3d')
 
+        ax.set_xlim3d(-0.4, 0.95)
+        ax.set_ylim3d(-1.1, 0.8)
+        ax.set_zlim3d(-0.9, 0.7)
+
         for cat in xrange(1,10):
             pos_categoria = np.empty((0,self.dimension_final));
             for fila in self.data_entrenamiento:
                 if int(fila[0]) == int(cat):
                     pos_categoria = np.append(pos_categoria, np.array([fila[1:]]).dot(self.W)[:,0:self.dimension_final], axis=0)
             if len(pos_categoria) > 0:
-                ax.scatter(pos_categoria[:,0], pos_categoria[:,1], pos_categoria[:,2], c=self.colores_cat[cat], marker='o', edgecolors='none')
+                ax.scatter(pos_categoria[:,0], pos_categoria[:,1], pos_categoria[:,2], zdir='z', c=self.colores_cat[cat], marker='o', edgecolors='none')
 
         plt.show()
         #plt.savefig(self.output_img_train)
 
         #--vista por cada parametro
+        dimensiones_eje = [[-1.1, 0.8, -0.9, 0.7], [-0.4, 0.95, -0.9, 0.7], [-0.4, 0.95, -1.1, 0.8]]
         for i in xrange(0,self.dimension_final):
             plt.close('all')
 
+            plt.axis((dimensiones_eje[i]))
+            
             for cat in xrange(1,10):
                 pos_categoria = np.empty((0,self.dimension_final));
                 for fila in self.data_entrenamiento:
@@ -223,7 +280,7 @@ class hebbian:
                     plt.scatter(pos_categoria[:,i], pos_categoria[:,(i+1) % self.dimension_final], c=self.colores_cat[cat], marker='o', edgecolors='none')
 
             #plt.show()
-            plt.savefig("param_"+str(i)+"_"+self.output_img_train)
+            plt.savefig("param_"+str(i)+"_train_"+self.output_img_train)
         
         raw_input("Pulse enter para volver al menu...")
         return "Fin grafico"
@@ -236,16 +293,38 @@ class hebbian:
         fig = plt.figure()
         ax = fig.gca(projection='3d')
         
+        ax.set_xlim3d(-0.4, 0.95)
+        ax.set_ylim3d(-1.1, 0.8)
+        ax.set_zlim3d(-0.9, 0.7)
+
         for cat in xrange(1,10):
-            pos_categoria = np.empty((0,3));
+            pos_categoria = np.empty((0,self.dimension_final));
             for fila in self.data_validacion:
                 if int(fila[0]) == int(cat):
-                    pos_categoria = np.append(pos_categoria, np.array([fila[1:]]).dot(self.W), axis=0)
+                    pos_categoria = np.append(pos_categoria, np.array([fila[1:]]).dot(self.W)[:,0:self.dimension_final], axis=0)
             if len(pos_categoria) > 0:
                 ax.scatter(pos_categoria[:,0], pos_categoria[:,1], pos_categoria[:,2], zdir='z', c=self.colores_cat[cat], marker='o', edgecolors='none')
 
-        #plt.show()
-        plt.savefig(self.output_img_valid)
+        plt.show()
+        #plt.savefig(self.output_img_valid)
+
+        #--vista por cada parametro
+        dimensiones_eje = [[-1.1, 0.8, -0.9, 0.7], [-0.4, 0.95, -0.9, 0.7], [-0.4, 0.95, -1.1, 0.8]]
+        for i in xrange(0,self.dimension_final):
+            plt.close('all')
+
+            plt.axis((dimensiones_eje[i]))
+            
+            for cat in xrange(1,10):
+                pos_categoria = np.empty((0,self.dimension_final));
+                for fila in self.data_validacion:
+                    if int(fila[0]) == int(cat):
+                        pos_categoria = np.append(pos_categoria, np.array([fila[1:]]).dot(self.W)[:,0:self.dimension_final], axis=0)
+                if len(pos_categoria) > 0:
+                    plt.scatter(pos_categoria[:,i], pos_categoria[:,(i+1) % self.dimension_final], c=self.colores_cat[cat], marker='o', edgecolors='none')
+
+            #plt.show()
+            plt.savefig("param_"+str(i)+"_valid_"+self.output_img_train)
 
         raw_input("Pulse enter para volver al menu...")
         #plt.cla()
@@ -345,3 +424,5 @@ while (not salir):
             hebb.graficar3dTrain()
         elif comando[1] == 'valid':
             hebb.graficar3dValid()
+    elif (comando[0] == 'varianza'):
+        msg = hebb.varianza_entrada()

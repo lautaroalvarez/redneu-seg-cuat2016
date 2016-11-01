@@ -12,9 +12,140 @@
 
 \subsection{Procesamiento de Datos}
 
-\par Sabemos que los valores de entrada son enteros positivos, ya que determinan la cantidad de apariciones de una palabra en un texto. Y al estar la entrada preprocesada y sin las palabras mas comunes (con mas apariciones), los valores de entrada se encuentran acotados. Podríamos no haber implementado ningún tipo de preprocesamiento, pero preferimos dividir los valores en 10, para que la matriz de pesos no aumente tan rápidamente y 
+\par Sabemos que los valores de entrada son enteros positivos, ya que determinan la cantidad de apariciones de una palabra en un texto. Y al estar la entrada preprocesada y sin las palabras mas comunes (con mas apariciones), los valores de entrada se encuentran acotados. Podríamos no haber implementado ningún tipo de preprocesamiento, pero preferimos estandarizar la entrada, de manera que los atributos presenten media cero y varianza uno, moviendose en un rango de valores similar.
 
 
 \subsection{Experimentación y Resultados}
 
-\subsection{Concluciones}
+\par Habiendo fijado el número de neuronas de salida a tres unidades, pasamos a implementar los dos algoritmos propuestos. En primera instancia trabajamos en una fase de entrenamiento, donde el parámetro de interés a optimizar es el coeficiente de aprendizaje, que bien puede ser función del número de época. Tanto la condición de ortonormalidad( Wt*W - 1 = 0) como la subsiguiente validación son las herramientas para determinar su valor óptimo. Comenzamos con un coeficiente de aprendizaje constante, siguiendo con funciones del tipo 1/(epoca)* alfa, con alfa entre 0 y 1. Probando estas distintas opciones encontramos que si bien no existían diferencias significativas, un coeficiente del tipo 1/(epoca) *1/2 presentaba los mejores resultados.
+
+\subsubsection{Algoritmo de Oja}
+
+\par  A continuación se pueden observar los resultados obtenidos utilizando el algoritmo de Oja separando el set de datos de entrada en 70\% - 30\%, para el coeficiente de aprendizaje adaptativo propuesto. Las figuras 1 y 2 presentan los datos en el espacio 3d de salida obtenido por el algoritmo. Las figuras 1a \ref{fig: ej1_oja_3d_1_train} y 1b \ref{fig: ej1_oja_3d_2_train} corresponden a datos de entrenamiento, mientras que las figuras 1b \ref{fig: ej1_oja_3d_1_valid} y 2b  \ref{fig: ej1_oja_3d_2_valid} corresponden a datos de validación. 
+
+\begin{figure}
+        \begin{subfigure}[b]{0.5\textwidth}
+                \includegraphics[width=\linewidth]{secciones/graficos/oja/1_train.png}
+                \caption{Entrenamiento}
+                \label{fig: ej1_oja_3d_1_train}
+        \end{subfigure}%
+        \begin{subfigure}[b]{0.5\textwidth}
+                \includegraphics[width=\linewidth]{secciones/graficos/oja/1_train.png}
+                \caption{Validacion}
+                \label{fig: ej1_oja_3d_1_valid}
+        \end{subfigure}
+        \caption{texto de abajo}
+        \label{fig: ej1_oja_3d_1}
+\end{figure}
+
+\begin{figure}
+        \begin{subfigure}[b]{0.5\textwidth}
+                \includegraphics[width=\linewidth]{secciones/graficos/oja/2_train.png}
+                \caption{Entrenamiento}
+                \label{fig: ej1_oja_3d_2_train}
+        \end{subfigure}%
+        \begin{subfigure}[b]{0.5\textwidth}
+                \includegraphics[width=\linewidth]{secciones/graficos/oja/2_train.png}
+                \caption{Validacion}
+                \label{fig: ej1_oja_3d_2_valid}
+        \end{subfigure}
+        \caption{texto de abajo}
+        \label{fig: ej1_oja_3d_2}
+\end{figure}
+
+
+\par Se puede observar que la validación es consistente con la clasificación obtenida en la etapa de entrenamiento, dando cuenta de la validez del procedimiento realizado. También se puede observar en el gráfico la separación entre las clases verde y azul, cosa que no ocurre para las clases restantes. Para poder discriminar sobre estas últimas realizamos graficos 2d (figura 1.2), proyectando el gráfico 3d sobre tres planos distintos, tanto para los datos de entrenamiento \ref{fig: ej1_oja_eje_3}  como para los de validación \ref{fig:}  
+
+\begin{figure}[H]
+        \begin{subfigure}[b]{0.33\textwidth}
+                \includegraphics[width=\linewidth]{secciones/graficos/oja/eje1.png}
+                \caption{Corte 1}
+                \label{fig: ej1_oja_eje_1}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.33\textwidth}
+                \includegraphics[width=\linewidth]{secciones/graficos/oja/eje2.png}
+                \caption{Corte 2}
+                \label{fig: ej1_oja_eje_2}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.33\textwidth}
+                \includegraphics[width=\linewidth]{secciones/graficos/oja/eje3.png}
+                \caption{Corte 3}
+                \label{fig: ej1_oja_eje_3}
+        \end{subfigure}
+\end{figure}
+
+
+\par Estos gráficos permiten observar...
+
+
+\par a continuación realizamos un gráfico 3D para cada clase en la tapa de entrenamiento, con la finalidad de... Los resultados se observan en la figura 1.3 \ref{fig: ej1_oja_categoria_9}
+
+\begin{figure}[H]
+        \begin{subfigure}[b]{0.33\textwidth}
+                \includegraphics[width=\linewidth]{secciones/graficos/oja/categoria_1.png}
+                \caption{Categoría 1}
+                \label{fig: ej1_oja_categoria_1}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.33\textwidth}
+                \includegraphics[width=\linewidth]{secciones/graficos/oja/categoria_2.png}
+                \caption{Categoría 2}
+                \label{fig: ej1_oja_categoria_2}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.33\textwidth}
+                \includegraphics[width=\linewidth]{secciones/graficos/oja/categoria_3.png}
+                \caption{Categoría 3}
+                \label{fig: ej1_oja_categoria_4}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.33\textwidth}
+                \includegraphics[width=\linewidth]{secciones/graficos/oja/categoria_4.png}
+                \caption{Categoría 4}
+                \label{fig: ej1_oja_categoria_4}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.33\textwidth}
+                \includegraphics[width=\linewidth]{secciones/graficos/oja/categoria_5.png}
+                \caption{Categoría 5}
+                \label{fig: ej1_oja_categoria_5}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.33\textwidth}
+                \includegraphics[width=\linewidth]{secciones/graficos/oja/categoria_6.png}
+                \caption{Categoría 6}
+                \label{fig: ej1_oja_categoria_6}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.33\textwidth}
+                \includegraphics[width=\linewidth]{secciones/graficos/oja/categoria_7.png}
+                \caption{Categoría 7}
+                \label{fig: ej1_oja_categoria_7}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.33\textwidth}
+                \includegraphics[width=\linewidth]{secciones/graficos/oja/categoria_8.png}
+                \caption{Categoría 8}
+                \label{fig: ej1_oja_categoria_8}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.33\textwidth}
+                \includegraphics[width=\linewidth]{secciones/graficos/oja/categoria_9.png}
+                \caption{Categoría 9}
+                \label{fig: ej1_oja_categoria_9}
+        \end{subfigure}
+\end{figure}
+
+
+
+\par En la figura  \ref, se puede observar como se satisface la condición de ortonormalidad, en función del número de época. Se aprecia que a partir de las 1000 épocas
+
+\subsubsection{Algoritmo de Sanger}
+
+\par Se realizó una análisis similar al caso anterior, utilizando el mismo porcentaje de datos de entrenamiento - validación y el mismo coeficiente de aprendizaje adaptativo. En la figuras xxx y xxx se puede observar vistas 3d (componentes principales obtenidos por el algoritmo) de los datos de entrenamiento \ref y validacion \ref 
+
+
+
+\par proyectando estos gráficos 3d sobre distintos planos, obtenemos las siguientes figuras, tanto para entrenamiento \ref como para validación \ref{fig: ej1_oja_3d_1_train}
+
+\par por último, podemos separar los gráicos de entrenamiento 3d para las disntintas categorias, con el fin de observar más claramente como se distribuyen los mismos \ref
+
+
+
+
+
+\subsection{Conclusiones}
+
+\par Se implmentaron dos algoritmos para reducir la dimensionalidad del set de datos de entrada. El algortimo de sanger

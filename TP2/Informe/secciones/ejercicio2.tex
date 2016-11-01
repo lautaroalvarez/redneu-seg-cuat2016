@@ -69,7 +69,7 @@ entrada se solapaban mucho, como lo muestra la figura:
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{mapa1010.png}
+  \includegraphics[width=0.8\columnwidth]{graficos/mapa1010.png}
   \caption{Mapa 10 x 10 para 200 entradas.}
   \label{fig:mapa 10 10 200}
 \end{figure}
@@ -84,7 +84,7 @@ aunque hay un porcentaje de neuronas que no se activaron.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{mapa2020.png}
+  \includegraphics[width=0.8\columnwidth]{graficos/mapa2020.png}
   \caption{Mapa 20 x 20 para 200 entradas.}
   \label{fig:mapa 20 20 200}
 \end{figure}
@@ -98,7 +98,7 @@ la siguiente figura
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{mapa3030.png}
+  \includegraphics[width=0.8\columnwidth]{graficos/mapa3030.png}
   \caption{Mapa 30 x 30 para 200 entradas.}
   \label{fig:mapa 30 30 200}
 \end{figure}
@@ -141,27 +141,27 @@ Para el \emph{Learning Rate} basados en la \textbf{Cantidad de Epocas}, probamos
 las siguientes funciones:
 
 \begin{itemize}
-	\item \frac{1}{t^\frac{-1}{2}}
-	\item \frac{1}{t^\frac{-1}{3}}
+	\item $\frac{1}{t^\frac{-1}{2}}$
+	\item $\frac{1}{t^\frac{-1}{3}}$
 \end{itemize}
 
 En el caso de \textbf{Coeficientes Adaptativos}, probamos con:
-learning rate inicial / (1 + epoca_actual * coeficiente * learning rate inicial)
+$learning rate inicial / (1 + epoca_actual * coeficiente * learning rate inicial)$
 
-Y para del \textbf{Decrecimiento Porcentual}: por cada epoca learning rate inicial * 0.X
+Y para del \textbf{Decrecimiento Porcentual}: por cada epoca $learning rate inicial * 0.X$
 
 
 \textbf{Sigma} por:
 
-Definimos un valor de sigma_inicial, lo suficientemente grande para influenciar a todo 
+Definimos un valor de $sigma_inicial$, lo suficientemente grande para influenciar a todo 
 el mapa. Y variandolo con las epocas con dos alternativas:
 
 \begin{itemize}
-	\item sigmaInicial * {epocaActual^\frac{-1}{3}}
-	\item sigmaInicial * e^\frac{epocaActual}{lambd}
+	\item $sigmaInicial * {epocaActual^\frac{-1}{3}}$
+	\item $sigmaInicial * e^\frac{epocaActual}{lambd}$
 \end{itemize}
 
-Tomando como lambd: cantidadEpocas * cantidadDatosEntrenamiento / log (sigmaInicial)
+Tomando como lambd: $cantidadEpocas * cantidadDatosEntrenamiento / log(sigmaInicial)$
 
 
 \subsubsection{Buscando la Combinación Ideal}
@@ -186,9 +186,9 @@ dificil encontrar el punto justo.
 El que nos permitió encontrar el balance fue \textbf{Coeficientes Adaptativos}
 tomando como coeficiente = 0.5.
 
-La función de \textbf{Sigma} basada en sigmaInicial * e^\frac{epocaActual}{lambd}
+La función de \textbf{Sigma} basada en $sigmaInicial * e^\frac{epocaActual}{lambd}$
 nos dió que decrecia de forma muy rápido, impidiendo el aprendizaje.
-La función sigmaInicial * {epocaActual^\frac{-1}{3}} combinado al \emph{Learning Rate}
+La función $sigmaInicial * {epocaActual^\frac{-1}{3}}$ combinado al \emph{Learning Rate}
 de tipo \textbf{adaptativo} nos dió un buen balance.
 
 Para la función de vecindad decidimos quedarnos con la \textbf{función uniforme} ya
@@ -200,9 +200,9 @@ La combinación que nos resulto mejor fue tomar:
 
 
 \begin{itemize}
-	\item Sigma Inicial = 10
-	\item Learning Rate Adaptativo = 0.999 / (1 + epoca_actual * 0.5 * 0.99)
-	\item Sigma = Sigma Inicial * {epocaActual^\frac{-1}{3}}
+	\item $Sigma Inicial = 10$
+	\item $Learning Rate Adaptativo = 0.999 / (1 + epoca_actual * 0.5 * 0.99)$
+	\item $Sigma = Sigma Inicial * (epocaActual^\frac{-1}{3})$
 \end{itemize}
 
 
