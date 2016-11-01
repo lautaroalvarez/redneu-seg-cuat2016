@@ -62,22 +62,10 @@ class kohonen:
 			print "epoca:" +  str(epoca_actual)
 			print "diferencia:" +  str(diferencia_norma)
 			matriz_resultados = np.zeros((self.M1,self.M2,self.cant_categorias))
-			#sigma_o = self.M2/2
-			#lambd = float(self.cantidad_epocas*len(self.data_entrenamiento))/math.log(sigma_o)
-			#coef_aprendizaje = epoca_actual ** (-1)
 			sigma = sigma_o * epoca_actual ** (-1.0/3.0)
 			coef_aprendizaje =self.learning_rate / (1 + epoca_actual * 0.5 * self.learning_rate)
 
 			for fila in self.data_entrenamiento:
-				# va bien
-				#sigma = sigma_o * math.exp(-float(epoca_actual)/lambd)
-				#coef_aprendizaje = self.learning_rate * math.exp(-float(epoca_actual)/lambd)
-
-				#sigma = sigma_o * math.exp(-float(num)/lambd)
-				#coef_aprendizaje = self.learning_rate * math.exp(-float(num)/lambd)
-				
-				#sigma = sigma_o * 1 / (float(epoca_actual)**(1/3) * (1/float(self.cantidad_epocas*len(self.data_entrenamiento))*1/4 / 1/4) + 1)
-				#coef_aprendizaje = self.learning_rate * 0.9
 				dW[:] = np.zeros((self.M,self.N))
 				x[:] = np.array([fila[1:self.N+1]])
 				categoria = fila[0]-1
@@ -113,14 +101,7 @@ class kohonen:
 					else :
 						self.Mres[i,j] = np.argmax(matriz_resultados[i,j])+1
 
-
-			#if epoca_actual % 20 == 0: 
-			#	plt.matshow(self.Mres)
-				#plt.show()
-			#	plt.savefig("mapa_"+str(epoca_actual)+".png")
-
 		plt.matshow(self.Mres)
-		#plt.show()
 		plt.savefig("mapa_"+str(epoca_actual)+".png")
 
 
@@ -180,7 +161,7 @@ class kohonen:
 				print "entra a Mres: "+str(cont)+" -> "+str(cont-self.M)
 				self.Mres[cont-self.M-1,:] = row
 			cont += 1
-		return "Red importada con exito!"
+		return "Mapa importado con exito!"
 
 	def exportarRed(self, filename):
 		csv_salida = csv.writer(open(filename, "wb"))
@@ -189,7 +170,7 @@ class kohonen:
 			csv_salida.writerow(fila)
 		for fila in self.Mres:
 			csv_salida.writerow(fila)
-		return "Red exportada con exito!"
+		return "Mapa exportado con exito!"
 
 
 	def testing(self):
@@ -299,8 +280,8 @@ def mostrar_ayuda():
 	print "         Descripcion: ejecuta el entrenamiento con los parametros guardados"
 	print "         Uso: train"
 	print ""
-	print "  - Testear Red"
-	print "         Descripcion: testea la respuesta de la red a los datos de validacion"
+	print "  - Testear Mapa"
+	print "         Descripcion: testea la respuesta del mapa a los datos de validacion"
 	print "         Uso: test"
 	print ""
 
