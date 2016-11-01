@@ -15,6 +15,37 @@
 
 \par Sabemos que los valores de entrada son enteros positivos, ya que determinan la cantidad de apariciones de una palabra en un texto. Y al estar la entrada preprocesada y sin las palabras mas comunes (con mas apariciones), los valores de entrada se encuentran acotados. Podríamos no haber implementado ningún tipo de preprocesamiento, pero preferimos estandarizar la entrada, de manera que los atributos presenten media cero y varianza uno, moviendose en un rango de valores similar.
 
+\subsection{Detalles de Ejecución}
+
+\par La implementación de la solución fue desarrollada usando el lenguaje python,
+con la librería numpy para facilitar las operaciones aritméticas y los gráficos
+fueron construidos con la librería matplotlib.pyplot.
+
+\par Se implementó una clase llamada \textit{hebbian}, que contiene las siguientes propiedades:
+
+\begin{itemize}
+        \item \textbf{tolerancia\_error}: valor que sirve para terminar el entrenamiento en caso que la matriz sea suficientemente ortnonormal.
+        \item \textbf{cantidad\_epocas}: valor máximo de épocas que se entrenará la red, en caso de no salir por la tolerancia de error.
+        \item \textbf{input\_file}: archivo del dataset de entrada.
+        \item \textbf{oja}: valor que indica si se utilizará la regla de oja o sanger para entrenar (Oja: 1; Sanger: 0).
+\end{itemize}
+
+\par Al correr el programa, este cargará por defecto una red entrenada con la regla de sanger. Luego, pueden ejecutarse las siguientes acciones:
+
+\begin{itemize}
+        \item \textbf{help}: Muestra por pantalla una explicación de los comandos que se pueden utilizar.
+        \item \textbf{exit}: Termina la ejecución del programa.
+        \item \textbf{train}: Comienza el entrenamiento de la red.
+        \item \textbf{change}: Sirve para modificar el valor de una propiedad.
+        \item \textbf{export}: Exporta la red a un archivo de texto.
+        \item \textbf{import}: Importa una red desde un archivo de texto.
+        \item \textbf{graph train}: Grafica los errores en la ortonormalidad de la matriz de pesos obtenidos durante el entrenamiento.
+        \item \textbf{show color}: Muestra gráficos de los resultados diferenciados por categoría.
+        \item \textbf{show train}: Muestra gráficos de los resultados de entrenamiento.
+        \item \textbf{show valid}: Muestra gráficos de los resultados de validación.
+        \item \textbf{varianza}: Muestra un gráfico sobre la varianza de los datos de entrada de cada categoría.
+\end{itemize}
+
 
 \subsection{Experimentación y Resultados}
 
@@ -100,7 +131,7 @@
 
 \par Estos gráficos permiten observar mejor las similitudes entre los resultados obtenidos con los datos de entrenamiento y los obtenidos con los datos de validación. No se distinguen resultados tan errado como para ser detectados a simple vista. Esto nos deja la impresión de que, a pesar de que las categorías no se separen y agrupen como esperábamos, la red generaliza bastante bien y es consistente en cuanto a la ubicación de las categorías.
 
-\par A continuación realizamos un gráfico 3D para cada categoría en la etapa de entrenamiento, con la finalidad de poder observar su distribución individualmente, ya que en las figuras \ref{ej1_oja_ejes_train} se encuentran algo superpuestas. Los resultados se observan en las figuras \ref{fig: ej1_oja_categorias}.
+\par A continuación realizamos un gráfico 3D para cada categoría en la etapa de entrenamiento, con la finalidad de poder observar su distribución individualmente, ya que en las figuras \ref{fig: ej1_oja_ejes_train} se encuentran algo superpuestas. Los resultados se observan en las figuras \ref{fig: ej1_oja_categorias}.
 
 \begin{figure}[H]
         \begin{subfigure}[b]{0.33\textwidth}
@@ -116,7 +147,7 @@
         \begin{subfigure}[b]{0.33\textwidth}
                 \includegraphics[width=\linewidth]{secciones/graficos/oja/categoria_3.png}
                 \caption{Categoría 3}
-                \label{fig: ej1_oja_categoria_4}
+                \label{fig: ej1_oja_categoria_3}
         \end{subfigure}
         \begin{subfigure}[b]{0.33\textwidth}
                 \includegraphics[width=\linewidth]{secciones/graficos/oja/categoria_4.png}
@@ -274,7 +305,7 @@
         \begin{subfigure}[b]{0.33\textwidth}
                 \includegraphics[width=\linewidth]{secciones/graficos/sanger/categoria_3.png}
                 \caption{Categoría 3}
-                \label{fig: ej1_sanger_categoria_4}
+                \label{fig: ej1_sanger_categoria_3}
         \end{subfigure}
         \begin{subfigure}[b]{0.33\textwidth}
                 \includegraphics[width=\linewidth]{secciones/graficos/sanger/categoria_4.png}
@@ -306,6 +337,7 @@
                 \caption{Categoría 9}
                 \label{fig: ej1_sanger_categoria_9}
         \end{subfigure}
+        \caption{Gráficos de resultados diferenciados por categoría}
         \label{fig: ej1_sanger_categorias}
 \end{figure}
 
