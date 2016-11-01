@@ -29,9 +29,12 @@ def graficar_train(inputFile):
 		elif linea == 2:
 			legends = np.array(row)
 			datos = np.empty((0,len(legends)+1))
+			datos_zoom = np.empty((0,len(legends)+1))
 		else:
 			if len(row) > 0:
 				datos = np.append(datos, np.array([row]), axis=0)
+				if int(row[0]) >= 1000:
+					datos_zoom = np.append(datos_zoom, np.array([row]), axis=0)
 
 		linea = linea + 1
 
@@ -48,5 +51,20 @@ def graficar_train(inputFile):
 	#plt.show()
 	#raw_input()
 	plt.savefig(outputFile+".png")
+
+	plt.cla()
+
+	print "GENERANDO GRAFICO ZOOM..."
+	for i in xrange(1,len(datos_zoom[0])):
+		plt.plot(datos_zoom[:,0], datos_zoom[:,i])
+	plt.legend(legends, loc='upper right')
+
+	plt.xlabel(labelx)
+	plt.ylabel(labely)
+	plt.title(titulo)
+	plt.legend()
+	#plt.show()
+	#raw_input()
+	plt.savefig(outputFile+"_zoom.png")
 
 	return "grafico OK"
